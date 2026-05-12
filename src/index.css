@@ -149,17 +149,23 @@ ul, ol { list-style: none; }
   .plants-wrap {
     margin-left: 4% !important;
     margin-right: 4% !important;
-    height: clamp(520px, 140vw, 680px) !important;
+    height: clamp(640px, 170vw, 780px) !important;
   }
   .plants-heading {
     left: 1.5rem !important;
     right: 1.5rem !important;
+  }
+  .plants-heading p {
+    font-size: 2.5rem !important;
   }
   .plants-bottom {
     left: 1.5rem !important;
     right: 1.5rem !important;
     max-width: 100% !important;
     text-align: center !important;
+  }
+  .plants-bottom p {
+    font-size: 1rem !important;
   }
   .plants-bottom a {
     display: block !important;
