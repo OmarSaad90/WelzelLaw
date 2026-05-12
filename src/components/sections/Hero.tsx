@@ -148,7 +148,7 @@ export default function Hero() {
 
       {/* ── 2: Plants — fully self-contained ─────────────── */}
       <section style={{ backgroundColor: 'var(--color-bg)' }}>
-        <div style={{
+        <div className="plants-wrap" style={{
           position: 'relative',
           marginLeft: '15%',
           marginRight: '15%',
@@ -199,7 +199,7 @@ export default function Hero() {
           }} />
 
           {/* TOP LEFT: Heading */}
-          <div style={{
+          <div className="plants-heading" style={{
             position: 'absolute',
             top: 'clamp(2.5rem, 5vw, 4rem)',
             left: 'clamp(2.5rem, 5vw, 4rem)',
@@ -221,7 +221,7 @@ export default function Hero() {
           </div>
 
           {/* BOTTOM LEFT: Paragraph + CTA */}
-          <div style={{
+          <div className="plants-bottom" style={{
             position: 'absolute',
             bottom: 'clamp(2.5rem, 5vw, 4rem)',
             left: 'clamp(2.5rem, 5vw, 4rem)',

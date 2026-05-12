@@ -83,7 +83,7 @@ export default function Testimonials() {
         <div style={{ position: 'relative' }}>
 
           {/* Vertical gold divider — 60% height, centered vertically */}
-          <div style={{
+          <div className="testimonials-divider" style={{
             position: 'absolute',
             left: '50%',
             top: '20%',
@@ -94,7 +94,7 @@ export default function Testimonials() {
             pointerEvents: 'none',
           }} />
 
-          <div style={{
+          <div className="testimonials-grid" style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
             gap: 'clamp(3rem, 6vw, 6rem)',

@@ -51,6 +51,7 @@ export default function Footer() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={stagger}
+          className="affiliations-row"
           style={{
             maxWidth: 'var(--content-max-width)',
             margin: '0 auto',
@@ -79,7 +80,7 @@ export default function Footer() {
             alignItems: 'center',
             gap: 'var(--space-10)',
           }}>
-            <div style={{
+            <div className="affiliations-divider" style={{
               width: '1px',
               height: '48px',
               backgroundColor: 'var(--color-accent)',
@@ -87,7 +88,7 @@ export default function Footer() {
               opacity: 0.5,
             }} />
 
-            <div style={{
+            <div className="affiliations-logos" style={{
               display: 'flex',
               alignItems: 'center',
               gap: 'var(--space-8)',
