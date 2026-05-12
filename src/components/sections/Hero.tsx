@@ -5,20 +5,6 @@ import heroPlants from '../../assets/images/hero-plants.jpg'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.14, delayChildren: 0.2 } },
-}
-
-const lineUp = {
-  hidden: { opacity: 0, y: 44 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.95, ease } },
-}
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease } },
-}
 
 export default function Hero() {
   return (
