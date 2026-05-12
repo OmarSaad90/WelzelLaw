@@ -145,29 +145,27 @@ ul, ol { list-style: none; }
     height: clamp(420px, 85vw, 100svh) !important;
   }
 
-  /* Plants section — switch from absolute to flex column */
+  /* Plants section — mobile layout */
   .plants-wrap {
     margin-left: 4% !important;
     margin-right: 4% !important;
-    height: clamp(520px, 130vw, 700px) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    padding: 2.5rem 1.75rem !important;
+    height: clamp(520px, 140vw, 680px) !important;
   }
   .plants-heading {
-    position: static !important;
+    left: 1.5rem !important;
+    right: 1.5rem !important;
   }
   .plants-bottom {
-    position: static !important;
+    left: 1.5rem !important;
+    right: 1.5rem !important;
     max-width: 100% !important;
     text-align: center !important;
   }
   .plants-bottom a {
     display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
     text-align: center !important;
-    padding-left: var(--space-6) !important;
-    padding-right: var(--space-6) !important;
   }
 }
 
