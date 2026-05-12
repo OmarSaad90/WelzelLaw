@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Omar\\\\Desktop\\\\welzel-law\\\\welzel-law\" -Force -Recurse | Where-Object { !$_.PSIsContainer } | Select-Object FullName | Sort-Object FullName)",
+      "Bash(node *)"
+    ]
+  }
+}

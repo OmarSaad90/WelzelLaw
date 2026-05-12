@@ -1,0 +1,266 @@
+/* ==========================================================================
+   Welzel Law — Design Tokens
+   All components reference these variables exclusively.
+   Color space: OKLCH throughout. No pure #000 or #fff.
+   ========================================================================== */
+
+:root {
+
+  /* =========================================================================
+     PRIMITIVE COLOR SCALE
+     ========================================================================= */
+
+  /* --- Teal (Primary Brand) — hue anchor 192° --- */
+  --color-teal-950: oklch(0.25 0.085 192);
+  --color-teal-900: oklch(0.32 0.095 192);
+  --color-teal-800: oklch(0.39 0.105 192);
+  --color-teal-700: oklch(0.46 0.115 192);
+  --color-teal-600: oklch(0.53 0.115 192);
+  --color-teal-500: oklch(0.61 0.110 192);
+  --color-teal-400: oklch(0.70 0.090 192);
+  --color-teal-300: oklch(0.79 0.065 192);
+  --color-teal-200: oklch(0.88 0.040 192);
+  --color-teal-100: oklch(0.94 0.022 192);
+  --color-teal-50:  oklch(0.97 0.012 192);
+
+  /* --- Gold / Amber (Accent) — hue anchor 65° --- */
+  --color-gold-900: oklch(0.32 0.090 65);
+  --color-gold-800: oklch(0.42 0.115 65);
+  --color-gold-700: oklch(0.52 0.140 65);
+  --color-gold-600: oklch(0.62 0.150 65);
+  --color-gold-500: oklch(0.72 0.145 65);
+  --color-gold-400: oklch(0.80 0.120 65);
+  --color-gold-300: oklch(0.87 0.085 65);
+  --color-gold-200: oklch(0.92 0.055 65);
+  --color-gold-100: oklch(0.96 0.030 65);
+  --color-gold-50:  oklch(0.98 0.015 65);
+
+  /* --- Neutral (Warm-tinted, hue bias 80°) --- */
+  --color-neutral-950: oklch(0.18 0.008 80);
+  --color-neutral-900: oklch(0.25 0.008 80);
+  --color-neutral-800: oklch(0.35 0.009 80);
+  --color-neutral-700: oklch(0.45 0.010 80);
+  --color-neutral-600: oklch(0.55 0.010 80);
+  --color-neutral-500: oklch(0.63 0.009 80);
+  --color-neutral-400: oklch(0.72 0.008 80);
+  --color-neutral-300: oklch(0.81 0.007 80);
+  --color-neutral-200: oklch(0.89 0.006 80);
+  --color-neutral-100: oklch(0.94 0.006 80);
+  --color-neutral-50:  oklch(0.97 0.005 80);
+  --color-neutral-25:  oklch(0.99 0.004 80);
+
+
+  /* =========================================================================
+     SEMANTIC COLOR TOKENS
+     ========================================================================= */
+
+  /* Backgrounds */
+  --color-bg:            oklch(1 0 0);          /* pure white — client requirement */
+  --color-bg-subtle:     var(--color-neutral-50);
+  --color-bg-teal:       var(--color-teal-100);
+  --color-bg-dark:       var(--color-teal-900);
+  --color-bg-deeper:     var(--color-teal-950);
+
+  /* Surfaces */
+  --color-surface:       var(--color-neutral-25);
+  --color-surface-warm:  var(--color-gold-50);
+
+  /* Borders */
+  --color-border:        var(--color-neutral-200);
+  --color-border-strong: var(--color-neutral-300);
+  --color-border-teal:   var(--color-teal-200);
+
+  /* Text */
+  --color-text:          var(--color-neutral-950);
+  --color-text-muted:    var(--color-neutral-600);
+  --color-text-subtle:   var(--color-neutral-500);
+  --color-text-inverse:  var(--color-neutral-25);
+  --color-text-on-dark:  var(--color-neutral-25);
+
+  /* Brand — Primary */
+  --color-primary:       var(--color-teal-700);
+  --color-primary-hover: var(--color-teal-800);
+  --color-primary-deep:  var(--color-teal-900);
+  --color-primary-light: var(--color-teal-100);
+  --color-primary-text:  var(--color-teal-700);
+
+  /* Accent — Gold */
+  --color-accent:        var(--color-gold-500);
+  --color-accent-hover:  var(--color-gold-600);
+  --color-accent-deep:   var(--color-gold-700);
+  --color-accent-light:  var(--color-gold-100);
+  --color-accent-text:   var(--color-gold-700);
+
+
+  /* =========================================================================
+     TYPOGRAPHY
+     ========================================================================= */
+
+  --font-display: 'Playfair Display', 'Georgia', serif;
+  --font-body:    'DM Sans', 'system-ui', sans-serif;
+  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+
+  /* Fluid type scale — scales between 390px and 1440px viewport */
+  --font-size-xs:   clamp(0.72rem,  0.70rem  + 0.11vw, 0.80rem);
+  --font-size-sm:   clamp(0.85rem,  0.82rem  + 0.14vw, 0.94rem);
+  --font-size-base: clamp(1rem,     0.97rem  + 0.16vw, 1.063rem);
+  --font-size-md:   clamp(1.125rem, 1.06rem  + 0.28vw, 1.25rem);
+  --font-size-lg:   clamp(1.25rem,  1.12rem  + 0.55vw, 1.563rem);
+  --font-size-xl:   clamp(1.5rem,   1.28rem  + 0.97vw, 2rem);
+  --font-size-2xl:  clamp(1.875rem, 1.5rem   + 1.67vw, 2.625rem);
+  --font-size-3xl:  clamp(2.25rem,  1.65rem  + 2.67vw, 3.5rem);
+  --font-size-4xl:  clamp(3rem,     2.0rem   + 4.44vw, 5rem);
+  --font-size-5xl:  clamp(3.75rem,  2.2rem   + 6.89vw, 6.75rem);
+  --font-size-hero: clamp(4rem,     1.5rem   + 11.11vw, 9rem);
+
+  /* Font weights */
+  --font-weight-light:    300;
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+  --font-weight-black:    900;
+
+  /* Line heights */
+  --line-height-none:    1;
+  --line-height-tight:   1.1;
+  --line-height-snug:    1.25;
+  --line-height-normal:  1.5;
+  --line-height-relaxed: 1.65;
+  --line-height-loose:   1.8;
+
+  /* Letter spacing */
+  --letter-spacing-tighter: -0.04em;
+  --letter-spacing-tight:   -0.02em;
+  --letter-spacing-normal:   0;
+  --letter-spacing-wide:     0.04em;
+  --letter-spacing-wider:    0.08em;
+  --letter-spacing-caps:     0.14em;
+
+
+  /* =========================================================================
+     SPACING
+     Base unit: 4px (0.25rem)
+     ========================================================================= */
+
+  --space-px:  1px;
+  --space-0-5: 0.125rem;   /*   2px */
+  --space-1:   0.25rem;    /*   4px */
+  --space-1-5: 0.375rem;   /*   6px */
+  --space-2:   0.5rem;     /*   8px */
+  --space-3:   0.75rem;    /*  12px */
+  --space-4:   1rem;       /*  16px */
+  --space-5:   1.25rem;    /*  20px */
+  --space-6:   1.5rem;     /*  24px */
+  --space-8:   2rem;       /*  32px */
+  --space-10:  2.5rem;     /*  40px */
+  --space-12:  3rem;       /*  48px */
+  --space-14:  3.5rem;     /*  56px */
+  --space-16:  4rem;       /*  64px */
+  --space-20:  5rem;       /*  80px */
+  --space-24:  6rem;       /*  96px */
+  --space-28:  7rem;       /* 112px */
+  --space-32:  8rem;       /* 128px */
+  --space-36:  9rem;       /* 144px */
+  --space-40:  10rem;      /* 160px */
+  --space-48:  12rem;      /* 192px */
+  --space-56:  14rem;      /* 224px */
+  --space-64:  16rem;      /* 256px */
+  --space-80:  20rem;      /* 320px */
+  --space-96:  24rem;      /* 384px */
+
+
+  /* =========================================================================
+     LAYOUT
+     ========================================================================= */
+
+  --section-padding-y:   clamp(5rem, 10vw, 9rem);
+  --section-padding-x:   clamp(1.5rem, 6vw, 5rem);
+  --content-max-width:   1280px;
+  --content-narrow:      860px;
+  --reading-width:       68ch;
+  --narrow-width:        46ch;
+  --gutter:              clamp(1rem, 4vw, 3rem);
+  --nav-height:          clamp(4rem, 6vw, 5.5rem);
+
+
+  /* =========================================================================
+     BORDER RADIUS
+     ========================================================================= */
+
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   14px;
+  --radius-xl:   22px;
+  --radius-2xl:  36px;
+  --radius-3xl:  56px;
+  --radius-pill: 9999px;
+
+
+  /* =========================================================================
+     ELEVATION / SHADOWS
+     Teal-tinted shadows for brand coherence.
+     ========================================================================= */
+
+  --shadow-xs:
+    0 1px 3px oklch(0.25 0.085 192 / 0.07);
+
+  --shadow-sm:
+    0 2px 8px oklch(0.25 0.085 192 / 0.09);
+
+  --shadow-md:
+    0 4px 20px oklch(0.25 0.085 192 / 0.11),
+    0 1px 4px  oklch(0.25 0.085 192 / 0.07);
+
+  --shadow-lg:
+    0 8px 36px  oklch(0.25 0.085 192 / 0.13),
+    0 2px 8px   oklch(0.25 0.085 192 / 0.07);
+
+  --shadow-xl:
+    0 16px 60px oklch(0.25 0.085 192 / 0.16),
+    0 4px 16px  oklch(0.25 0.085 192 / 0.09);
+
+  --shadow-hero:
+    0 32px 96px oklch(0.25 0.085 192 / 0.22);
+
+  --shadow-gold:
+    0 4px 24px  oklch(0.72 0.145 65 / 0.30);
+
+
+  /* =========================================================================
+     MOTION / TRANSITIONS
+     Expo-out as primary easing. No bounce, no elastic.
+     ========================================================================= */
+
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.83, 0, 0.17, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+
+  --duration-instant: 50ms;
+  --duration-fast:    150ms;
+  --duration-base:    250ms;
+  --duration-slow:    400ms;
+  --duration-slower:  650ms;
+  --duration-hero:    950ms;
+
+  --transition-fast:  150ms var(--ease-out);
+  --transition-base:  250ms var(--ease-out);
+  --transition-slow:  400ms var(--ease-out);
+
+
+  /* =========================================================================
+     Z-INDEX LAYERS
+     ========================================================================= */
+
+  --z-base:    0;
+  --z-raised:  10;
+  --z-float:   50;
+  --z-sticky:  100;
+  --z-nav:     200;
+  --z-overlay: 300;
+  --z-modal:   400;
+  --z-toast:   500;
+
+}

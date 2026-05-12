@@ -1,0 +1,189 @@
+@import './styles/tokens.css';
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border: none;
+  min-height: 100svh;
+  display: block;
+  text-align: left;
+}
+
+a { text-decoration: none; color: inherit; }
+img, video { max-width: 100%; display: block; }
+button { cursor: pointer; font-family: inherit; }
+ul, ol { list-style: none; }
+
+/* ============================================================
+   Navbar
+   ============================================================ */
+
+.nav-link:hover {
+  color: var(--color-accent-text) !important;
+}
+.nav-link-inv:hover {
+  color: var(--color-gold-400) !important;
+}
+.dropdown-item:hover {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-primary) !important;
+}
+
+@media (max-width: 960px) {
+  .desktop-nav { display: none !important; }
+  .hamburger { display: flex !important; align-items: center; }
+}
+@media (min-width: 961px) {
+  .hamburger { display: none !important; }
+}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+
+.hero-scroll-cue {
+  animation: bounce-y 2s var(--ease-out) infinite;
+}
+@keyframes bounce-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* ============================================================
+   Why Welzel — skyscrapers image top fade
+   ============================================================ */
+
+.skyscrapers-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 100%;
+  background: linear-gradient(to bottom, white 0%, transparent 25%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ============================================================
+   Service Cards
+   ============================================================ */
+
+.service-card .learn-more-arrow {
+  display: inline-block;
+  transition: transform 0.2s var(--ease-out);
+}
+.service-card:hover .learn-more-arrow {
+  transform: translateX(5px);
+}
+
+/* ============================================================
+   Accordion (Four Pillars)
+   ============================================================ */
+
+.pillar-btn:hover .pillar-title {
+  color: var(--color-primary) !important;
+}
+
+/* ============================================================
+   Footer Form
+   ============================================================ */
+
+.footer-input {
+  width: 100%;
+  background: oklch(1 0 0 / 0.08);
+  border: 1px solid oklch(1 0 0 / 0.20);
+  border-radius: var(--radius-xs);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-25);
+  transition: border-color 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
+}
+.footer-input::placeholder {
+  color: oklch(1 0 0 / 0.45);
+}
+.footer-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px oklch(0.72 0.145 65 / 0.18);
+}
+
+/* ============================================================
+   Hero — mobile video
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: clamp(420px, 85vw, 100svh) !important;
+  }
+}
+
+/* ============================================================
+   Why Welzel — mobile
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .why-welzel-img {
+    margin: 0 4% !important;
+    height: 320px !important;
+  }
+  .why-welzel-card {
+    width: 92% !important;
+    margin: -60px auto 0 !important;
+    clip-path: polygon(0 36px, 100% 0, 100% 100%, 0 100%) !important;
+  }
+}
+
+/* ============================================================
+   Services — responsive grid
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    padding-top: var(--space-4) !important;
+    padding-bottom: var(--space-4) !important;
+  }
+  .service-card--featured {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+/* ============================================================
+   Affiliations
+   ============================================================ */
+
+.affil-logo {
+  transition: transform 0.25s var(--ease-out), opacity 0.25s;
+  opacity: 0.75;
+}
+.affil-logo:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
