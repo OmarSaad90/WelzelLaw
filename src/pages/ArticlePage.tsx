@@ -4,6 +4,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { ARTICLES_CONTENT, type ArticleSection } from '../data/articles'
+import SEO from '../components/SEO'
+import { ArticleJsonLd, BreadcrumbJsonLd } from '../components/JsonLd'
+import { ARTICLE_SEO, SITE_URL } from '../data/seo'
 
 import imgWhatIs    from '../assets/images/insights/WhatIs.png'
 import imgDoINeed   from '../assets/images/insights/DoINeed.png'
@@ -49,6 +52,7 @@ export default function ArticlePage() {
 
   const meta    = ARTICLES_META.find(a => a.slug === slug)
   const content = ARTICLES_CONTENT.find(a => a.slug === slug)
+  const seo     = ARTICLE_SEO.find(a => a.slug === slug)
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -71,8 +75,39 @@ export default function ArticlePage() {
     )
   }
 
+  const ogImage = meta ? `${SITE_URL}${meta.img}` : undefined
+
   return (
     <>
+      {seo && (
+        <>
+          <SEO
+            title={seo.title}
+            description={seo.description}
+            canonical={`/insights/${seo.slug}`}
+            ogType="article"
+            ogImage={ogImage}
+            article={{
+              publishedTime: seo.publishedDate,
+              author: 'Fernanda Welzel',
+              section: seo.category,
+            }}
+          />
+          <ArticleJsonLd
+            title={seo.title}
+            description={seo.description}
+            slug={seo.slug}
+            publishedDate={seo.publishedDate}
+            image={ogImage ?? `${SITE_URL}/og-image.svg`}
+            category={seo.category}
+          />
+          <BreadcrumbJsonLd crumbs={[
+            { name: 'Home', href: '/' },
+            { name: 'Insights', href: '/insights' },
+            { name: meta?.title ?? seo.title, href: `/insights/${seo.slug}` },
+          ]} />
+        </>
+      )}
       <Navbar />
       <main>
 

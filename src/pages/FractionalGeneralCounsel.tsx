@@ -1,6 +1,9 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
+import SEO from '../components/SEO'
+import { PAGE_SEO } from '../data/seo'
+import { ServiceJsonLd, BreadcrumbJsonLd } from '../components/JsonLd'
 import Footer from '../components/Footer'
 import InnerPageHero from '../components/InnerPageHero'
 
@@ -198,6 +201,9 @@ export default function FractionalGeneralCounsel() {
 
   return (
     <>
+      <SEO {...PAGE_SEO.fgc} />
+      <ServiceJsonLd name="Fractional General Counsel" description="Executive-level legal oversight for growing Ontario businesses at a fixed monthly fee. Strategic legal support without the cost of a full-time General Counsel." url="/fractional-general-counsel" />
+      <BreadcrumbJsonLd crumbs={[{ name: 'Home', href: '/' }, { name: 'Fractional General Counsel', href: '/fractional-general-counsel' }]} />
       <Navbar />
       <main className="fgc-page-main">
 

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import MagneticButton from './MagneticButton'
 import { MapPin, Clock, Mail, Phone, Linkedin, Instagram } from 'lucide-react'
+import WelzelLogo from './WelzelLogo'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -123,25 +124,7 @@ export default function Footer() {
           >
             {/* Logo */}
             <motion.div variants={fadeUp} style={{ marginBottom: 'var(--space-4)' }}>
-              <p style={{
-                fontFamily: 'var(--font-display)',
-                fontWeight: 700,
-                fontSize: 'var(--font-size-xl)',
-                color: 'var(--color-neutral-25)',
-                letterSpacing: '-0.01em',
-              }}>
-                Welzel Law
-              </p>
-              <p style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: 'var(--font-size-xs)',
-                color: 'oklch(0.88 0.040 192)',
-                letterSpacing: 'var(--letter-spacing-caps)',
-                textTransform: 'uppercase',
-                marginTop: 'var(--space-1)',
-              }}>
-                Corporate &amp; Real Estate Law
-              </p>
+              <WelzelLogo variant="dark" height={36} />
             </motion.div>
 
             {/* Contact details */}

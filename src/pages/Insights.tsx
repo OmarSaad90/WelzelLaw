@@ -1,6 +1,9 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
+import SEO from '../components/SEO'
+import { PAGE_SEO } from '../data/seo'
+import { BreadcrumbJsonLd } from '../components/JsonLd'
 import Footer from '../components/Footer'
 import InnerPageHero from '../components/InnerPageHero'
 
@@ -175,6 +178,8 @@ export default function Insights() {
 
   return (
     <>
+      <SEO {...PAGE_SEO.insights} />
+      <BreadcrumbJsonLd crumbs={[{ name: 'Home', href: '/' }, { name: 'Insights', href: '/insights' }]} />
       <Navbar />
       <main>
 

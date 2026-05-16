@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block legal boilerplate pages from crawling budget
+Disallow: /privacy-policy
+Disallow: /terms-of-service
+
+Sitemap: https://welzellaw.netlify.app/sitemap.xml

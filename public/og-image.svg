@@ -1,0 +1,42 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0A4247"/>
+  <!-- Subtle depth gradient -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#116B75" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#062D30" stop-opacity="0.6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- W mark block -->
+  <rect x="80" y="215" width="200" height="200" rx="6" fill="#116B75"/>
+  <!-- W lettermark (white, scaled from logo) -->
+  <polyline
+    points="107,255 144,375 180,310 216,375 253,255"
+    fill="none"
+    stroke="white"
+    stroke-width="16"
+    stroke-linecap="square"
+    stroke-linejoin="miter"
+  />
+
+  <!-- Gold vertical accent -->
+  <rect x="345" y="190" width="2" height="250" fill="#E8960A"/>
+
+  <!-- Eyebrow -->
+  <text x="375" y="213" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="400" letter-spacing="3" fill="#82C8D4" opacity="0.8">ONTARIO CORPORATE &amp; REAL ESTATE LAW</text>
+
+  <!-- Firm name -->
+  <text x="375" y="305" font-family="system-ui, -apple-system, sans-serif" font-size="86" font-weight="700" fill="white">Welzel Law</text>
+
+  <!-- Gold rule -->
+  <rect x="375" y="325" width="90" height="2" fill="#E8960A"/>
+
+  <!-- Subtitle -->
+  <text x="375" y="368" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="300" fill="#BCE0E6">Experienced. Personal. Affordable.</text>
+
+  <!-- Location -->
+  <text x="375" y="408" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="300" fill="#82C8D4" opacity="0.75">Burlington, Ontario — Serving the GTA</text>
+</svg>

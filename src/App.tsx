@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
 import { useLenis } from './hooks/useLenis'
+import { SitewideJsonLd } from './components/JsonLd'
 import Home from './pages/Home'
 import About from './pages/About'
 import BusinessLaw from './pages/BusinessLaw'
@@ -15,19 +17,22 @@ export default function App() {
   useLenis()
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/business-law" element={<BusinessLaw />} />
-        <Route path="/fractional-general-counsel" element={<FractionalGeneralCounsel />} />
-        <Route path="/real-estate-law" element={<RealEstateLaw />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms-of-service" element={<TermsOfService />} />
-        <Route path="/insights" element={<Insights />} />
-        <Route path="/insights/:slug" element={<ArticlePage />} />
-      </Routes>
-    </Router>
+    <HelmetProvider>
+      <SitewideJsonLd />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/business-law" element={<BusinessLaw />} />
+          <Route path="/fractional-general-counsel" element={<FractionalGeneralCounsel />} />
+          <Route path="/real-estate-law" element={<RealEstateLaw />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/insights" element={<Insights />} />
+          <Route path="/insights/:slug" element={<ArticlePage />} />
+        </Routes>
+      </Router>
+    </HelmetProvider>
   )
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import MagneticButton from './MagneticButton'
+import WelzelLogo from './WelzelLogo'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -59,16 +60,8 @@ export default function Navbar() {
       }}>
 
         {/* Logo */}
-        <a href="/" style={{
-          fontFamily: 'var(--font-display)',
-          fontWeight: 700,
-          fontSize: 'clamp(1.35rem, 1.8vw, 1.875rem)',
-          color: 'var(--color-primary)',
-          letterSpacing: '-0.01em',
-          flexShrink: 0,
-          transition: 'color 0.35s',
-        }}>
-          Welzel Law
+        <a href="/" style={{ flexShrink: 0, display: 'flex', alignItems: 'center', lineHeight: 1 }}>
+          <WelzelLogo variant={scrolled ? 'light' : 'dark'} height={34} />
         </a>
 
         {/* Desktop nav */}

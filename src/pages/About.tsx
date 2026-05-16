@@ -1,6 +1,9 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
+import SEO from '../components/SEO'
+import { PAGE_SEO } from '../data/seo'
+import { BreadcrumbJsonLd } from '../components/JsonLd'
 import Footer from '../components/Footer'
 import InnerPageHero from '../components/InnerPageHero'
 
@@ -142,6 +145,8 @@ export default function About() {
 
   return (
     <>
+      <SEO {...PAGE_SEO.about} />
+      <BreadcrumbJsonLd crumbs={[{ name: 'Home', href: '/' }, { name: 'About', href: '/about' }]} />
       <Navbar />
       <main className="about-page-main">
 

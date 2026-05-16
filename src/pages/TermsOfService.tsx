@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
 import Navbar from '../components/Navbar'
+import SEO from '../components/SEO'
+import { PAGE_SEO } from '../data/seo'
 import Footer from '../components/Footer'
 import InnerPageHero from '../components/InnerPageHero'
 import termsHero from '../assets/images/legal/terms-hero.jpg'
@@ -136,6 +138,7 @@ const SECTIONS: TermsSection[] = [
 export default function TermsOfService() {
   return (
     <>
+      <SEO {...PAGE_SEO.terms} />
       <Navbar />
 
       <main style={{ backgroundColor: 'var(--color-bg)' }}>

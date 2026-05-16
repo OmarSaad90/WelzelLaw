@@ -1,6 +1,9 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
+import SEO from '../components/SEO'
+import { PAGE_SEO } from '../data/seo'
+import { ServiceJsonLd, BreadcrumbJsonLd } from '../components/JsonLd'
 import Footer from '../components/Footer'
 import InnerPageHero from '../components/InnerPageHero'
 
@@ -93,6 +96,9 @@ export default function RealEstateLaw() {
 
   return (
     <>
+      <SEO {...PAGE_SEO.realEstate} />
+      <ServiceJsonLd name="Real Estate Law" description="Real estate closing lawyer in Burlington, Ontario. Residential purchases and sales, title insurance, land transfer tax, and commercial leasing for GTA buyers and investors." url="/real-estate-law" />
+      <BreadcrumbJsonLd crumbs={[{ name: 'Home', href: '/' }, { name: 'Real Estate Law', href: '/real-estate-law' }]} />
       <Navbar />
       <main className="rl-page-main">
 

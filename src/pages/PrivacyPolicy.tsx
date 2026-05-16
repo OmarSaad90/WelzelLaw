@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
+import SEO from '../components/SEO'
+import { PAGE_SEO } from '../data/seo'
 import Footer from '../components/Footer'
 import InnerPageHero from '../components/InnerPageHero'
 import privacyHero from '../assets/images/legal/privacy-hero.png'
@@ -140,6 +142,7 @@ const SECTIONS: PolicySection[] = [
 export default function PrivacyPolicy() {
   return (
     <>
+      <SEO {...PAGE_SEO.privacy} />
       <Navbar />
 
       <main style={{ backgroundColor: 'var(--color-bg)' }}>

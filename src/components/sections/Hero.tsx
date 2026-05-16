@@ -177,7 +177,7 @@ export default function Hero() {
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to bottom, transparent 12%, oklch(0.20 0.09 192 / 0.70) 52%, oklch(0.20 0.09 192 / 0.65) 86%, oklch(0.40 0.07 192 / 0.48) 91%, oklch(0.65 0.04 192 / 0.28) 95%, oklch(0.88 0.015 192 / 0.10) 98%, oklch(0.99 0.004 80) 100%)',
+          background: 'linear-gradient(to bottom, transparent 12%, oklch(0.20 0.09 192 / 0.70) 52%, oklch(0.20 0.09 192 / 0.65) 100%)',
           zIndex: 1,
           pointerEvents: 'none',
         }} />

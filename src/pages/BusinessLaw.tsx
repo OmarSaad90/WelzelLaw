@@ -1,6 +1,9 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navbar from '../components/Navbar'
+import SEO from '../components/SEO'
+import { PAGE_SEO } from '../data/seo'
+import { ServiceJsonLd, BreadcrumbJsonLd } from '../components/JsonLd'
 import Footer from '../components/Footer'
 import InnerPageHero from '../components/InnerPageHero'
 
@@ -173,6 +176,9 @@ export default function BusinessLaw() {
 
   return (
     <>
+      <SEO {...PAGE_SEO.businessLaw} />
+      <ServiceJsonLd name="Business Law" description="Shareholder agreements, commercial contracts, incorporations, employment agreements, and commercial leases for Ontario entrepreneurs." url="/business-law" />
+      <BreadcrumbJsonLd crumbs={[{ name: 'Home', href: '/' }, { name: 'Business Law', href: '/business-law' }]} />
       <Navbar />
       <main className="bl-page-main">
 
