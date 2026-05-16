@@ -215,19 +215,12 @@ export default function Navbar() {
               display: 'flex', flexDirection: 'column', gap: 0,
               borderTop: '1px solid var(--color-border)',
             }}>
-              {['About', 'Insights', 'Subscribe', 'Contact'].map((label) => (
-                <a key={label}
-                  href={`/${label.toLowerCase()}`}
-                  onClick={() => setMobileOpen(false)}
-                  style={{
-                    ...mobileLinkStyle,
-                    borderBottom: '1px solid var(--color-border)',
-                  }}>
-                  {label}
-                </a>
-              ))}
+              <a href="/about" onClick={() => setMobileOpen(false)}
+                style={{ ...mobileLinkStyle, borderBottom: '1px solid var(--color-border)' }}>
+                About
+              </a>
 
-              {/* Mobile Practice Areas */}
+              {/* Mobile Practice Areas — 2nd after About */}
               <div style={{ borderBottom: '1px solid var(--color-border)' }}>
                 <button
                   onClick={() => setMobilePracticeOpen(!mobilePracticeOpen)}
@@ -271,6 +264,15 @@ export default function Navbar() {
                   )}
                 </AnimatePresence>
               </div>
+
+              {['Insights', 'Subscribe', 'Contact'].map((label) => (
+                <a key={label}
+                  href={label === 'Subscribe' ? '/insights#subscribe' : `/${label.toLowerCase()}`}
+                  onClick={() => setMobileOpen(false)}
+                  style={{ ...mobileLinkStyle, borderBottom: '1px solid var(--color-border)' }}>
+                  {label}
+                </a>
+              ))}
 
               <a href="tel:+16479075459" style={{
                 ...mobileLinkStyle,
