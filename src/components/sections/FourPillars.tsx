@@ -13,7 +13,10 @@ const pillarsItem = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease } },
 }
 
-const PILLARS = [
+interface PillarLink { href: string; label: string }
+interface Pillar { number: string; title: string; body: string; link: PillarLink | null }
+
+const PILLARS: Pillar[] = [
   {
     number: '1',
     title: 'High-Quality Legal Advice That Fits All Budgets',
