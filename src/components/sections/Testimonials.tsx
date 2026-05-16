@@ -73,7 +73,7 @@ export default function Testimonials() {
             fontSize: 'var(--font-size-3xl)',
             lineHeight: 1.15,
             letterSpacing: 'var(--letter-spacing-tight)',
-            color: 'var(--color-neutral-900)',
+            color: 'var(--color-primary)',
           }}>
             What Our Clients Say
           </motion.h2>
@@ -133,7 +133,7 @@ export default function Testimonials() {
                   fontStyle: 'italic',
                   fontWeight: 400,
                   fontSize: 'var(--font-size-base)',
-                  lineHeight: 'var(--line-height-snug)',
+                  lineHeight: 'var(--line-height-normal)',
                   color: 'var(--color-neutral-800)',
                   margin: 0,
                 }}>

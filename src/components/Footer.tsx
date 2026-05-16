@@ -15,12 +15,6 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.1 } },
 }
 
-const AFFILIATIONS = [
-  { name: 'Federation of Ontario Law Associations', src: '/images/logo-fola.png' },
-  { name: 'Law Society of Ontario', src: '/images/logo-lso.png' },
-  { name: 'Ontario Bar Association', src: '/images/logo-oba.png' },
-]
-
 export default function Footer() {
   const [formData, setFormData] = useState({
     firstName: '', lastName: '', phone: '', email: '', message: '',
@@ -40,81 +34,6 @@ export default function Footer() {
   return (
     <footer>
 
-      {/* ── Affiliations ───────────────────────────────────── */}
-      <div style={{
-        backgroundColor: 'oklch(1 0 0)',
-        paddingTop: 'clamp(6rem, 10vw, 10rem)',
-        paddingBottom: 'var(--space-20)',
-      }}>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={stagger}
-          className="affiliations-row"
-          style={{
-            maxWidth: 'var(--content-max-width)',
-            margin: '0 auto',
-            padding: '0 var(--section-padding-x)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
-          {/* Left: heading anchored to container edge */}
-          <motion.h2 variants={fadeUp} style={{
-            fontFamily: 'var(--font-display)',
-            fontWeight: 700,
-            fontSize: 'clamp(2.0625rem, 1.575rem + 2.17vw, 3.0625rem)',
-            lineHeight: 1.15,
-            letterSpacing: 'var(--letter-spacing-tight)',
-            color: 'var(--color-neutral-900)',
-            flexShrink: 0,
-          }}>
-            Our Affiliations
-          </motion.h2>
-
-          {/* Right: divider + logos as a single group */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 'var(--space-10)',
-          }}>
-            <div className="affiliations-divider" style={{
-              width: '1px',
-              height: '48px',
-              backgroundColor: 'var(--color-accent)',
-              flexShrink: 0,
-              opacity: 0.5,
-            }} />
-
-            <div className="affiliations-logos" style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--space-8)',
-              flexWrap: 'nowrap',
-            }}>
-              {AFFILIATIONS.map((aff) => (
-                <motion.img
-                  key={aff.name}
-                  variants={fadeUp}
-                  src={aff.src}
-                  alt={aff.name}
-                  title={aff.name}
-                  className="affil-logo"
-                  style={{
-                    height: '80px',
-                    width: 'auto',
-                    display: 'block',
-                    opacity: 0.8,
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
       {/* ── Main footer — Toronto skyline background ─────────── */}
       <div
         id="schedule"
@@ -126,7 +45,7 @@ export default function Footer() {
       >
         {/* Toronto skyline background image */}
         <img
-          src="/images/toronto-skyline.png"
+          src="/images/home/toronto-skyline.png"
           alt=""
           aria-hidden="true"
           style={{
@@ -338,7 +257,7 @@ export default function Footer() {
               <form onSubmit={handleSubmit} noValidate>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
                   {/* Name row */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-2)' }}>
+                  <div className="footer-form-name-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-2)' }}>
                     <input
                       type="text" name="firstName" value={formData.firstName}
                       onChange={handleChange} placeholder="First Name" required
@@ -396,7 +315,7 @@ export default function Footer() {
                     fontFamily: 'var(--font-body)',
                     fontSize: 'var(--font-size-xs)',
                     lineHeight: 'var(--line-height-relaxed)',
-                    color: 'oklch(1 0 0 / 0.45)',
+                    color: 'oklch(1 0 0 / 0.60)',
                     textAlign: 'center',
                     padding: '0 var(--space-2)',
                   }}>
@@ -424,31 +343,33 @@ export default function Footer() {
         <p style={{
           fontFamily: 'var(--font-body)',
           fontSize: 'var(--font-size-xs)',
-          color: 'oklch(1 0 0 / 0.45)',
+          color: 'oklch(1 0 0 / 0.60)',
         }}>
           2026 © Welzel Law Firm. All rights reserved.
         </p>
 
         <div style={{ display: 'flex', gap: 'var(--space-6)', alignItems: 'center' }}>
-          {[
-            { label: 'Privacy Policy', href: '/privacy-policy' },
-            { label: 'Terms', href: '/terms' },
-          ].map(({ label, href }) => (
-            <a
-              key={href}
-              href={href}
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: 'var(--font-size-xs)',
-                color: 'oklch(1 0 0 / 0.50)',
-                transition: 'color 0.2s',
-              }}
-              className="nav-link-inv"
-            >
-              {label}
-            </a>
-          ))}
-        </div>
+  {[
+    { label: 'Privacy Policy', href: '/privacy-policy' },
+    { label: 'Terms', href: '/terms-of-service' },
+  ].map(({ label, href }) => (
+    <a
+      key={href}
+      href={href}
+      style={{
+        fontFamily: 'var(--font-body)',
+        fontSize: 'var(--font-size-xs)',
+        fontWeight: 500,
+        letterSpacing: 'var(--letter-spacing-wide)',
+        color: 'oklch(1 0 0 / 0.82)',
+        transition: 'color 0.2s var(--ease-out), text-decoration-color 0.2s var(--ease-out)',
+      }}
+      className="footer-legal-link"
+    >
+      {label}
+    </a>
+  ))}
+</div>
       </div>
     </footer>
   )

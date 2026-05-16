@@ -1,9 +1,29 @@
 import { motion } from 'framer-motion'
 import MagneticButton from '../MagneticButton'
-import heroVideo from '../../assets/HeroVideo.mp4'
-import heroPlants from '../../assets/images/hero-plants.jpg'
+import heroVideo from '../../assets/videos/home/test2.mp4'
+import heroPlants from '../../assets/images/hero/plants.jpg'
 
 const ease = [0.16, 1, 0.3, 1] as const
+
+const heroEntrance = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.25 } },
+}
+
+const heroItem = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease } },
+}
+
+const plantsStagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+}
+
+const plantsItem = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease } },
+}
 
 
 export default function Hero() {
@@ -17,7 +37,7 @@ export default function Hero() {
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
-        backgroundColor: 'var(--color-neutral-950)',
+        backgroundColor: 'oklch(0.96 0.012 192)',
       }}>
         <video
           autoPlay
@@ -38,13 +58,7 @@ export default function Hero() {
           <source src={heroVideo} type="video/mp4" />
         </video>
 
-        {/* Dark teal overlay — 50% */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundColor: 'oklch(0.32 0.095 192 / 0.50)',
-          zIndex: 1,
-        }} />
+
 
         {/* Center-left brand block — full-width positioner mirrors navbar container */}
         <div style={{
@@ -54,71 +68,85 @@ export default function Hero() {
           left: 0, right: 0,
           zIndex: 2,
         }}>
-        <div style={{
-          maxWidth: 'var(--content-max-width)',
-          margin: '0 auto',
-          padding: '0 var(--section-padding-x)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-          gap: 'var(--space-4)',
-        }}>
-          {/* Eyebrow — gold, small caps */}
-          <p style={{
-            fontFamily: 'var(--font-body)',
-            fontWeight: 'var(--font-weight-medium)',
-            fontSize: 'var(--font-size-sm)',
-            letterSpacing: 'var(--letter-spacing-caps)',
-            textTransform: 'uppercase',
-            color: 'var(--color-accent)',
-            margin: 0,
-          }}>
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={heroEntrance}
+          style={{
+            maxWidth: 'var(--content-max-width)',
+            margin: '0 auto',
+            padding: '0 var(--section-padding-x)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            gap: 'var(--space-4)',
+          }}
+        >
+          {/* Eyebrow */}
+          <motion.p
+            variants={heroItem}
+            style={{
+              fontFamily: 'var(--font-body)',
+              fontWeight: 'var(--font-weight-medium)',
+              fontSize: 'var(--font-size-sm)',
+              letterSpacing: 'var(--letter-spacing-caps)',
+              textTransform: 'uppercase',
+              color: 'var(--color-accent)',
+              margin: 0,
+            }}
+          >
             Ontario Corporate &amp; Real Estate Law
-          </p>
+          </motion.p>
 
-          {/* Firm name — Playfair, white, elegant */}
-          <p style={{
-            fontFamily: 'var(--font-display)',
-            fontWeight: 700,
-            fontSize: 'clamp(3rem, 5.5vw, 5rem)',
-            lineHeight: 'var(--line-height-tight)',
-            letterSpacing: 'var(--letter-spacing-tight)',
-            color: 'var(--color-neutral-25)',
-            margin: 0,
-          }}>
+          {/* Firm name */}
+          <motion.p
+            variants={heroItem}
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontWeight: 700,
+              fontSize: 'clamp(3rem, 5.5vw, 5rem)',
+              lineHeight: 'var(--line-height-tight)',
+              letterSpacing: 'var(--letter-spacing-tight)',
+              color: 'var(--color-neutral-25)',
+              margin: 0,
+            }}
+          >
             Welzel Law
-          </p>
+          </motion.p>
 
-          {/* Thin gold rule */}
-          <div style={{
-            width: '80px',
-            height: '1.5px',
-            backgroundColor: 'var(--color-accent)',
-          }} />
-        </div>
+          {/* Gold rule — scaleX reveal left to right */}
+          <motion.div
+            variants={{
+              hidden: { scaleX: 0 },
+              visible: { scaleX: 1, transition: { duration: 0.55, ease } },
+            }}
+            style={{
+              width: '80px',
+              height: '1.5px',
+              backgroundColor: 'var(--color-accent)',
+              transformOrigin: 'left center',
+            }}
+          />
+        </motion.div>
         </div>
 
-        {/* Bottom fade — dissolves into plants section below */}
-        <div style={{
-          position: 'absolute',
-          bottom: 0, left: 0, right: 0,
-          height: '15%',
-          background: 'linear-gradient(to bottom, transparent, var(--color-bg))',
-          zIndex: 2,
-          pointerEvents: 'none',
-        }} />
 
         {/* Scroll indicator */}
-        <div style={{
-          position: 'absolute',
-          bottom: 'var(--space-10)',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 2,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.65, delay: 1.4, ease }}
+          style={{
+            position: 'absolute',
+            bottom: 'var(--space-10)',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
@@ -133,44 +161,39 @@ export default function Hero() {
             <div style={{
               width: '1px',
               height: '36px',
-              backgroundColor: 'var(--color-neutral-25)',
+              backgroundColor: 'var(--color-primary)',
             }} />
             <div style={{
               width: '7px',
               height: '7px',
-              borderRight: '1.5px solid var(--color-neutral-25)',
-              borderBottom: '1.5px solid var(--color-neutral-25)',
+              borderRight: '1.5px solid var(--color-primary)',
+              borderBottom: '1.5px solid var(--color-primary)',
               transform: 'rotate(45deg)',
             }} />
           </motion.div>
-        </div>
+        </motion.div>
+
+        {/* Overlay — nav clear at top, brand teal over text, dissolves to white at edge */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(to bottom, transparent 12%, oklch(0.20 0.09 192 / 0.70) 52%, oklch(0.20 0.09 192 / 0.65) 86%, oklch(0.40 0.07 192 / 0.48) 91%, oklch(0.65 0.04 192 / 0.28) 95%, oklch(0.88 0.015 192 / 0.10) 98%, oklch(0.99 0.004 80) 100%)',
+          zIndex: 1,
+          pointerEvents: 'none',
+        }} />
       </section>
 
-      {/* ── 2: Plants — fully self-contained ─────────────── */}
-      <section style={{ backgroundColor: 'var(--color-bg)' }}>
-        <div className="plants-wrap" style={{
-          position: 'relative',
-          marginLeft: '15%',
-          marginRight: '15%',
-          height: 'clamp(640px, 70vw, 860px)',
-          overflow: 'hidden',
-          clipPath: 'url(#plantsWaveClip)',
-        }}>
-          <svg width="0" height="0" aria-hidden="true" style={{ position: 'absolute' }}>
-            <defs>
-              <clipPath id="plantsWaveClip" clipPathUnits="objectBoundingBox">
-                <path d="
-                  M 0.02,0.06
-                  L 0.12,0.02 L 0.26,0.05 L 0.40,0.00 L 0.55,0.04 L 0.68,0.01 L 0.80,0.05 L 0.92,0.02 L 0.98,0.05
-                  L 1.00,0.25 L 0.99,0.45 L 1.00,0.65 L 0.99,0.82 L 1.00,0.96
-                  L 0.85,1.00 L 0.68,0.97 L 0.52,1.00 L 0.35,0.97 L 0.18,1.00 L 0.03,0.97
-                  L 0.00,0.75 L 0.01,0.55 L 0.00,0.35 L 0.01,0.18 L 0.00,0.06
-                  Z
-                " />
-              </clipPath>
-            </defs>
-          </svg>
+      {/* ── 2: Plants — editorial split (image left, text right) ── */}
+      <section className="plants-split">
 
+        {/* Left: image bleeds to viewport edge */}
+        <motion.div
+          className="plants-split-image"
+          initial={{ opacity: 0, scale: 1.04 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.85, ease }}
+        >
           <img
             src={heroPlants}
             alt=""
@@ -179,69 +202,88 @@ export default function Hero() {
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              objectPosition: 'center bottom',
+              objectPosition: 'center',
+              display: 'block',
+            }}
+          />
+        </motion.div>
+
+        {/* Right: text */}
+        <motion.div
+          className="plants-split-text"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+          variants={plantsStagger}
+        >
+          <motion.p
+            variants={plantsItem}
+            style={{
+              fontFamily: 'var(--font-body)',
+              fontWeight: 'var(--font-weight-medium)',
+              fontSize: 'var(--font-size-sm)',
+              letterSpacing: 'var(--letter-spacing-caps)',
+              textTransform: 'uppercase',
+              color: 'var(--color-accent-text)',
+              margin: 0,
+              marginBottom: 'var(--space-5)',
+            }}
+          >
+            Full-Spectrum Legal Support
+          </motion.p>
+
+          <motion.p
+            variants={plantsItem}
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontWeight: 900,
+              fontSize: 'clamp(2.25rem, 3.8vw, 3.75rem)',
+              lineHeight: 1.0,
+              letterSpacing: 'var(--letter-spacing-tighter)',
+              color: 'var(--color-primary)',
+              margin: 0,
+              marginBottom: 'var(--space-8)',
+            }}
+          >
+            {['Build It.', 'Protect It.', 'Grow It.'].map((line) => (
+              <span key={line} style={{ display: 'block' }}>{line}</span>
+            ))}
+          </motion.p>
+
+          <motion.div
+            variants={{
+              hidden: { scaleX: 0 },
+              visible: { scaleX: 1, transition: { duration: 0.45, ease } },
+            }}
+            style={{
+              width: '40px',
+              height: '1.5px',
+              backgroundColor: 'var(--color-primary)',
+              marginBottom: 'var(--space-8)',
+              transformOrigin: 'left center',
             }}
           />
 
-          {/* Flat teal overlay at 35% */}
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundColor: 'oklch(0.22 0.07 192 / 0.35)',
-          }} />
-
-          {/* Bottom-left gradient — darkens soil area so text pops */}
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(to top right, rgba(0,0,0,0.55) 0%, transparent 60%)',
-            pointerEvents: 'none',
-          }} />
-
-          {/* TOP LEFT: Heading */}
-          <div className="plants-heading" style={{
-            position: 'absolute',
-            top: 'clamp(2.5rem, 5vw, 4rem)',
-            left: 'clamp(2.5rem, 5vw, 4rem)',
-          }}>
-            <p style={{
-              fontFamily: 'var(--font-display)',
-              fontWeight: 900,
-              fontSize: 'clamp(3rem, 7vw, 7rem)',
-              lineHeight: 1.0,
-              letterSpacing: 'var(--letter-spacing-tighter)',
-              color: 'var(--color-neutral-25)',
-              margin: 0,
-              padding: 0,
-            }}>
-              {['Build It.', 'Protect It.', 'Grow It.'].map((line) => (
-                <span key={line} style={{ display: 'block' }}>{line}</span>
-              ))}
-            </p>
-          </div>
-
-          {/* BOTTOM LEFT: Paragraph + CTA */}
-          <div className="plants-bottom" style={{
-            position: 'absolute',
-            bottom: 'clamp(2.5rem, 5vw, 4rem)',
-            left: 'clamp(2.5rem, 5vw, 4rem)',
-            maxWidth: '500px',
-          }}>
-            <p style={{
+          <motion.p
+            variants={plantsItem}
+            style={{
               fontFamily: 'var(--font-body)',
-              fontWeight: 300,
-              fontSize: 'clamp(1.19rem, 1.08rem + 0.41vw, 1.38rem)',
+              fontWeight: 400,
+              fontSize: 'var(--font-size-md)',
               lineHeight: 'var(--line-height-relaxed)',
-              color: 'var(--color-neutral-25)',
+              color: 'var(--color-text-muted)',
               margin: 0,
-              marginBottom: 'var(--space-8)',
-            }}>
-              Whether you are launching, scaling, or navigating a major financial
-              decision, you deserve a legal advocate who is genuinely invested in
-              your outcome. We provide full-spectrum legal support in Ontario, so
-              you can focus on what you do best.
-            </p>
+              marginBottom: 'var(--space-10)',
+              maxWidth: '46ch',
+            }}
+          >
+            Whether you are launching, scaling, or navigating a major financial
+            decision, you deserve a legal advocate who is genuinely invested in
+            your outcome. We provide full-spectrum legal support in Ontario, so
+            you can focus on what you do best.
+          </motion.p>
 
+          <motion.div variants={plantsItem} className="plants-cta-wrap">
             <MagneticButton>
               <motion.a
                 href="#schedule"
@@ -264,8 +306,9 @@ export default function Hero() {
                 Request a Consult
               </motion.a>
             </MagneticButton>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
+
       </section>
     </>
   )

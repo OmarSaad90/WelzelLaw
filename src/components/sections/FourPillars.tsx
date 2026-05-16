@@ -3,6 +3,16 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
+const pillarsStagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+}
+
+const pillarsItem = {
+  hidden: { opacity: 0, y: 18 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease } },
+}
+
 const PILLARS = [
   {
     number: '1',
@@ -20,7 +30,7 @@ const PILLARS = [
     number: '3',
     title: 'Flexible Legal Services',
     body: 'We know that legal costs can be unpredictable and stressful. That is why we offer flexible fee structures designed around your needs, whether that is a flat-fee package for a specific transaction, a monthly retainer through our Fractional General Counsel service, or a customized arrangement that gives you the coverage you need without the surprises. Transparent pricing. No hidden fees. No billing anxiety.',
-    link: { label: 'View Pricing Packages', href: '/pricing' },
+    link: null,
   },
   {
     number: '4',
@@ -31,7 +41,7 @@ const PILLARS = [
 ]
 
 export default function FourPillars() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0)
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
     <section style={{
@@ -52,6 +62,7 @@ export default function FourPillars() {
 
         {/* Left — image */}
         <motion.div
+          className="four-pillars-img-col"
           initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -68,7 +79,7 @@ export default function FourPillars() {
         >
           {/* Placeholder: replace with team-hands image */}
           <img
-            src="/images/team-hands.png"
+            src="/images/home/team-hands.png"
             alt="Team collaboration"
             style={{
               width: '100%', height: '100%',
@@ -100,13 +111,6 @@ export default function FourPillars() {
             </p>
           </div>
 
-          {/* Decorative teal stripe at bottom-left */}
-          <div style={{
-            position: 'absolute', bottom: 0, left: 0,
-            width: '4px', height: '40%',
-            backgroundColor: 'var(--color-accent)',
-            borderRadius: '0 0 0 var(--radius-lg)',
-          }} />
         </motion.div>
 
         {/* Right — accordion */}
@@ -140,24 +144,31 @@ export default function FourPillars() {
             fontSize: 'var(--font-size-2xl)',
             lineHeight: 1.2,
             letterSpacing: '-0.02em',
-            color: 'var(--color-neutral-900)',
+            color: 'var(--color-primary)',
             marginBottom: 'var(--space-10)',
           }}>
             Four Pillars of Welzel Law
           </h2>
 
           {/* Accordion items */}
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            variants={pillarsStagger}
+            style={{ display: 'flex', flexDirection: 'column' }}
+          >
             {PILLARS.map((pillar, index) => (
-              <PillarItem
-                key={pillar.number}
-                pillar={pillar}
-                isOpen={openIndex === index}
-                onToggle={() => setOpenIndex(openIndex === index ? null : index)}
-                isLast={index === PILLARS.length - 1}
-              />
+              <motion.div key={pillar.number} variants={pillarsItem}>
+                <PillarItem
+                  pillar={pillar}
+                  isOpen={openIndex === index}
+                  onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+                  isLast={index === PILLARS.length - 1}
+                />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
@@ -179,8 +190,8 @@ function PillarItem({
 }) {
   return (
     <div style={{
-      borderTop: '1px solid var(--color-border)',
-      borderBottom: isLast ? '1px solid var(--color-border)' : 'none',
+      borderTop: '1px solid var(--color-border-strong)',
+      borderBottom: isLast ? '1px solid var(--color-border-strong)' : 'none',
     }}>
       <button
         onClick={onToggle}
@@ -197,11 +208,11 @@ function PillarItem({
         <span style={{
           fontFamily: 'var(--font-display)',
           fontStyle: 'italic',
-          fontWeight: 700,
-          fontSize: 'var(--font-size-2xl)',
+          fontWeight: 900,
+          fontSize: 'var(--font-size-4xl)',
           color: 'var(--color-accent)',
-          lineHeight: 1,
-          minWidth: '32px',
+          lineHeight: 0.9,
+          minWidth: '52px',
           userSelect: 'none',
         }}>
           {pillar.number}
@@ -228,9 +239,9 @@ function PillarItem({
           transition={{ duration: 0.2 }}
           style={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            width: '24px', height: '24px', flexShrink: 0,
-            color: isOpen ? 'var(--color-primary)' : 'var(--color-neutral-400)',
-            fontSize: '20px', fontWeight: 300, lineHeight: 1,
+            width: '28px', height: '28px', flexShrink: 0,
+            color: 'var(--color-accent)',
+            fontSize: '26px', fontWeight: 300, lineHeight: 1,
             marginTop: '2px',
             transition: 'color 0.2s',
           }}>

@@ -39,7 +39,7 @@ export default function WhyWelzel() {
         }}
       >
         <img
-          src="/images/skyscrapers.webp"
+          src="/images/home/skyscrapers.webp"
           alt="Glass skyscrapers"
           style={{
             width: '100%',

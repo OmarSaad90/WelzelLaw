@@ -62,8 +62,8 @@ export default function Navbar() {
         <a href="/" style={{
           fontFamily: 'var(--font-display)',
           fontWeight: 700,
-          fontSize: 'clamp(1.125rem, 1.5vw, 1.5rem)',
-          color: scrolled ? 'var(--color-primary)' : 'var(--color-neutral-25)',
+          fontSize: 'clamp(1.35rem, 1.8vw, 1.875rem)',
+          color: 'var(--color-primary)',
           letterSpacing: '-0.01em',
           flexShrink: 0,
           transition: 'color 0.35s',
@@ -79,7 +79,7 @@ export default function Navbar() {
         }}>
           <a href="/about"
             className="nav-link"
-            style={{ ...navLinkStyle(scrolled) }}>
+            style={{ ...navLinkStyle() }}>
             About
           </a>
 
@@ -90,7 +90,7 @@ export default function Navbar() {
             onMouseLeave={() => setPracticeOpen(false)}
           >
             <button style={{
-              ...navLinkStyle(scrolled),
+              ...navLinkStyle(),
               display: 'flex', alignItems: 'center', gap: '4px',
               background: 'none', border: 'none', padding: 'var(--space-2) 0',
             }}>
@@ -145,9 +145,9 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          <a href="/insights" className="nav-link" style={navLinkStyle(scrolled)}>Insights</a>
-          <a href="/insights#subscribe" className="nav-link" style={navLinkStyle(scrolled)}>Subscribe</a>
-          <a href="/contact" className="nav-link" style={navLinkStyle(scrolled)}>Contact</a>
+          <a href="/insights" className="nav-link" style={navLinkStyle()}>Insights</a>
+          <a href="/insights#subscribe" className="nav-link" style={navLinkStyle()}>Subscribe</a>
+          <a href="/contact" className="nav-link" style={navLinkStyle()}>Contact</a>
 
           <MagneticButton>
             <motion.a
@@ -179,7 +179,7 @@ export default function Navbar() {
           whileTap={{ scale: 0.92 }}
           style={{
             background: 'none', border: 'none',
-            color: scrolled ? 'var(--color-neutral-900)' : 'var(--color-neutral-25)',
+            color: 'var(--color-primary)',
             padding: 'var(--space-2)',
             display: 'none',
           }}
@@ -304,12 +304,12 @@ export default function Navbar() {
   )
 }
 
-function navLinkStyle(scrolled: boolean): React.CSSProperties {
+function navLinkStyle(): React.CSSProperties {
   return {
     fontFamily: 'var(--font-body)',
     fontWeight: 500,
-    fontSize: 'var(--font-size-base)',
-    color: scrolled ? 'var(--color-neutral-700)' : 'var(--color-neutral-200)',
+    fontSize: 'var(--font-size-md)',
+    color: 'var(--color-primary)',  // ← always teal, regardless of scroll
     whiteSpace: 'nowrap',
     transition: 'color 0.2s',
     background: 'none',

@@ -16,21 +16,21 @@ const fadeUp = {
 
 const SERVICES = [
   {
-    iconSrc: '/images/icon-business-law.png',
+    iconSrc: '/images/icons/business-law.png',
     title: 'Business Law',
     body: 'Strong businesses don\'t just happen, they\'re built on solid legal ground. We help Ontario founders and entrepreneurs establish that foundation, stay ahead of problems, and move forward with confidence at every stage.',
     href: '/business-law',
     featured: false,
   },
   {
-    iconSrc: '/images/icon-fgc.png',
+    iconSrc: '/images/icons/fgc.png',
     title: 'Fractional General Counsel',
     body: 'As your Fractional General Counsel, we become a true executive partner embedded in your company: attending meetings, negotiating contracts, managing risk, and keeping your business protected at every turn. You get counsel invested in your success, without the $200K to $350K yearly salary. A monthly fixed fee, no billing anxiety. Just peace of mind.',
     href: '/fractional-general-counsel',
     featured: true,
   },
   {
-    iconSrc: '/images/icon-real-estate.png',
+    iconSrc: '/images/icons/real-estate.png',
     title: 'Real Estate Law',
     body: 'Buying or selling a home? Real estate transactions are high-stakes. The legal details, title search, insurance, offer conditions, matter enormously. As trusted real estate lawyers, we protect Ontario buyers and sellers from offer to closing, so you can move forward with confidence and no surprises.',
     href: '/real-estate-law',
@@ -63,7 +63,7 @@ export default function Services() {
         >
           <motion.p variants={fadeUp} style={{
             fontFamily: 'var(--font-body)',
-            fontWeight: 500,
+            fontWeight: 700,
             fontSize: 'var(--font-size-xs)',
             letterSpacing: 'var(--letter-spacing-caps)',
             textTransform: 'uppercase',
@@ -84,7 +84,7 @@ export default function Services() {
             fontSize: 'var(--font-size-3xl)',
             lineHeight: 1.15,
             letterSpacing: '-0.02em',
-            color: 'var(--color-neutral-900)',
+            color: 'var(--color-primary)',
             marginBottom: 'var(--space-6)',
           }}>
             How We Can Help
