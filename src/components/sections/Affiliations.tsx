@@ -47,7 +47,7 @@ export default function Affiliations() {
           fontSize: 'clamp(2.0625rem, 1.575rem + 2.17vw, 3.0625rem)',
           lineHeight: 1.15,
           letterSpacing: 'var(--letter-spacing-tight)',
-          color: 'var(--color-neutral-900)',
+          color: 'var(--color-primary)',
           flexShrink: 0,
         }}>
           Our Affiliations
