@@ -91,7 +91,7 @@ const SECTIONS: TermsSection[] = [
           The Website and its Materials are provided on an "as is" and "as available" basis, with no warranties of any kind, express or implied. The Firm expressly disclaims all warranties, including those relating to accuracy, security, reliability, fitness for a particular purpose, and non-infringement, to the fullest extent permitted by law. The Firm makes no guarantee that the Website is free from viruses or other harmful elements. YOUR USE OF THIS WEBSITE AND ITS MATERIALS IS ENTIRELY AT YOUR OWN RISK.
         </p>
         <p style={{ margin: 0, lineHeight: 1.78 }}>
-          To the extent permitted by law, the Firm and its partners, employees, agents, consultants, and licensors shall not be liable for any damages of any kind — including direct, indirect, incidental, punitive, or consequential damages — arising from your use of, inability to use, or reliance on this Website or its Materials, regardless of the legal basis for such a claim. This applies even if the Firm was aware of the possibility of such damages.
+          To the extent permitted by law, the Firm and its partners, employees, agents, consultants, and licensors shall not be liable for any damages of any kind (including direct, indirect, incidental, punitive, or consequential damages) arising from your use of, inability to use, or reliance on this Website or its Materials, regardless of the legal basis for such a claim. This applies even if the Firm was aware of the possibility of such damages.
         </p>
       </>
     ),

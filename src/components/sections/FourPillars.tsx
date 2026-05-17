@@ -20,7 +20,7 @@ const PILLARS: Pillar[] = [
   {
     number: '1',
     title: 'High-Quality Legal Advice That Fits All Budgets',
-    body: 'Top-tier legal counsel should not be reserved for large corporations with deep pockets. At Welzel Law, we believe that every business owner and homeowner deserve access to experienced, sophisticated legal advice — regardless of the size of their budget. We deliver the same caliber of counsel that Fortune-level companies rely on, tailored to what you actually need and what you can afford.',
+    body: 'Top-tier legal counsel should not be reserved for large corporations with deep pockets. At Welzel Law, we believe that every business owner and homeowner deserve access to experienced, sophisticated legal advice, regardless of the size of their budget. We deliver the same caliber of counsel that Fortune-level companies rely on, tailored to what you actually need and what you can afford.',
     link: null,
   },
   {

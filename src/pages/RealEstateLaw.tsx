@@ -188,7 +188,7 @@ export default function RealEstateLaw() {
               variants={svcStagger}
             >
               <motion.p className="about-eyebrow" variants={svcItem}>Insights</motion.p>
-              <motion.h2 className="rl-insights-heading" variants={svcItem}>Latest Insights — Real Estate Law</motion.h2>
+              <motion.h2 className="rl-insights-heading" variants={svcItem}>Latest Insights: Real Estate Law</motion.h2>
             </motion.div>
 
             <div className="about-articles">

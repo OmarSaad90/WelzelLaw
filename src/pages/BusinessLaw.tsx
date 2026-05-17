@@ -46,7 +46,7 @@ interface ServiceItem {
 const SERVICES: ServiceItem[] = [
   {
     title: 'Business Formation & Structure',
-    body: 'Your corporate structure shapes everything that follows — your liability exposure, your tax position, your ability to bring in partners, and your path to growth. We help you choose and build the right foundation from the start.',
+    body: 'Your corporate structure shapes everything that follows: your liability exposure, your tax position, your ability to bring in partners, and your path to growth. We help you choose and build the right foundation from the start.',
     bullets: [
       'Incorporation (federal and provincial)',
       'Shareholder and partnership agreements',
@@ -109,12 +109,12 @@ const STRUCTURES: StructureItem[] = [
   {
     title: 'Corporation',
     icon: icon1,
-    body: 'A body corporate formed by one or more people to carry on business for profit. The corporation is treated as a separate legal entity — shareholders have limited liability and cannot be held responsible for the debts and obligations of the corporation, with very few exceptions. This protects your personal assets and offers significant tax advantages. You can incorporate provincially or federally. A federal corporation must also register in each jurisdiction it operates in.',
+    body: 'A body corporate formed by one or more people to carry on business for profit. The corporation is treated as a separate legal entity: shareholders have limited liability and cannot be held responsible for the debts and obligations of the corporation, with very few exceptions. This protects your personal assets and offers significant tax advantages. You can incorporate provincially or federally. A federal corporation must also register in each jurisdiction it operates in.',
   },
   {
     title: 'Sole Proprietorship',
     icon: icon2,
-    body: 'The simplest way to organize a business. Advantages include ease of setup, complete owner control, and no separate tax records (business income falls under personal income). The key disadvantage is unlimited personal liability. The law makes no distinction between business assets and personal assets — if the business cannot meet its obligations, the owner must do so from personal funds.',
+    body: 'The simplest way to organize a business. Advantages include ease of setup, complete owner control, and no separate tax records (business income falls under personal income). The key disadvantage is unlimited personal liability. The law makes no distinction between business assets and personal assets: if the business cannot meet its obligations, the owner must do so from personal funds.',
   },
   {
     title: 'General Partnership',
@@ -129,7 +129,7 @@ const STRUCTURES: StructureItem[] = [
   {
     title: 'Limited Partnership',
     icon: icon5,
-    body: 'A partnership with at least one general partner managing day-to-day operations and at least one limited partner who contributes capital only. Limited partners are protected from personal liability beyond their investment. They have the right to inspect books, receive full accounting, and share in profits — typically before general partners receive their share.',
+    body: 'A partnership with at least one general partner managing day-to-day operations and at least one limited partner who contributes capital only. Limited partners are protected from personal liability beyond their investment. They have the right to inspect books, receive full accounting, and share in profits, typically before general partners receive their share.',
   },
   {
     title: 'Other Business Associations',
@@ -217,10 +217,10 @@ export default function BusinessLaw() {
                 transition={{ duration: 0.8, delay: 0.14, ease }}
               >
                 <p className="bl-intro-body">
-                  Too many business owners make critical decisions under pressure and with incomplete information. We have seen what happens when legal and commercial thinking are not aligned — missed opportunities, costly disputes, and agreements that create problems down the road.
+                  Too many business owners make critical decisions under pressure and with incomplete information. We have seen what happens when legal and commercial thinking are not aligned: missed opportunities, costly disputes, and agreements that create problems down the road.
                 </p>
                 <p className="bl-intro-body">
-                  Good legal counsel is not just about avoiding risk. It is about giving you the confidence to act decisively — to negotiate from strength, structure deals that hold up, and build a business protected for the long term.
+                  Good legal counsel is not just about avoiding risk. It is about giving you the confidence to act decisively: to negotiate from strength, structure deals that hold up, and build a business protected for the long term.
                 </p>
                 <p className="bl-intro-body">
                   In business, clarity is not a luxury. It is your competitive advantage.
@@ -338,7 +338,7 @@ export default function BusinessLaw() {
               variants={svcStagger}
             >
               <motion.p className="about-eyebrow" variants={svcItem}>Insights</motion.p>
-              <motion.h2 className="bl-insights-heading" variants={svcItem}>Latest Insights — Business Law</motion.h2>
+              <motion.h2 className="bl-insights-heading" variants={svcItem}>Latest Insights: Business Law</motion.h2>
             </motion.div>
 
             <div className="about-articles">

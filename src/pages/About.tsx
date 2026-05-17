@@ -248,8 +248,8 @@ export default function About() {
                 >
                   <p>Fernanda Welzel is the founder of Welzel Law. She holds an MBA and a Master of Law (LLM) from the University of Toronto, and a Juris Doctor (J.D.) from Brazil, where she began her career in civil litigation, criminal, and family law.</p>
                   <p>With over 25 years of experience working alongside large corporations, Fernanda has sat at the table where business decisions are made. As General Counsel of a major Canadian corporation with operations across North America and sales to over 50 countries, her career spans operations, commercial execution, business development, regulatory compliance, and sales.</p>
-                  <p>She has experienced first-hand the real pressures, risks, and challenges that business owners face every day. She did not just study business from a legal textbook — she lived it. That experience is what she brings to every client. Whether you are incorporating, navigating a complex contract, or need a trusted legal partner — she understands your world and knows how to protect it.</p>
-                  <p>Outside of work, she is a proud mother of two, a lifelong athlete, and an avid traveller with a genuine curiosity for people and cultures — qualities that make her not just a sharp legal mind, but a counsel who truly listens.</p>
+                  <p>She has experienced first-hand the real pressures, risks, and challenges that business owners face every day. She did not just study business from a legal textbook. She lived it. That experience is what she brings to every client. Whether you are incorporating, navigating a complex contract, or need a trusted legal partner, she understands your world and knows how to protect it.</p>
+                  <p>Outside of work, she is a proud mother of two, a lifelong athlete, and an avid traveller with a genuine curiosity for people and cultures: qualities that make her not just a sharp legal mind, but a counsel who truly listens.</p>
                 </motion.div>
 
                 <motion.a

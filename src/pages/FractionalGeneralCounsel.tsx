@@ -265,7 +265,7 @@ export default function FractionalGeneralCounsel() {
 
             <FgcOverviewBlock
               title="What We Actually Do"
-              body="As your Fractional General Counsel, we do far more than review contracts. We attend leadership meetings, advise on strategic decisions, manage legal compliance, negotiate with counterparties, and help you build legal infrastructure that scales with your business. Think of us as the legal voice at your executive table — proactive, commercially minded, and fully invested in where your business is going, not just where it has been."
+              body="As your Fractional General Counsel, we do far more than review contracts. We attend leadership meetings, advise on strategic decisions, manage legal compliance, negotiate with counterparties, and help you build legal infrastructure that scales with your business. Think of us as the legal voice at your executive table: proactive, commercially minded, and fully invested in where your business is going, not just where it has been."
               img={whatWeDoImg}
               alt="What We Actually Do"
             />
@@ -319,7 +319,7 @@ export default function FractionalGeneralCounsel() {
               variants={svcStagger}
             >
               <motion.p className="about-eyebrow" variants={svcItem}>Insights</motion.p>
-              <motion.h2 className="fgc-insights-heading" variants={svcItem}>Latest Insights — Fractional General Counsel</motion.h2>
+              <motion.h2 className="fgc-insights-heading" variants={svcItem}>Latest Insights: Fractional General Counsel</motion.h2>
             </motion.div>
 
             <div className="about-articles">
