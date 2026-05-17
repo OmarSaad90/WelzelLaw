@@ -43,7 +43,7 @@ export default function WelzelLogo({
       <text
         x="56"
         y="22"
-        fontFamily="'DM Sans', system-ui, sans-serif"
+        fontFamily="'Manrope', system-ui, sans-serif"
         fontSize="18"
         fontWeight="600"
         letterSpacing="1.1"
@@ -56,7 +56,7 @@ export default function WelzelLogo({
       <text
         x="57"
         y="35"
-        fontFamily="'DM Sans', system-ui, sans-serif"
+        fontFamily="'Manrope', system-ui, sans-serif"
         fontSize="11"
         fontWeight="400"
         letterSpacing="1.8"

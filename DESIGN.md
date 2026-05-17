@@ -106,8 +106,8 @@ Accent:
 ## Typography
 
 ### Font Families
-- **Display / Headings:** Playfair Display — loaded from Google Fonts. Weights: 400, 500, 700, 900. Used for all H1–H3, hero text, pull quotes.
-- **Body / UI:** DM Sans — loaded from Google Fonts. Weights: 300, 400, 500, 600. Used for body copy, nav, buttons, labels, captions. More refined personality than Inter while staying legible.
+- **Display / Headings:** Spectral — loaded from Google Fonts. Weights: 400, 500, 700, 900. Used for all H1–H3, hero text, pull quotes. Screen-optimised serif by Production Type; more refined than Playfair Display without the Victorian ornament.
+- **Body / UI:** Manrope — loaded from Google Fonts. Weights: 300, 400, 500, 600. Used for body copy, nav, buttons, labels, captions. Geometric sans with humanist details; more distinctive letterforms than DM Sans.
 - **Mono:** JetBrains Mono — only if code snippets appear. Fallback: monospace system font.
 
 ### Type Scale (Fluid — using clamp)

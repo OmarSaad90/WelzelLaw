@@ -96,8 +96,8 @@
      TYPOGRAPHY
      ========================================================================= */
 
-  --font-display: 'Playfair Display', 'Georgia', serif;
-  --font-body:    'DM Sans', 'system-ui', sans-serif;
+  --font-display: 'Spectral', 'Georgia', serif;
+  --font-body:    'Manrope', 'system-ui', sans-serif;
   --font-mono:    'JetBrains Mono', 'Courier New', monospace;
 
   /* Fluid type scale — scales between 390px and 1440px viewport */
