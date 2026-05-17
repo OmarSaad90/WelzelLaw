@@ -132,7 +132,7 @@ export default function Testimonials() {
                   fontFamily: 'var(--font-display)',
                   fontStyle: 'italic',
                   fontWeight: 400,
-                  fontSize: 'var(--font-size-base)',
+                  fontSize: 'var(--font-size-md)',
                   lineHeight: 'var(--line-height-normal)',
                   color: 'var(--color-neutral-800)',
                   margin: 0,
