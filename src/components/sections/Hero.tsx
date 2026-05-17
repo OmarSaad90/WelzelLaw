@@ -87,11 +87,12 @@ export default function Hero() {
             variants={heroItem}
             style={{
               fontFamily: 'var(--font-body)',
-              fontWeight: 'var(--font-weight-medium)',
-              fontSize: 'var(--font-size-sm)',
-              letterSpacing: 'var(--letter-spacing-caps)',
+              fontWeight: 600,
+              fontSize: 'var(--font-size-base)',
+              letterSpacing: 'var(--letter-spacing-wider)',
               textTransform: 'uppercase',
               color: 'var(--color-accent)',
+              textShadow: '0 1px 6px oklch(0.15 0.06 192 / 0.55)',
               margin: 0,
             }}
           >
@@ -127,6 +128,23 @@ export default function Hero() {
               transformOrigin: 'left center',
             }}
           />
+
+          {/* Sub-tagline */}
+          <motion.p
+            variants={heroItem}
+            style={{
+              fontFamily: 'var(--font-body)',
+              fontWeight: 300,
+              fontSize: 'var(--font-size-md)',
+              lineHeight: 'var(--line-height-normal)',
+              color: 'oklch(0.92 0.015 192)',
+              textShadow: '0 1px 8px oklch(0.15 0.06 192 / 0.45)',
+              margin: 0,
+              maxWidth: '38ch',
+            }}
+          >
+            Boutique counsel for business owners and real estate investors across Ontario.
+          </motion.p>
         </motion.div>
         </div>
 
