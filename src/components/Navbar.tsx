@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import MagneticButton from './MagneticButton'
@@ -13,6 +14,8 @@ const PRACTICE_AREAS = [
 ]
 
 export default function Navbar() {
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [practiceOpen, setPracticeOpen] = useState(false)
@@ -61,7 +64,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <a href="/" style={{ flexShrink: 0, display: 'flex', alignItems: 'center', lineHeight: 1 }}>
-          <WelzelLogo variant={scrolled ? 'light' : 'dark'} height={34} />
+          <WelzelLogo variant={!scrolled && isHome ? 'dark' : 'light'} height={34} />
         </a>
 
         {/* Desktop nav */}
