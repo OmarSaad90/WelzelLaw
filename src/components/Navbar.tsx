@@ -17,6 +17,7 @@ export default function Navbar() {
   const { pathname } = useLocation()
   const isHome = pathname === '/'
   const [scrolled, setScrolled] = useState(false)
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 960)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [practiceOpen, setPracticeOpen] = useState(false)
   const [mobilePracticeOpen, setMobilePracticeOpen] = useState(false)
@@ -28,7 +29,11 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    const onResize = () => { if (window.innerWidth > 960) setMobileOpen(false) }
+    const onResize = () => {
+      const mobile = window.innerWidth <= 960
+      setIsMobile(mobile)
+      if (!mobile) setMobileOpen(false)
+    }
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
   }, [])
@@ -64,7 +69,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <a href="/" style={{ flexShrink: 0, display: 'flex', alignItems: 'center', lineHeight: 1 }}>
-          <WelzelLogo variant={!scrolled && isHome ? 'dark' : 'light'} height={34} />
+          <WelzelLogo variant={!scrolled && isHome && !isMobile ? 'dark' : 'light'} height={34} />
         </a>
 
         {/* Desktop nav */}
