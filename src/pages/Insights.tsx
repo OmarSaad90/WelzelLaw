@@ -198,6 +198,7 @@ export default function Insights() {
           eyebrow="Welzel Law"
           title="Insights"
           subtitle="Because informed clients make better decisions."
+          variant="overlay"
         />
 
         {/* ── ARTICLES ─────────────────────────────────────────── */}

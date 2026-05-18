@@ -221,6 +221,7 @@ export default function FractionalGeneralCounsel() {
           eyebrow="Welzel Law"
           title="Fractional General Counsel"
           subtitle="The legal partner at your executive table, without the full-time salary."
+          variant="overlay"
         />
 
         {/* ── INTRO ─────────────────────────────────────────── */}

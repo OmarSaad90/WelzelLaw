@@ -152,6 +152,7 @@ export default function PrivacyPolicy() {
           eyebrow="Welzel Law"
           title="Privacy Policy"
           subtitle="Your privacy is our commitment."
+          variant="overlay"
         />
 
         {/* Content body */}
@@ -191,7 +192,7 @@ export default function PrivacyPolicy() {
                   }} />
                   <span style={{
                     fontFamily: 'var(--font-body)',
-                    fontWeight: 600,
+                    fontWeight: 700,
                     fontSize: 'var(--font-size-xs)',
                     letterSpacing: 'var(--letter-spacing-caps)',
                     color: 'var(--color-accent-text)',

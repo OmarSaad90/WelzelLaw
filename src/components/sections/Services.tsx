@@ -59,12 +59,12 @@ export default function Services() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={stagger}
-          style={{ marginBottom: 'var(--space-16)', maxWidth: '680px' }}
+          style={{ marginBottom: 'var(--space-16)', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
         >
           <motion.p variants={fadeUp} style={{
             fontFamily: 'var(--font-body)',
             fontWeight: 700,
-            fontSize: 'var(--font-size-xs)',
+            fontSize: 'var(--font-size-sm)',
             letterSpacing: 'var(--letter-spacing-caps)',
             textTransform: 'uppercase',
             color: 'var(--color-accent-text)',
@@ -119,22 +119,11 @@ export default function Services() {
             paddingBottom: 'clamp(2rem, 4vw, 3.5rem)',
           }}
         >
-          {SERVICES.map((service, i) => (
+          {SERVICES.map((service) => (
             <ServiceCard
               key={service.href}
               {...service}
-              cardStyle={
-                i === 1
-                  ? {
-                      marginTop: 'calc(-1 * clamp(2rem, 4vw, 3.5rem))',
-                      marginBottom: 'calc(-1 * clamp(2rem, 4vw, 3.5rem))',
-                      position: 'relative',
-                      zIndex: 1,
-                    }
-                  : i === 2
-                  ? { marginTop: 'clamp(1.5rem, 3vw, 2.5rem)' }
-                  : {}
-              }
+              cardStyle={{}}
             />
           ))}
         </motion.div>
@@ -165,7 +154,7 @@ function ServiceCard({
         backgroundColor: '#FFFFFF',
         borderRadius: 'var(--radius-md)',
         border: featured ? '1px solid var(--color-teal-300)' : '1px solid var(--color-neutral-200)',
-        padding: featured ? 'clamp(2rem, 4vw, 3.5rem) var(--space-10)' : 'var(--space-8)',
+        padding: featured ? 'var(--space-8) var(--space-10)' : 'var(--space-8)',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -183,8 +172,8 @@ function ServiceCard({
           alt=""
           aria-hidden="true"
           style={{
-            width: featured ? '64px' : '56px',
-            height: featured ? '64px' : '56px',
+            width: '60px',
+            height: '60px',
             objectFit: 'contain',
             flexShrink: 0,
             mixBlendMode: 'multiply',
@@ -221,7 +210,7 @@ function ServiceCard({
           fontFamily: 'var(--font-body)',
           fontWeight: 600,
           fontSize: 'var(--font-size-sm)',
-          color: featured ? 'var(--color-accent-text)' : 'var(--color-primary-text)',
+          color: 'var(--color-accent-text)',
           letterSpacing: 'var(--letter-spacing-wide)',
           marginTop: 'var(--space-6)',
         }}
