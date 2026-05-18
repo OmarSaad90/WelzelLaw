@@ -19,6 +19,10 @@ import icon4         from '../assets/images/business-law/icon4.png'
 import icon5         from '../assets/images/business-law/icon5.png'
 import icon6         from '../assets/images/business-law/icon6.png'
 
+import insContracts from '../assets/images/insights/WhatContracts.png'
+import insHST       from '../assets/images/insights/WhenDoINeed.png'
+import insIncorProt from '../assets/images/insights/HowDoesIncor.png'
+
 const ease = [0.16, 1, 0.3, 1] as const
 
 const svcStagger = {
@@ -141,18 +145,21 @@ const STRUCTURES: StructureItem[] = [
 const ARTICLES = [
   {
     title: 'What Contracts Every Canadian SMB Should Have in Place',
-    img: agreementsImg,
+    img: insContracts,
     excerpt: 'The agreements your business needs before they become the ones you wish you had.',
+    slug: 'contracts-every-canadian-smb-should-have',
   },
   {
     title: 'When Do I Need to Register for HST in Ontario?',
-    img: mergersImg,
+    img: insHST,
     excerpt: 'Ontario HST rules, thresholds, and what registration means for your cash flow.',
+    slug: 'when-to-register-for-hst-ontario',
   },
   {
     title: 'How Does Incorporation Protect My Personal Assets?',
-    img: formationImg,
+    img: insIncorProt,
     excerpt: 'The liability shield a corporation provides, and the limits you should know about.',
+    slug: 'how-incorporation-protects-personal-assets',
   },
 ]
 
@@ -345,7 +352,7 @@ export default function BusinessLaw() {
               {ARTICLES.map((article, i) => (
                 <motion.a
                   key={i}
-                  href="/insights"
+                  href={`/insights/${article.slug}`}
                   className="about-article"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}

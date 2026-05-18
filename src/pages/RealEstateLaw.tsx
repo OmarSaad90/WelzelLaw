@@ -11,6 +11,10 @@ import heroImg        from '../assets/images/real-estate/home.png'
 import residentialImg from '../assets/images/real-estate/residential.png'
 import commercialImg  from '../assets/images/real-estate/commercial.png'
 
+import insClosing from '../assets/images/insights/WhatAreClosingCosts.png'
+import insDeposit from '../assets/images/insights/WhatHappens.png'
+import insNonCan  from '../assets/images/insights/CanNonCanadians.png'
+
 const ease = [0.16, 1, 0.3, 1] as const
 
 const svcStagger = {
@@ -66,18 +70,21 @@ const SERVICES: ServiceItem[] = [
 const ARTICLES = [
   {
     title: 'What Are Closing Costs in Ontario and Who Pays Them?',
-    img: residentialImg,
+    img: insClosing,
     excerpt: 'A clear breakdown of what buyers and sellers are each responsible for at the closing table in Ontario.',
+    slug: 'closing-costs-ontario',
   },
   {
     title: 'What Happens to My Deposit if the Deal Falls Through?',
-    img: heroImg,
+    img: insDeposit,
     excerpt: 'Deposits in Ontario real estate are not automatically refundable. Here is what you need to know before signing.',
+    slug: 'deposit-deal-falls-through-ontario',
   },
   {
     title: 'Can Non-Canadians Buy Property in Ontario?',
-    img: commercialImg,
+    img: insNonCan,
     excerpt: 'The rules around foreign buyers in Ontario are complex and evolving. Here is the current landscape.',
+    slug: 'non-canadians-buying-property-ontario',
   },
 ]
 
@@ -195,7 +202,7 @@ export default function RealEstateLaw() {
               {ARTICLES.map((article, i) => (
                 <motion.a
                   key={i}
-                  href="/insights"
+                  href={`/insights/${article.slug}`}
                   className="about-article"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}

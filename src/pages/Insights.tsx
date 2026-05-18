@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent, type FormEvent } from 'react'
+import { useState, useEffect, type ChangeEvent, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import SEO from '../components/SEO'
@@ -162,6 +162,14 @@ const ARTICLES: Article[] = [
 export default function Insights() {
   const [form, setForm] = useState({ name: '', email: '', phone: '' })
   const [submitted, setSubmitted] = useState(false)
+
+  useEffect(() => {
+    if (window.location.hash === '#subscribe') {
+      setTimeout(() => {
+        document.getElementById('subscribe')?.scrollIntoView({ behavior: 'smooth' })
+      }, 200)
+    }
+  }, [])
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))

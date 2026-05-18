@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
@@ -21,6 +21,15 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [practiceOpen, setPracticeOpen] = useState(false)
   const [mobilePracticeOpen, setMobilePracticeOpen] = useState(false)
+  const practiceCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  function openPractice() {
+    if (practiceCloseTimer.current) clearTimeout(practiceCloseTimer.current)
+    setPracticeOpen(true)
+  }
+  function closePractice() {
+    practiceCloseTimer.current = setTimeout(() => setPracticeOpen(false), 400)
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -87,8 +96,8 @@ export default function Navbar() {
           {/* Practice Areas dropdown */}
           <div
             style={{ position: 'relative' }}
-            onMouseEnter={() => setPracticeOpen(true)}
-            onMouseLeave={() => setPracticeOpen(false)}
+            onMouseEnter={openPractice}
+            onMouseLeave={closePractice}
           >
             <button style={{
               ...navLinkStyle(),

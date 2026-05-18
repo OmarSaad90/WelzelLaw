@@ -19,6 +19,10 @@ import commercialImg from '../assets/images/fgc/Commercial.png'
 import disputeImg    from '../assets/images/fgc/Dispute.png'
 import externalImg   from '../assets/images/fgc/External.png'
 
+import insWhatIs  from '../assets/images/insights/WhatIs.png'
+import insDoINeed from '../assets/images/insights/DoINeed.png'
+import insCorpGov from '../assets/images/insights/CorporateGovernance.png'
+
 const ease = [0.16, 1, 0.3, 1] as const
 
 const svcStagger = {
@@ -169,18 +173,21 @@ const LAYOUT: LayoutBlock[] = [
 const ARTICLES = [
   {
     title: 'What is a Fractional General Counsel?',
-    img: whatWeDoImg,
+    img: insWhatIs,
     excerpt: 'Growing businesses get executive-level legal strategy without the cost of a full-time hire.',
+    slug: 'what-is-a-fractional-general-counsel',
   },
   {
     title: 'Do I Need a General Counsel? 7 Signs Your SMB Has Outgrown Ad-Hoc Legal',
-    img: empImg,
+    img: insDoINeed,
     excerpt: 'When legal is reactive instead of proactive, the warning signs are already there.',
+    slug: 'do-i-need-a-general-counsel',
   },
   {
     title: 'Corporate Governance Basics for Growing Canadian Businesses',
-    img: corpGovImg,
+    img: insCorpGov,
     excerpt: 'The records, filings, and decisions that protect your company as it scales.',
+    slug: 'corporate-governance-basics-canadian-businesses',
   },
 ]
 
@@ -326,7 +333,7 @@ export default function FractionalGeneralCounsel() {
               {ARTICLES.map((article, i) => (
                 <motion.a
                   key={i}
-                  href="/insights"
+                  href={`/insights/${article.slug}`}
                   className="about-article"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
