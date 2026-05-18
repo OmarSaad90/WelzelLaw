@@ -1,1 +1,15 @@
-/* /index.html 200
+# Staged reveal — update this file to unlock pages for the client
+# To unlock a page: delete its line below, then commit + push to the client branch
+
+# --- LOCKED ---
+/business-law                  /  302
+/fractional-general-counsel    /  302
+/real-estate-law               /  302
+/insights                      /  302
+/insights/*                    /  302
+/contact                       /  302
+/privacy-policy                /  302
+/terms-of-service              /  302
+
+# --- SPA catch-all (must be last) ---
+/*  /index.html  200
