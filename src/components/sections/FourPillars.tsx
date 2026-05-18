@@ -126,8 +126,8 @@ export default function FourPillars() {
           {/* Section label */}
           <p style={{
             fontFamily: 'var(--font-body)',
-            fontWeight: 500,
-            fontSize: 'var(--font-size-xs)',
+            fontWeight: 700,
+            fontSize: 'var(--font-size-sm)',
             letterSpacing: 'var(--letter-spacing-caps)',
             textTransform: 'uppercase',
             color: 'var(--color-accent-text)',

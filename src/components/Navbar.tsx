@@ -140,9 +140,9 @@ export default function Navbar() {
                       style={{
                         display: 'block',
                         fontFamily: 'var(--font-body)',
-                        fontWeight: 400,
+                        fontWeight: 600,
                         fontSize: 'var(--font-size-sm)',
-                        color: 'var(--color-neutral-700)',
+                        color: 'var(--color-neutral-800)',
                         padding: 'var(--space-3) var(--space-5)',
                         borderRadius: 'var(--radius-sm)',
                         transition: 'background 0.15s, color 0.15s',

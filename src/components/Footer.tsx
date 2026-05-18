@@ -207,7 +207,7 @@ export default function Footer() {
               color: 'var(--color-neutral-25)',
               marginBottom: 'var(--space-3)',
             }}>
-              Schedule a Consultation Today
+              Get in Touch
             </h3>
 
             {submitted ? (

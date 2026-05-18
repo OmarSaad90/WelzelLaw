@@ -399,7 +399,7 @@ ul, ol { list-style: none; }
   right: 0;
   top: var(--nav-height);
   bottom: 0;
-  width: 52%;
+  width: 62%;
 }
 
 .inner-hero-overlay-img {
@@ -417,11 +417,14 @@ ul, ol { list-style: none; }
   inset: 0;
   background: linear-gradient(
     to right,
-    oklch(0.46 0.115 192 / 1)   0%,
-    oklch(0.46 0.115 192 / 0.85) 20%,
-    oklch(0.46 0.115 192 / 0.55) 38%,
-    oklch(0.46 0.115 192 / 0.18) 56%,
-    oklch(0.46 0.115 192 / 0)    70%
+    oklch(0.46 0.115 192 / 1)    0%,
+    oklch(0.46 0.115 192 / 0.96) 8%,
+    oklch(0.46 0.115 192 / 0.88) 18%,
+    oklch(0.46 0.115 192 / 0.7)  30%,
+    oklch(0.46 0.115 192 / 0.48) 44%,
+    oklch(0.46 0.115 192 / 0.26) 58%,
+    oklch(0.46 0.115 192 / 0.08) 72%,
+    oklch(0.46 0.115 192 / 0)    84%
   );
 }
 
