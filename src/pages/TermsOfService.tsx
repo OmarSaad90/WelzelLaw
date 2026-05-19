@@ -148,6 +148,7 @@ export default function TermsOfService() {
           eyebrow="Welzel Law"
           title="Terms of Use"
           subtitle="Legal terms governing your use of this website."
+          variant="overlay"
         />
 
         {/* Content body */}
@@ -186,7 +187,7 @@ export default function TermsOfService() {
                   }} />
                   <span style={{
                     fontFamily: 'var(--font-body)',
-                    fontWeight: 600,
+                    fontWeight: 700,
                     fontSize: 'var(--font-size-xs)',
                     letterSpacing: 'var(--letter-spacing-caps)',
                     color: 'var(--color-accent-text)',

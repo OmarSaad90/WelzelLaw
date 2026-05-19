@@ -14,9 +14,9 @@ import service2Img   from '../assets/images/about/service-contracts.png'
 import service3Img   from '../assets/images/about/service-counsel.png'
 import service4Img   from '../assets/images/about/service-realestate.png'
 import insightsImg   from '../assets/images/about/insights-intro.png'
-import article1Img   from '../assets/images/about/article-fgc.png'
-import article2Img   from '../assets/images/about/article-incorporate.png'
-import article3Img   from '../assets/images/about/article-land-transfer.png'
+import article1Img   from '../assets/images/insights/WhatIs.png'
+import article2Img   from '../assets/images/insights/ShouldI.png'
+import article3Img   from '../assets/images/insights/HowMuchisLand.png'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -117,16 +117,19 @@ const ARTICLES = [
     title: 'What is a Fractional General Counsel?',
     img: article1Img,
     excerpt: 'Growing businesses get executive-level legal strategy without the cost of a full-time hire.',
+    slug: 'what-is-a-fractional-general-counsel',
   },
   {
     title: 'Should I Incorporate or Register as a Sole Proprietorship in Ontario?',
     img: article2Img,
     excerpt: 'The right structure depends on your risk tolerance, tax goals, and plans for growth.',
+    slug: 'incorporate-or-sole-proprietorship-ontario',
   },
   {
     title: 'How Much Is Land Transfer Tax in Ontario?',
     img: article3Img,
     excerpt: 'Buyers in Ontario pay land transfer tax at closing. First-time buyers may qualify for a rebate.',
+    slug: 'land-transfer-tax-ontario',
   },
 ]
 
@@ -155,7 +158,9 @@ export default function About() {
           image={missionImg}
           eyebrow="Welzel Law"
           title="About Welzel Law"
-          subtitle="Boutique counsel. Executive experience. Real results."
+          subtitle={"Boutique counsel.\nExecutive experience.\nReal results."}
+          variant="overlay"
+          warmFade
         />
 
         {/* ── MISSION — typographic, no image repeat ──────────── */}
@@ -277,8 +282,9 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.65, ease }}
+              style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
             >
-              <p className="about-eyebrow">Expertise</p>
+              <p className="about-eyebrow" style={{ justifyContent: 'center' }}>Expertise</p>
               <h2 className="about-services-heading">How We Can Help You</h2>
             </motion.div>
 
@@ -323,7 +329,7 @@ export default function About() {
               {ARTICLES.map((article, i) => (
                 <motion.a
                   key={i}
-                  href="/insights"
+                  href={`/insights/${article.slug}`}
                   className="about-article"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}

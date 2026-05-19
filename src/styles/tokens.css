@@ -72,7 +72,7 @@
 
   /* Text */
   --color-text:          var(--color-neutral-950);
-  --color-text-muted:    var(--color-neutral-600);
+  --color-text-muted:    var(--color-neutral-700);
   --color-text-subtle:   var(--color-neutral-500);
   --color-text-inverse:  var(--color-neutral-25);
   --color-text-on-dark:  var(--color-neutral-25);

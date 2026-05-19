@@ -88,7 +88,7 @@ export default function Hero() {
             style={{
               fontFamily: 'var(--font-body)',
               fontWeight: 600,
-              fontSize: 'var(--font-size-base)',
+              fontSize: 'clamp(1.3rem, 1.26rem + 0.21vw, 1.38rem)',
               letterSpacing: 'var(--letter-spacing-wider)',
               textTransform: 'uppercase',
               color: 'var(--color-accent)',
@@ -105,7 +105,7 @@ export default function Hero() {
             style={{
               fontFamily: 'var(--font-display)',
               fontWeight: 700,
-              fontSize: 'clamp(3rem, 5.5vw, 5rem)',
+              fontSize: 'clamp(3.9rem, 7.15vw, 6.5rem)',
               lineHeight: 'var(--line-height-tight)',
               letterSpacing: 'var(--letter-spacing-tight)',
               color: 'var(--color-neutral-25)',
@@ -135,7 +135,7 @@ export default function Hero() {
             style={{
               fontFamily: 'var(--font-body)',
               fontWeight: 300,
-              fontSize: 'var(--font-size-md)',
+              fontSize: 'clamp(1.46rem, 1.38rem + 0.36vw, 1.625rem)',
               lineHeight: 'var(--line-height-normal)',
               color: 'oklch(0.92 0.015 192)',
               textShadow: '0 1px 8px oklch(0.15 0.06 192 / 0.45)',
@@ -204,27 +204,24 @@ export default function Hero() {
       {/* ── 2: Plants — editorial split (image left, text right) ── */}
       <section className="plants-split">
 
-        {/* Left: image bleeds to viewport edge */}
-        <motion.div
-          className="plants-split-image"
-          initial={{ opacity: 0, scale: 1.04 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.85, ease }}
-        >
-          <img
+        {/* Left: image column — overflow:hidden clips the inner scale animation */}
+        <div className="plants-split-image">
+          <motion.img
             src={heroPlants}
             alt=""
             aria-hidden="true"
+            initial={{ opacity: 0, scale: 1.04 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.85, ease }}
             style={{
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              objectPosition: 'center',
               display: 'block',
             }}
           />
-        </motion.div>
+        </div>
 
         {/* Right: text */}
         <motion.div
@@ -238,8 +235,8 @@ export default function Hero() {
             variants={plantsItem}
             style={{
               fontFamily: 'var(--font-body)',
-              fontWeight: 'var(--font-weight-medium)',
-              fontSize: 'var(--font-size-sm)',
+              fontWeight: 700,
+              fontSize: 'var(--font-size-base)',
               letterSpacing: 'var(--letter-spacing-caps)',
               textTransform: 'uppercase',
               color: 'var(--color-accent-text)',

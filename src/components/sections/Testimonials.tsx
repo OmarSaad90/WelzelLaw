@@ -56,8 +56,8 @@ export default function Testimonials() {
             <span style={{ display: 'block', width: '60px', height: '1px', backgroundColor: 'var(--color-accent)' }} />
             <span style={{
               fontFamily: 'var(--font-body)',
-              fontWeight: 500,
-              fontSize: 'var(--font-size-xs)',
+              fontWeight: 700,
+              fontSize: 'var(--font-size-sm)',
               letterSpacing: 'var(--letter-spacing-caps)',
               textTransform: 'uppercase',
               color: 'var(--color-accent-text)',

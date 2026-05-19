@@ -164,8 +164,7 @@ ul, ol { list-style: none; }
    Plants — editorial split layout
    ============================================================ */
 
-/* ── Plants split — image is absolutely positioned so it
-   matches text height exactly, never overflows             ── */
+/* ── Plants split ── */
 
 .plants-split {
   position: relative;
@@ -174,8 +173,6 @@ ul, ol { list-style: none; }
   background-color: var(--color-bg);
 }
 
-/* Inset by the same value as the text padding so image top/bottom
-   align exactly with the first and last content elements            */
 .plants-split-image {
   position: absolute;
   left: 0;
@@ -185,7 +182,6 @@ ul, ol { list-style: none; }
   overflow: hidden;
 }
 
-/* Text column drives the section height; left padding clears the image */
 .plants-split-text {
   display: flex;
   flex-direction: column;
@@ -194,6 +190,12 @@ ul, ol { list-style: none; }
   padding-bottom: clamp(2.5rem, 5vw, 4rem);
   padding-left: calc(45% + clamp(2rem, 4vw, 3.5rem));
   padding-right: clamp(2rem, 4vw, 3.5rem);
+}
+
+@media (max-width: 1440px) {
+  .plants-split-image img {
+    object-position: 80% center;
+  }
 }
 
 @media (max-width: 900px) {
@@ -360,6 +362,96 @@ ul, ol { list-style: none; }
   }
 }
 
+/* ── Overlay variant ── */
+.inner-hero-overlay {
+  position: relative;
+  overflow: hidden;
+  /* white strip behind navbar, then hard-stop to teal */
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg) var(--nav-height),
+    var(--color-primary) var(--nav-height)
+  );
+  min-height: calc(clamp(300px, 42vh, 460px) + var(--nav-height));
+  display: flex;
+  align-items: center;
+}
+
+.inner-hero-overlay-text {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  width: clamp(300px, 55vw, 720px);
+  padding-top: calc(var(--nav-height) + clamp(3rem, 5vw, 5rem));
+  padding-bottom: clamp(3rem, 5vw, 5rem);
+  padding-left: max(
+    var(--section-padding-x),
+    calc((100vw - var(--content-max-width)) / 2 + var(--section-padding-x))
+  );
+  padding-right: clamp(2rem, 4vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inner-hero-overlay-img-wrap {
+  position: absolute;
+  right: 0;
+  top: var(--nav-height);
+  bottom: 0;
+  width: 62%;
+}
+
+.inner-hero-overlay-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.inner-hero-overlay-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    oklch(0.46 0.115 192 / 1)    0%,
+    oklch(0.46 0.115 192 / 0.96) 8%,
+    oklch(0.46 0.115 192 / 0.88) 18%,
+    oklch(0.46 0.115 192 / 0.7)  30%,
+    oklch(0.46 0.115 192 / 0.48) 44%,
+    oklch(0.46 0.115 192 / 0.26) 58%,
+    oklch(0.46 0.115 192 / 0.08) 72%,
+    oklch(0.46 0.115 192 / 0)    84%
+  );
+}
+
+/* Warm fade: retreats faster so image color (e.g. the balloon yellow) bleeds through */
+.inner-hero-overlay-fade--warm {
+  background: linear-gradient(
+    to right,
+    oklch(0.46 0.115 192 / 1)    0%,
+    oklch(0.46 0.115 192 / 0.88) 6%,
+    oklch(0.46 0.115 192 / 0.65) 14%,
+    oklch(0.46 0.115 192 / 0.35) 24%,
+    oklch(0.46 0.115 192 / 0.14) 36%,
+    oklch(0.46 0.115 192 / 0.03) 48%,
+    oklch(0.46 0.115 192 / 0)    56%
+  );
+}
+
+@media (max-width: 768px) {
+  .inner-hero-overlay-text {
+    width: 100%;
+    padding-right: var(--section-padding-x);
+  }
+  .inner-hero-overlay-img-wrap {
+    display: none;
+  }
+}
+
 
 /* Policy content rows — number label left, text right */
 .policy-row {
@@ -396,8 +488,8 @@ ul, ol { list-style: none; }
 
 .about-eyebrow {
   font-family: var(--font-body);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
   letter-spacing: var(--letter-spacing-caps);
   text-transform: uppercase;
   color: var(--color-accent-text);
@@ -450,7 +542,7 @@ ul, ol { list-style: none; }
 
 .about-founder-inner {
   display: grid;
-  grid-template-columns: 400px 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-10);
   align-items: stretch;
   max-width: 1080px;
@@ -484,7 +576,7 @@ ul, ol { list-style: none; }
 .about-founder-name {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-3xl);
   line-height: 1.1;
   letter-spacing: var(--letter-spacing-tight);
   color: var(--color-primary);
@@ -504,9 +596,9 @@ ul, ol { list-style: none; }
 .about-founder-tagline {
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 500;
-  font-size: var(--font-size-base);
-  line-height: 1.4;
+  font-weight: 600;
+  font-size: var(--font-size-xl);
+  line-height: 1.3;
   color: var(--color-primary);
   margin: 0;
 }
@@ -567,7 +659,7 @@ ul, ol { list-style: none; }
 .about-services-heading {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-3xl);
   line-height: 1.1;
   color: var(--color-primary);
   margin: 0;
@@ -715,14 +807,13 @@ ul, ol { list-style: none; }
 .about-insights-img-wrap {
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  height: clamp(260px, 34vw, 460px);
 }
 
 .about-insights-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
+  object-fit: contain;
 }
 
 .about-insights-text {
@@ -981,7 +1072,7 @@ ul, ol { list-style: none; }
   }
 
   .about-founder-photo-wrap {
-    max-width: 220px;
+    max-width: 280px;
   }
 
   .about-articles {
@@ -1013,7 +1104,7 @@ ul, ol { list-style: none; }
   }
 
   .about-founder-tagline {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md);
   }
 }
 
@@ -1025,9 +1116,11 @@ ul, ol { list-style: none; }
 
 @media (max-width: 480px) {
   .about-founder-name,
-  .about-services-heading,
   .about-subscribe-heading {
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-2xl);
+  }
+  .about-services-heading {
+    font-size: var(--font-size-2xl);
   }
 }
 
@@ -1110,8 +1203,8 @@ ul, ol { list-style: none; }
 
 .bl-structure-eyebrow {
   font-family: var(--font-body);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
   letter-spacing: var(--letter-spacing-caps);
   text-transform: uppercase;
   color: var(--color-accent-text);
@@ -1758,7 +1851,7 @@ ul, ol { list-style: none; }
 
 .contact-eyebrow {
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 700;
   font-size: var(--font-size-sm);
   letter-spacing: var(--letter-spacing-caps);
   text-transform: uppercase;
@@ -1896,7 +1989,7 @@ ul, ol { list-style: none; }
 
 .contact-form-eyebrow {
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 700;
   font-size: var(--font-size-sm);
   letter-spacing: var(--letter-spacing-caps);
   text-transform: uppercase;
@@ -2270,7 +2363,7 @@ ul, ol { list-style: none; }
 .ins-category-tag {
   font-family: var(--font-body);
   font-size: var(--font-size-xs);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: var(--letter-spacing-wider);
   text-transform: uppercase;
   color: var(--color-accent-text);
@@ -2305,7 +2398,7 @@ ul, ol { list-style: none; }
   display: block;
   font-family: var(--font-body);
   font-size: var(--font-size-xs);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: var(--letter-spacing-wider);
   text-transform: uppercase;
   color: var(--color-accent-text);
@@ -2437,7 +2530,7 @@ ul, ol { list-style: none; }
   display: inline-block;
   font-family: var(--font-body);
   font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semibold);
+  font-weight: 700;
   letter-spacing: var(--letter-spacing-caps);
   text-transform: uppercase;
   color: var(--color-accent-text);

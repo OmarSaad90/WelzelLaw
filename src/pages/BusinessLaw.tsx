@@ -196,6 +196,7 @@ export default function BusinessLaw() {
           eyebrow="Welzel Law"
           title="Business Law"
           subtitle="Counsel that moves as fast as your business does."
+          variant="overlay"
         />
 
         {/* ── INTRO / PHILOSOPHY ──────────────────────────────── */}
