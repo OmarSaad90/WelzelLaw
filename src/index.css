@@ -428,6 +428,20 @@ ul, ol { list-style: none; }
   );
 }
 
+/* Warm fade: retreats faster so image color (e.g. the balloon yellow) bleeds through */
+.inner-hero-overlay-fade--warm {
+  background: linear-gradient(
+    to right,
+    oklch(0.46 0.115 192 / 1)    0%,
+    oklch(0.46 0.115 192 / 0.88) 6%,
+    oklch(0.46 0.115 192 / 0.65) 14%,
+    oklch(0.46 0.115 192 / 0.35) 24%,
+    oklch(0.46 0.115 192 / 0.14) 36%,
+    oklch(0.46 0.115 192 / 0.03) 48%,
+    oklch(0.46 0.115 192 / 0)    56%
+  );
+}
+
 @media (max-width: 768px) {
   .inner-hero-overlay-text {
     width: 100%;

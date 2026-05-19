@@ -160,6 +160,7 @@ export default function About() {
           title="About Welzel Law"
           subtitle={"Boutique counsel.\nExecutive experience.\nReal results."}
           variant="overlay"
+          warmFade
         />
 
         {/* ── MISSION — typographic, no image repeat ──────────── */}

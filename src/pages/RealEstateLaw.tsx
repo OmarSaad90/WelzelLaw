@@ -117,6 +117,7 @@ export default function RealEstateLaw() {
           title="Real Estate Law"
           subtitle="Every transaction is personal. Every detail is our responsibility."
           variant="overlay"
+          
         />
 
         {/* ── INTRO ─────────────────────────────────────────── */}

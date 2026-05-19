@@ -9,9 +9,10 @@ interface InnerPageHeroProps {
   title: string
   subtitle?: string
   variant?: 'overlay'
+  warmFade?: boolean
 }
 
-export default function InnerPageHero({ image, imageAlt = '', eyebrow, title, subtitle, variant }: InnerPageHeroProps) {
+export default function InnerPageHero({ image, imageAlt = '', eyebrow, title, subtitle, variant, warmFade }: InnerPageHeroProps) {
 
   const textColor = image ? 'var(--color-text-inverse)' : 'var(--color-primary)'
   const subtitleColor = image ? 'var(--color-teal-100)' : 'var(--color-text-muted)'
@@ -174,7 +175,7 @@ export default function InnerPageHero({ image, imageAlt = '', eyebrow, title, su
           transition={{ duration: 0.95, ease }}
         >
           <img src={image} alt={imageAlt} className="inner-hero-overlay-img" />
-          <div className="inner-hero-overlay-fade" />
+          <div className={`inner-hero-overlay-fade${warmFade ? ' inner-hero-overlay-fade--warm' : ''}`} />
         </motion.div>
       </section>
     )
