@@ -258,7 +258,7 @@ export default function FractionalGeneralCounsel() {
                 <p className="fgc-intro-body">
                   We offer a monthly fixed fee service as a better alternative.
                 </p>
-                <a href="/contact" className="about-svc-cta fgc-intro-cta">
+                <a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta fgc-intro-cta">
                   Request a Consult
                 </a>
               </motion.div>
@@ -452,7 +452,7 @@ function FgcOverviewBlock({ title, body, img, alt, cta, imageRight, imgPosition 
         </motion.div>
         <motion.p className="fgc-overview-body" variants={svcItem}>{body}</motion.p>
         {cta && (
-          <motion.a href="/contact" className="about-svc-cta" variants={svcItem}>Request a Consult</motion.a>
+          <motion.a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta" variants={svcItem}>Request a Consult</motion.a>
         )}
       </motion.div>
     </div>
@@ -499,7 +499,7 @@ function FgcFullRow({ svc, fromLeft }: { svc: ServiceItem; fromLeft: boolean }) 
             </li>
           ))}
         </motion.ul>
-        <motion.a href="/contact" className="about-svc-cta" variants={svcItem}>Request a Consult</motion.a>
+        <motion.a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta" variants={svcItem}>Request a Consult</motion.a>
       </motion.div>
     </div>
   )
@@ -536,7 +536,7 @@ function FgcPairRow({ items }: { items: [ServiceItem, ServiceItem] }) {
                 </li>
               ))}
             </ul>
-            <a href="/contact" className="about-svc-cta">Request a Consult</a>
+            <a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta">Request a Consult</a>
           </div>
         </motion.div>
       ))}

@@ -135,7 +135,9 @@ export default function WhyWelzel() {
         {/* Gold link */}
         <motion.a
           variants={fadeUp}
-          href="#schedule"
+          href="https://calendly.com/fernanda-welzel"
+          target="_blank"
+          rel="noopener noreferrer"
           whileHover={{ x: 4 }}
           transition={{ duration: 0.2, ease }}
           style={{

@@ -10,9 +10,10 @@ interface InnerPageHeroProps {
   subtitle?: string
   variant?: 'overlay'
   warmFade?: boolean
+  midFade?: boolean
 }
 
-export default function InnerPageHero({ image, imageAlt = '', eyebrow, title, subtitle, variant, warmFade }: InnerPageHeroProps) {
+export default function InnerPageHero({ image, imageAlt = '', eyebrow, title, subtitle, variant, warmFade, midFade }: InnerPageHeroProps) {
 
   const textColor = image ? 'var(--color-text-inverse)' : 'var(--color-primary)'
   const subtitleColor = image ? 'var(--color-teal-100)' : 'var(--color-text-muted)'
@@ -37,7 +38,7 @@ export default function InnerPageHero({ image, imageAlt = '', eyebrow, title, su
           transition={{ duration: 0.45, delay: 0.28, ease }}
           style={{
             fontFamily: 'var(--font-body)',
-            fontWeight: 600,
+            fontWeight: 700,
             fontSize: 'var(--font-size-sm)',
             letterSpacing: 'var(--letter-spacing-caps)',
             textTransform: 'uppercase',
@@ -123,7 +124,7 @@ export default function InnerPageHero({ image, imageAlt = '', eyebrow, title, su
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.28, ease }}
             style={{
-              fontFamily: 'var(--font-body)', fontWeight: 600,
+              fontFamily: 'var(--font-body)', fontWeight: 700,
               fontSize: 'var(--font-size-sm)', letterSpacing: 'var(--letter-spacing-caps)',
               textTransform: 'uppercase', color: 'var(--color-accent)',
               margin: '0 0 var(--space-4)',
@@ -175,7 +176,7 @@ export default function InnerPageHero({ image, imageAlt = '', eyebrow, title, su
           transition={{ duration: 0.95, ease }}
         >
           <img src={image} alt={imageAlt} className="inner-hero-overlay-img" />
-          <div className={`inner-hero-overlay-fade${warmFade ? ' inner-hero-overlay-fade--warm' : ''}`} />
+          <div className={`inner-hero-overlay-fade${warmFade ? ' inner-hero-overlay-fade--warm' : midFade ? ' inner-hero-overlay-fade--mid' : ''}`} />
         </motion.div>
       </section>
     )

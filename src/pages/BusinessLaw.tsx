@@ -197,6 +197,7 @@ export default function BusinessLaw() {
           title="Business Law"
           subtitle="Counsel that moves as fast as your business does."
           variant="overlay"
+          midFade
         />
 
         {/* ── INTRO / PHILOSOPHY ──────────────────────────────── */}
@@ -233,7 +234,7 @@ export default function BusinessLaw() {
                 <p className="bl-intro-body">
                   In business, clarity is not a luxury. It is your competitive advantage.
                 </p>
-                <a href="/contact" className="about-svc-cta bl-intro-cta">
+                <a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta bl-intro-cta">
                   Request a Consult
                 </a>
               </motion.div>
@@ -491,7 +492,7 @@ function BlServiceRow({ svc }: { svc: ServiceItem }) {
             </li>
           ))}
         </motion.ul>
-        <motion.a href="/contact" className="about-svc-cta" variants={svcItem}>Request a Consult</motion.a>
+        <motion.a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta" variants={svcItem}>Request a Consult</motion.a>
       </motion.div>
     </div>
   )
