@@ -154,7 +154,7 @@ export default function RealEstateLaw() {
                 <p className="rl-intro-body">
                   We review every detail, ask every question, and make sure nothing stands between you and a transaction you can feel confident about.
                 </p>
-                <a href="/contact" className="about-svc-cta rl-intro-cta">
+                <a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta rl-intro-cta">
                   Request a Consult
                 </a>
               </motion.div>
@@ -342,7 +342,7 @@ function RlServiceRow({ svc }: { svc: ServiceItem }) {
             </li>
           ))}
         </motion.ul>
-        <motion.a href="/contact" className="about-svc-cta" variants={svcItem}>Request a Consult</motion.a>
+        <motion.a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta" variants={svcItem}>Request a Consult</motion.a>
       </motion.div>
     </div>
   )

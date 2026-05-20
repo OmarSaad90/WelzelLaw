@@ -428,6 +428,20 @@ ul, ol { list-style: none; }
   );
 }
 
+/* Mid fade: between standard and warm — for images with similar colour family to teal */
+.inner-hero-overlay-fade--mid {
+  background: linear-gradient(
+    to right,
+    oklch(0.46 0.115 192 / 1)    0%,
+    oklch(0.46 0.115 192 / 0.94) 10%,
+    oklch(0.46 0.115 192 / 0.80) 22%,
+    oklch(0.46 0.115 192 / 0.56) 36%,
+    oklch(0.46 0.115 192 / 0.28) 52%,
+    oklch(0.46 0.115 192 / 0.08) 66%,
+    oklch(0.46 0.115 192 / 0)    72%
+  );
+}
+
 /* Warm fade: retreats faster so image color (e.g. the balloon yellow) bleeds through */
 .inner-hero-overlay-fade--warm {
   background: linear-gradient(

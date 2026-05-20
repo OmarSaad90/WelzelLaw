@@ -161,7 +161,9 @@ export default function Navbar() {
 
           <MagneticButton>
             <motion.a
-              href="#schedule"
+              href="https://calendly.com/fernanda-welzel"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ boxShadow: 'var(--shadow-gold)' }}
               whileTap={{ scale: 0.97 }}
               transition={{ duration: 0.15, ease }}
@@ -293,7 +295,9 @@ export default function Navbar() {
               </a>
 
               <motion.a
-                href="#schedule"
+                href="https://calendly.com/fernanda-welzel"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
                 whileTap={{ scale: 0.97 }}
                 style={{

@@ -197,7 +197,7 @@ export default function ArticlePage() {
             <div className="ap-cta">
               <h2 className="ap-cta-heading">Talk To Us.</h2>
               <p className="ap-cta-subtext">A 20-minute discovery call is free. Your situation deserves more than general advice.</p>
-              <a href="#schedule" className="ap-cta-btn">Book a free discovery call</a>
+              <a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="ap-cta-btn">Book a free discovery call</a>
             </div>
 
             {/* Disclaimer */}

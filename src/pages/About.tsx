@@ -258,7 +258,9 @@ export default function About() {
                 </motion.div>
 
                 <motion.a
-                  href="/contact"
+                  href="https://calendly.com/fernanda-welzel"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="about-founder-cta"
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -468,7 +470,7 @@ function ServiceRow({ svc }: { svc: Service }) {
             </li>
           ))}
         </motion.ul>
-        <motion.a href="/contact" className="about-svc-cta" variants={svcItem}>Request a Consultation</motion.a>
+        <motion.a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta" variants={svcItem}>Request a Consultation</motion.a>
       </motion.div>
     </div>
   )
