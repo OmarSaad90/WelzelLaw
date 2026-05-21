@@ -7,9 +7,9 @@ import { ServiceJsonLd, BreadcrumbJsonLd } from '../components/JsonLd'
 import Footer from '../components/Footer'
 import InnerPageHero from '../components/InnerPageHero'
 
-import heroImg        from '../assets/images/real-estate/home.png'
-import residentialImg from '../assets/images/real-estate/residential.png'
-import commercialImg  from '../assets/images/real-estate/commercial.png'
+import heroImg        from '../assets/images/real-estate/home.jpg'
+import residentialImg from '../assets/images/real-estate/residential.jpg'
+import commercialImg  from '../assets/images/real-estate/commercial.jpg'
 
 import insClosing from '../assets/images/insights/WhatAreClosingCosts.png'
 import insDeposit from '../assets/images/insights/WhatHappens.png'

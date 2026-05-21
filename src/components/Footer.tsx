@@ -28,7 +28,6 @@ export default function Footer() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    // TODO: connect to backend / Calendly / email service
     setSubmitted(true)
   }
 
@@ -239,7 +238,6 @@ export default function Footer() {
             ) : (
               <form onSubmit={handleSubmit} noValidate>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
-                  {/* Name row */}
                   <div className="footer-form-name-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-2)' }}>
                     <input
                       type="text" name="firstName" value={formData.firstName}
