@@ -2,7 +2,6 @@
 # To unlock a page: delete its line below, then commit + push to the client branch
 
 # --- LOCKED ---
-/business-law                  /  302
 /fractional-general-counsel    /  302
 /insights                      /  302
 /insights/*                    /  302
