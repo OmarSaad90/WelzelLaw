@@ -67,6 +67,7 @@ ul, ol { list-style: none; }
   text-decoration-color: oklch(0.72 0.145 65 / 0.6);
   text-underline-offset: 3px;
 }
+
 .dropdown-item:hover {
   background-color: var(--color-bg-subtle);
   color: var(--color-primary) !important;
