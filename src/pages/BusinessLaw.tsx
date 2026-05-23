@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent, type FormEvent } from 'react'
+import React, { useState, type ChangeEvent, type FormEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import SEO from '../components/SEO'
@@ -12,16 +12,11 @@ import formationImg  from '../assets/images/business-law/formation.jpg'
 import agreementsImg from '../assets/images/business-law/agreements.jpg'
 import mergersImg    from '../assets/images/business-law/mergers.jpg'
 import hrImg         from '../assets/images/business-law/hrlaw.jpeg'
-import icon1         from '../assets/images/business-law/icon1.png'
-import icon2         from '../assets/images/business-law/icon2.png'
-import icon3         from '../assets/images/business-law/icon3.png'
-import icon4         from '../assets/images/business-law/icon4.png'
-import icon5         from '../assets/images/business-law/icon5.png'
-import icon6         from '../assets/images/business-law/icon6.png'
+import { Building2, Store, Handshake, Scale, Users2, Network } from 'lucide-react'
 
 import insContracts from '../assets/images/insights/WhatContracts.png'
 import insHST       from '../assets/images/insights/WhenDoINeed.png'
-import insIncorProt from '../assets/images/insights/HowDoesIncor.png'
+import insIncorProt from '../assets/images/insights/HowDoesIncor.jpg'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -89,7 +84,7 @@ const SERVICES: ServiceItem[] = [
     fromLeft: true,
   },
   {
-    title: 'Employment & HR Law',
+    title: 'Employment & Labour Law',
     body: 'Your people are your most valuable asset and your greatest area of legal exposure. We help you build the right policies, agreements, and processes to protect both your employees and your business.',
     bullets: [
       'Employment contracts',
@@ -105,39 +100,39 @@ const SERVICES: ServiceItem[] = [
 
 interface StructureItem {
   title: string
-  icon: string
+  icon: React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>
   body: string
 }
 
 const STRUCTURES: StructureItem[] = [
   {
     title: 'Corporation',
-    icon: icon1,
+    icon: Building2,
     body: 'A body corporate formed by one or more people to carry on business for profit. The corporation is treated as a separate legal entity: shareholders have limited liability and cannot be held responsible for the debts and obligations of the corporation, with very few exceptions. This protects your personal assets and offers significant tax advantages. You can incorporate provincially or federally. A federal corporation must also register in each jurisdiction it operates in.',
   },
   {
     title: 'Sole Proprietorship',
-    icon: icon2,
+    icon: Store,
     body: 'The simplest way to organize a business. Advantages include ease of setup, complete owner control, and no separate tax records (business income falls under personal income). The key disadvantage is unlimited personal liability. The law makes no distinction between business assets and personal assets: if the business cannot meet its obligations, the owner must do so from personal funds.',
   },
   {
     title: 'General Partnership',
-    icon: icon3,
+    icon: Handshake,
     body: 'A business enterprise operated by two or more people for profit. Partners share profits, obligations, property ownership, and decision-making. Advantages include a larger pool of investment, shared financial and legal risks, and complementary skills. Key disadvantages include unlimited personal liability for all partners and potential loss of control when decisions are made without consensus.',
   },
   {
     title: 'Limited Liability Partnership',
-    icon: icon4,
+    icon: Scale,
     body: 'Available to certain professions (legal, accounting, and others), an LLP protects partners from liability arising from the negligence, omissions, or wrongful acts of other partners. Partners are not liable for debts arising from another partner\'s actions. An LLP can only be formed for professions governed by an Act that specifically permits this structure.',
   },
   {
     title: 'Limited Partnership',
-    icon: icon5,
+    icon: Users2,
     body: 'A partnership with at least one general partner managing day-to-day operations and at least one limited partner who contributes capital only. Limited partners are protected from personal liability beyond their investment. They have the right to inspect books, receive full accounting, and share in profits, typically before general partners receive their share.',
   },
   {
     title: 'Other Business Associations',
-    icon: icon6,
+    icon: Network,
     body: 'Other structures serve specific purposes: Joint Ventures (limited-purpose partnerships between individuals or corporations for a defined project or time period); Franchises (operating under an established brand and proven business model); Business Trusts (property held and administered by a trustee for the benefit of unit holders); Not-for-Profit Organizations (social or charitable purpose with limited liability for members); and Co-ownership arrangements (joint property ownership without a shared business purpose).',
   },
 ]
@@ -301,7 +296,7 @@ export default function BusinessLaw() {
                     aria-expanded={openIndex === i}
                   >
                     <div className="bl-accordion-btn-left">
-                      <img src={item.icon} alt="" className="bl-accordion-icon" aria-hidden="true" />
+                      <item.icon size={30} strokeWidth={1.5} className="bl-accordion-icon" aria-hidden="true" />
                       <span className="bl-accordion-title">{item.title}</span>
                     </div>
                     <motion.span

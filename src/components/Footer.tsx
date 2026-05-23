@@ -288,7 +288,7 @@ export default function Footer() {
                         marginTop: 0,
                       }}
                     >
-                      Schedule a Consultation
+                      SEND YOUR MESSAGE
                     </motion.button>
                   </MagneticButton>
 

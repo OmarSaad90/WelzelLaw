@@ -1305,12 +1305,11 @@ ul, ol { list-style: none; }
 /* mix-blend-mode: multiply — white pixels become transparent on the teal button,
    leaving only the icon's actual content visible, no badge needed */
 .bl-accordion-icon {
-  width: 34px;
-  height: 34px;
-  object-fit: contain;
+  width: 30px;
+  height: 30px;
   display: block;
   flex-shrink: 0;
-  mix-blend-mode: multiply;
+  color: var(--color-accent);
 }
 
 .bl-accordion-title {
