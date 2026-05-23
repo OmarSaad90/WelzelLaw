@@ -12,7 +12,7 @@ import residentialImg from '../assets/images/real-estate/residential.jpg'
 import commercialImg  from '../assets/images/real-estate/commercial.jpg'
 
 import insClosing from '../assets/images/insights/WhatAreClosingCosts.png'
-import insDeposit from '../assets/images/insights/WhatHappens.png'
+import insDeposit from '../assets/images/insights/WhatHappens.jpg'
 import insNonCan  from '../assets/images/insights/CanNonCanadians.png'
 
 const ease = [0.16, 1, 0.3, 1] as const
