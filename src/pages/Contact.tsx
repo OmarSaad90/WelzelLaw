@@ -45,9 +45,26 @@ export default function Contact() {
           <div className="contact-left">
             <div className="contact-left-inner">
 
+              <motion.div
+                className="contact-rule"
+                initial={{ width: 0 }}
+                animate={{ width: '40px' }}
+                transition={{ duration: 0.55, delay: 0.1, ease }}
+              />
+
+              <motion.p
+                className="contact-eyebrow"
+                custom={0.2}
+                initial="hidden"
+                animate="visible"
+                variants={fadeUp}
+              >
+                Get in Touch
+              </motion.p>
+
               <motion.h1
                 className="contact-heading"
-                custom={0.1}
+                custom={0.32}
                 initial="hidden"
                 animate="visible"
                 variants={fadeUp}
@@ -56,17 +73,10 @@ export default function Contact() {
               </motion.h1>
 
               <motion.div
-                className="contact-rule"
-                initial={{ width: 0 }}
-                animate={{ width: '40px' }}
-                transition={{ duration: 0.55, delay: 0.35, ease }}
-              />
-
-              <motion.div
                 className="contact-details"
                 initial="hidden"
                 animate="visible"
-                variants={{ visible: { transition: { staggerChildren: 0.1, delayChildren: 0.4 } } }}
+                variants={{ visible: { transition: { staggerChildren: 0.1, delayChildren: 0.5 } } }}
               >
                 <motion.a
                   href="https://www.google.com/maps/search/5063+North+Service+Rd+Suite+100+Burlington+ON"
@@ -105,7 +115,7 @@ export default function Contact() {
                 className="contact-map"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.7, delay: 1.0, ease }}
+                transition={{ duration: 0.7, delay: 1.1, ease }}
               >
                 <iframe
                   title="Welzel Law office location"
