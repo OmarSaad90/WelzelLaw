@@ -4,9 +4,6 @@
 # --- LOCKED ---
 /insights                      /  302
 /insights/*                    /  302
-/contact                       /  302
-/privacy-policy                /  302
-/terms-of-service              /  302
 
 # --- SPA catch-all (must be last) ---
 /*  /index.html  200
