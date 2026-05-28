@@ -2611,6 +2611,10 @@ ul, ol { list-style: none; }
   max-width: 72ch;
 }
 
+.ap-body--full {
+  max-width: 100%;
+}
+
 .ap-p {
   font-family: var(--font-body);
   font-size: var(--font-size-base);
