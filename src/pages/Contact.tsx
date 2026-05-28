@@ -152,13 +152,6 @@ export default function Contact() {
                 </motion.div>
               ) : (
                 <>
-                  <div className="contact-form-header">
-                    <h2 className="contact-form-heading">Request a Consultation</h2>
-                    <p className="contact-form-subhead">
-                      We respond within one business day.
-                    </p>
-                  </div>
-
                   <form className="contact-form" onSubmit={handleSubmit} noValidate>
 
                     <div className="contact-form-row">
@@ -228,7 +221,7 @@ export default function Contact() {
                       whileTap={{ scale: 0.98 }}
                       transition={{ duration: 0.15, ease }}
                     >
-                      Request a Consultation
+                      SEND YOUR MESSAGE
                     </motion.button>
 
                     <p className="contact-disclaimer">

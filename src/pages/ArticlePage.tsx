@@ -194,11 +194,12 @@ export default function ArticlePage() {
           <div className="ap-footer-inner">
 
             {/* CTA */}
-            <div className="ap-cta">
-              <h2 className="ap-cta-heading">Talk To Us.</h2>
-              <p className="ap-cta-subtext">A 20-minute discovery call is free. Your situation deserves more than general advice.</p>
-              <a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="ap-cta-btn">Book a free discovery call</a>
-            </div>
+            <p className="ap-cta-inline">
+              Have questions about your specific situation?{' '}
+              <a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="ap-cta-link">
+                Book a free 15-minute call with us
+              </a>
+            </p>
 
             {/* Disclaimer */}
             <div className="ap-disclaimer">
