@@ -1,9 +1,2 @@
-# Staged reveal — update this file to unlock pages for the client
-# To unlock a page: delete its line below, then commit + push to the client branch
-
-# --- LOCKED ---
-/insights                      /  302
-/insights/*                    /  302
-
-# --- SPA catch-all (must be last) ---
+# SPA catch-all
 /*  /index.html  200
