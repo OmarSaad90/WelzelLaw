@@ -27,7 +27,7 @@ import imgDeposit   from '../assets/images/insights/WhatHappens.jpg'
 const ease = [0.16, 1, 0.3, 1] as const
 
 const ARTICLES_META = [
-  { slug: 'what-is-a-fractional-general-counsel',          title: 'What is a Fractional General Counsel?',                                         category: 'Fractional GC',  img: imgWhatIs,    fullWidth: true  },
+  { slug: 'what-is-a-fractional-general-counsel',          title: 'What is a Fractional General Counsel?',                                         category: 'Fractional GC',  img: imgWhatIs    },
   { slug: 'do-i-need-a-general-counsel',                   title: 'Do I Need a General Counsel? 7 Signs Your SMB Has Outgrown Ad-Hoc Legal',        category: 'Fractional GC',  img: imgDoINeed   },
   { slug: 'contracts-every-canadian-smb-should-have',      title: 'What Contracts Every Canadian SMB Should Have in Place',                          category: 'Business Law',   img: imgContracts },
   { slug: 'corporate-governance-basics-canadian-businesses',title: 'Corporate Governance Basics for Growing Canadian Businesses',                    category: 'Business Law',   img: imgCorpGov   },
@@ -37,7 +37,7 @@ const ARTICLES_META = [
   { slug: 'when-to-register-for-hst-ontario',             title: 'When Do I Need to Register for HST in Ontario?',                                  category: 'Incorporation',  img: imgHST       },
   { slug: 'how-incorporation-protects-personal-assets',    title: 'How Does Incorporation Protect My Personal Assets?',                              category: 'Incorporation',  img: imgIncorProt },
   { slug: 'obligations-hiring-first-employee-ontario',     title: 'What Are My Obligations When Hiring My First Employee in Ontario?',               category: 'Business Law',   img: imgEmployee  },
-  { slug: 'closing-costs-ontario',                         title: 'What Are Closing Costs in Ontario and Who Pays Them?',                            category: 'Real Estate',    img: imgClosing,   fullWidth: true  },
+  { slug: 'closing-costs-ontario',                         title: 'What Are Closing Costs in Ontario and Who Pays Them?',                            category: 'Real Estate',    img: imgClosing   },
   { slug: 'land-transfer-tax-ontario',                     title: 'How Much Is Land Transfer Tax in Ontario?',                                       category: 'Real Estate',    img: imgLandTax   },
   { slug: 'title-insurance-ontario',                       title: 'Do I Need Title Insurance in Ontario?',                                           category: 'Real Estate',    img: imgTitle     },
   { slug: 'non-canadians-buying-property-ontario',         title: 'Can Non-Canadians Buy Property in Ontario?',                                      category: 'Real Estate',    img: imgNonCan    },
@@ -176,7 +176,7 @@ export default function ArticlePage() {
 
         {/* ── ARTICLE BODY ──────────────────────────────────────── */}
         <article className="ap-body-wrap">
-          <div className={`ap-body${meta.fullWidth ? ' ap-body--full' : ''}`}>
+          <div className="ap-body">
             {content.sections.map((section, i) => (
               <Section key={i} section={section} openFaq={openFaq} setOpenFaq={setOpenFaq} />
             ))}
