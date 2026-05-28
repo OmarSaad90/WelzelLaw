@@ -2608,10 +2608,6 @@ ul, ol { list-style: none; }
 }
 
 .ap-body {
-  max-width: 72ch;
-}
-
-.ap-body--full {
   max-width: 100%;
 }
 
