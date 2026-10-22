@@ -96,8 +96,9 @@
      TYPOGRAPHY
      ========================================================================= */
 
-  --font-display: 'Spectral', 'Georgia', serif;
-  --font-body:    'Manrope', 'system-ui', sans-serif;
+  /* --font-spectral / --font-manrope are injected by next/font in app/layout.tsx */
+  --font-display: var(--font-spectral), 'Georgia', serif;
+  --font-body:    var(--font-manrope), 'system-ui', sans-serif;
   --font-mono:    'JetBrains Mono', 'Courier New', monospace;
 
   /* Fluid type scale — scales between 390px and 1440px viewport */

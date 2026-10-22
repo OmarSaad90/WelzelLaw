@@ -1,5 +1,11 @@
 import { SITE_URL, DEFAULT_OG_IMAGE } from '../data/seo'
 
+// Escape `<` so a stray "</script>" inside any string value can't close the tag early.
+// Server-rendered, so these scripts now ship in the static HTML crawlers read.
+function serializeJsonLd(schema: object): string {
+  return JSON.stringify(schema).replace(/</g, '\\u003c')
+}
+
 // ─── Sitewide: LegalService + LocalBusiness ──────────────────────────────────
 export function SitewideJsonLd() {
   const schema = {
@@ -101,7 +107,7 @@ export function SitewideJsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
     />
   )
 }
@@ -133,7 +139,7 @@ export function ServiceJsonLd({ name, description, url }: ServiceJsonLdProps) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
     />
   )
 }
@@ -187,7 +193,7 @@ export function ArticleJsonLd({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
     />
   )
 }
@@ -209,7 +215,7 @@ export function FAQJsonLd({ items }: { items: FAQItem[] }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
     />
   )
 }
@@ -232,7 +238,7 @@ export function BreadcrumbJsonLd({ crumbs }: { crumbs: Crumb[] }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
     />
   )
 }

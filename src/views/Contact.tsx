@@ -1,11 +1,8 @@
+'use client'
+
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import { MapPin, Mail, Phone } from 'lucide-react'
-import Navbar from '../components/Navbar'
-import SEO from '../components/SEO'
-import { PAGE_SEO } from '../data/seo'
-import { BreadcrumbJsonLd } from '../components/JsonLd'
-import Footer from '../components/Footer'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -34,9 +31,6 @@ export default function Contact() {
 
   return (
     <>
-      <SEO {...PAGE_SEO.contact} />
-      <BreadcrumbJsonLd crumbs={[{ name: 'Home', href: '/' }, { name: 'Contact', href: '/contact' }]} />
-      <Navbar />
       <main className="contact-page-main">
 
         <section className="contact-split">
@@ -236,7 +230,6 @@ export default function Contact() {
 
         </section>
       </main>
-      <Footer />
     </>
   )
 }

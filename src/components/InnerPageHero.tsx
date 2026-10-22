@@ -1,9 +1,12 @@
+'use client'
+
+import Image, { type StaticImageData } from 'next/image'
 import { motion } from 'framer-motion'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
 interface InnerPageHeroProps {
-  image?: string
+  image?: StaticImageData
   imageAlt?: string
   eyebrow?: string
   title: string
@@ -175,7 +178,7 @@ export default function InnerPageHero({ image, imageAlt = '', eyebrow, title, su
           animate={{ opacity: 1 }}
           transition={{ duration: 0.95, ease }}
         >
-          <img src={image} alt={imageAlt} className="inner-hero-overlay-img" />
+          <Image src={image} alt={imageAlt} className="inner-hero-overlay-img" sizes="62vw" preload />
           <div className={`inner-hero-overlay-fade${warmFade ? ' inner-hero-overlay-fade--warm' : midFade ? ' inner-hero-overlay-fade--mid' : ''}`} />
         </motion.div>
       </section>
@@ -210,7 +213,7 @@ export default function InnerPageHero({ image, imageAlt = '', eyebrow, title, su
         animate={{ opacity: 1 }}
         transition={{ duration: 0.95, ease }}
       >
-        <img src={image} alt={imageAlt} className="inner-hero-img" />
+        <Image src={image} alt={imageAlt} className="inner-hero-img" sizes="50vw" preload />
         <div className="inner-hero-img-overlay" />
       </motion.div>
 

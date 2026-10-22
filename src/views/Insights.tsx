@@ -1,10 +1,9 @@
+'use client'
+
+import Image, { type StaticImageData } from 'next/image'
+import MotionLink from '../components/MotionLink'
 import { useState, useEffect, type ChangeEvent, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
-import Navbar from '../components/Navbar'
-import SEO from '../components/SEO'
-import { PAGE_SEO } from '../data/seo'
-import { BreadcrumbJsonLd } from '../components/JsonLd'
-import Footer from '../components/Footer'
 import InnerPageHero from '../components/InnerPageHero'
 
 import heroImg        from '../assets/images/insights/InsightsHero.png'
@@ -46,7 +45,7 @@ const featuredBodyItem = {
 interface Article {
   title: string
   excerpt: string
-  img: string
+  img: StaticImageData
   slug: string
   category: string
 }
@@ -186,9 +185,6 @@ export default function Insights() {
 
   return (
     <>
-      <SEO {...PAGE_SEO.insights} />
-      <BreadcrumbJsonLd crumbs={[{ name: 'Home', href: '/' }, { name: 'Insights', href: '/insights' }]} />
-      <Navbar />
       <main>
 
         {/* ── HERO ─────────────────────────────────────────────── */}
@@ -217,7 +213,7 @@ export default function Insights() {
             </motion.div>
 
             {/* Featured article — horizontal editorial card */}
-            <motion.a
+            <MotionLink
               href={`/insights/${featuredArticle.slug}`}
               className="ins-featured"
               initial={{ opacity: 0, y: 28 }}
@@ -232,7 +228,7 @@ export default function Insights() {
                 viewport={{ once: true, amount: 0.12 }}
                 transition={{ duration: 0.9, ease }}
               >
-                <img src={featuredArticle.img} alt={featuredArticle.title} className="ins-featured-img" />
+                <Image src={featuredArticle.img} alt={featuredArticle.title} className="ins-featured-img" sizes="(max-width: 960px) 100vw, 55vw" />
               </motion.div>
               <motion.div
                 className="ins-featured-body"
@@ -247,7 +243,7 @@ export default function Insights() {
                 <motion.p className="ins-featured-excerpt" variants={featuredBodyItem}>{featuredArticle.excerpt}</motion.p>
                 <motion.span className="about-article-link" variants={featuredBodyItem}>Read Article</motion.span>
               </motion.div>
-            </motion.a>
+            </MotionLink>
 
             {/* Pair row — 2 wide cards */}
             <div className="ins-pair-row">
@@ -324,14 +320,13 @@ export default function Insights() {
         </section>
 
       </main>
-      <Footer />
     </>
   )
 }
 
 function ArticleCard({ article, delay = 0 }: { article: Article; delay?: number }) {
   return (
-    <motion.a
+    <MotionLink
       href={`/insights/${article.slug}`}
       className="about-article"
       initial={{ opacity: 0, y: 22 }}
@@ -340,7 +335,7 @@ function ArticleCard({ article, delay = 0 }: { article: Article; delay?: number 
       transition={{ duration: 0.6, delay, ease }}
     >
       <div className="about-article-img-wrap">
-        <img src={article.img} alt={article.title} className="about-article-img" />
+        <Image src={article.img} alt={article.title} className="about-article-img" sizes="(max-width: 768px) 100vw, 33vw" />
       </div>
       <div className="about-article-body">
         <span className="ins-card-category">{article.category}</span>
@@ -349,6 +344,6 @@ function ArticleCard({ article, delay = 0 }: { article: Article; delay?: number 
         <p className="about-article-excerpt">{article.excerpt}</p>
         <span className="about-article-link">Read More</span>
       </div>
-    </motion.a>
+    </MotionLink>
   )
 }

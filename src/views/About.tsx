@@ -1,10 +1,10 @@
+'use client'
+
+import Image, { type StaticImageData } from 'next/image'
+import Link from 'next/link'
+import MotionLink from '../components/MotionLink'
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
-import Navbar from '../components/Navbar'
-import SEO from '../components/SEO'
-import { PAGE_SEO } from '../data/seo'
-import { BreadcrumbJsonLd } from '../components/JsonLd'
-import Footer from '../components/Footer'
 import InnerPageHero from '../components/InnerPageHero'
 
 import missionImg    from '../assets/images/about/hero-mission.png'
@@ -56,7 +56,7 @@ interface Service {
   title: string
   body: string
   bullets: Bullet[]
-  img: string
+  img: StaticImageData
   alt: string
   fromLeft: boolean
 }
@@ -148,9 +148,6 @@ export default function About() {
 
   return (
     <>
-      <SEO {...PAGE_SEO.about} />
-      <BreadcrumbJsonLd crumbs={[{ name: 'Home', href: '/' }, { name: 'About', href: '/about' }]} />
-      <Navbar />
       <main className="about-page-main">
 
         {/* Hero — mission image, no founder photo duplication */}
@@ -206,7 +203,7 @@ export default function About() {
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 0.9, ease }}
               >
-                <img src={founderImg} alt="Fernanda Welzel" className="about-founder-photo" />
+                <Image src={founderImg} alt="Fernanda Welzel" className="about-founder-photo" sizes="400px" />
               </motion.div>
 
               <div className="about-founder-text">
@@ -309,7 +306,7 @@ export default function About() {
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 0.85, ease }}
               >
-                <img src={insightsImg} alt="" className="about-insights-img" />
+                <Image src={insightsImg} alt="" className="about-insights-img" sizes="(max-width: 960px) 100vw, 50vw" />
               </motion.div>
 
               <motion.div
@@ -329,7 +326,7 @@ export default function About() {
             {/* 3 equal article cards — image on top, text drags up below */}
             <div className="about-articles">
               {ARTICLES.map((article, i) => (
-                <motion.a
+                <MotionLink
                   key={i}
                   href={`/insights/${article.slug}`}
                   className="about-article"
@@ -339,7 +336,7 @@ export default function About() {
                   transition={{ duration: 0.55, delay: i * 0.12, ease }}
                 >
                   <div className="about-article-img-wrap">
-                    <img src={article.img} alt={article.title} className="about-article-img" />
+                    <Image src={article.img} alt={article.title} className="about-article-img" sizes="(max-width: 768px) 100vw, 33vw" />
                   </div>
                   <motion.div
                     className="about-article-body"
@@ -353,7 +350,7 @@ export default function About() {
                     <p className="about-article-excerpt">{article.excerpt}</p>
                     <span className="about-article-link">Read More</span>
                   </motion.div>
-                </motion.a>
+                </MotionLink>
               ))}
             </div>
 
@@ -364,7 +361,7 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.55, ease }}
             >
-              <a href="/insights" className="about-collection-link">View Full Collection</a>
+              <Link href="/insights" className="about-collection-link">View Full Collection</Link>
             </motion.div>
 
           </div>
@@ -396,7 +393,7 @@ export default function About() {
                 transition={{ duration: 0.65, delay: 0.1, ease }}
               >
                 {submitted ? (
-                  <p className="about-subscribe-success">You're on the list. We'll be in touch.</p>
+                  <p className="about-subscribe-success">You&apos;re on the list. We&apos;ll be in touch.</p>
                 ) : (
                   <>
                     <input
@@ -424,7 +421,6 @@ export default function About() {
         </section>
 
       </main>
-      <Footer />
     </>
   )
 }
@@ -444,7 +440,7 @@ function ServiceRow({ svc }: { svc: Service }) {
         viewport={{ once: true, amount: 0.25 }}
         variants={imgVariant}
       >
-        <img src={svc.img} alt={svc.alt} className="about-svc-img" />
+        <Image src={svc.img} alt={svc.alt} className="about-svc-img" sizes="(max-width: 960px) 100vw, 50vw" />
       </motion.div>
 
       <motion.div

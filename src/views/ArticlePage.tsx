@@ -1,58 +1,25 @@
-import { useState, type ChangeEvent, type FormEvent } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import { ARTICLES_CONTENT, type ArticleSection } from '../data/articles'
-import SEO from '../components/SEO'
-import { ArticleJsonLd, BreadcrumbJsonLd } from '../components/JsonLd'
-import { ARTICLE_SEO, SITE_URL } from '../data/seo'
+'use client'
 
-import imgWhatIs    from '../assets/images/insights/WhatIs.png'
-import imgDoINeed   from '../assets/images/insights/DoINeed.png'
-import imgContracts from '../assets/images/insights/WhatContracts.png'
-import imgCorpGov   from '../assets/images/insights/CorporateGovernance.jpg'
-import imgShouldI   from '../assets/images/insights/ShouldI.png'
-import imgFedProv   from '../assets/images/insights/WhatIsTheDiff.png'
-import imgConvert   from '../assets/images/insights/CanIConvert.png'
-import imgHST       from '../assets/images/insights/WhenDoINeed.png'
-import imgIncorProt from '../assets/images/insights/HowDoesIncor.jpg'
-import imgEmployee  from '../assets/images/insights/WhatAreMy.png'
-import imgClosing   from '../assets/images/insights/WhatAreClosingCosts.png'
-import imgLandTax   from '../assets/images/insights/HowMuchisLand.png'
-import imgTitle     from '../assets/images/insights/DoINeedTitleInsurance.png'
-import imgNonCan    from '../assets/images/insights/CanNonCanadians.png'
-import imgDeposit   from '../assets/images/insights/WhatHappens.jpg'
+import { useState, type ChangeEvent, type FormEvent } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { motion, AnimatePresence } from 'framer-motion'
+import type { ArticleSection } from '../data/articles'
+import type { ArticleMeta } from '../data/articleMeta'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
-const ARTICLES_META = [
-  { slug: 'what-is-a-fractional-general-counsel',          title: 'What is a Fractional General Counsel?',                                         category: 'Fractional GC',  img: imgWhatIs    },
-  { slug: 'do-i-need-a-general-counsel',                   title: 'Do I Need a General Counsel? 7 Signs Your SMB Has Outgrown Ad-Hoc Legal',        category: 'Fractional GC',  img: imgDoINeed   },
-  { slug: 'contracts-every-canadian-smb-should-have',      title: 'What Contracts Every Canadian SMB Should Have in Place',                          category: 'Business Law',   img: imgContracts },
-  { slug: 'corporate-governance-basics-canadian-businesses',title: 'Corporate Governance Basics for Growing Canadian Businesses',                    category: 'Business Law',   img: imgCorpGov   },
-  { slug: 'incorporate-or-sole-proprietorship-ontario',    title: 'Should I Incorporate or Register as a Sole Proprietorship in Ontario?',           category: 'Incorporation',  img: imgShouldI   },
-  { slug: 'federal-vs-provincial-incorporation-ontario',   title: 'What is the Difference Between Federal and Provincial Incorporation in Ontario?', category: 'Incorporation',  img: imgFedProv   },
-  { slug: 'convert-sole-proprietorship-to-corporation-ontario', title: 'Can I Convert My Sole Proprietorship to a Corporation Later?',              category: 'Incorporation',  img: imgConvert   },
-  { slug: 'when-to-register-for-hst-ontario',             title: 'When Do I Need to Register for HST in Ontario?',                                  category: 'Incorporation',  img: imgHST       },
-  { slug: 'how-incorporation-protects-personal-assets',    title: 'How Does Incorporation Protect My Personal Assets?',                              category: 'Incorporation',  img: imgIncorProt },
-  { slug: 'obligations-hiring-first-employee-ontario',     title: 'What Are My Obligations When Hiring My First Employee in Ontario?',               category: 'Business Law',   img: imgEmployee  },
-  { slug: 'closing-costs-ontario',                         title: 'What Are Closing Costs in Ontario and Who Pays Them?',                            category: 'Real Estate',    img: imgClosing   },
-  { slug: 'land-transfer-tax-ontario',                     title: 'How Much Is Land Transfer Tax in Ontario?',                                       category: 'Real Estate',    img: imgLandTax   },
-  { slug: 'title-insurance-ontario',                       title: 'Do I Need Title Insurance in Ontario?',                                           category: 'Real Estate',    img: imgTitle     },
-  { slug: 'non-canadians-buying-property-ontario',         title: 'Can Non-Canadians Buy Property in Ontario?',                                      category: 'Real Estate',    img: imgNonCan    },
-  { slug: 'deposit-deal-falls-through-ontario',            title: 'What Happens to My Deposit if the Deal Falls Through?',                           category: 'Real Estate',    img: imgDeposit   },
-]
+interface ArticlePageProps {
+  meta: ArticleMeta
+  sections: ArticleSection[]
+}
 
-export default function ArticlePage() {
-  const { slug } = useParams<{ slug: string }>()
+// Lookup, 404 handling, metadata and JSON-LD live in app/insights/[slug]/page.tsx.
+// This view only receives the one article it renders.
+export default function ArticlePage({ meta, sections }: ArticlePageProps) {
   const [form, setForm] = useState({ name: '', email: '', phone: '' })
   const [submitted, setSubmitted] = useState(false)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
-
-  const meta    = ARTICLES_META.find(a => a.slug === slug)
-  const content = ARTICLES_CONTENT.find(a => a.slug === slug)
-  const seo     = ARTICLE_SEO.find(a => a.slug === slug)
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -62,58 +29,13 @@ export default function ArticlePage() {
     setSubmitted(true)
   }
 
-  if (!meta || !content) {
-    return (
-      <>
-        <Navbar />
-        <main className="ap-not-found">
-          <p>Article not found.</p>
-          <Link to="/insights">← Back to Insights</Link>
-        </main>
-        <Footer />
-      </>
-    )
-  }
-
-  const ogImage = meta ? `${SITE_URL}${meta.img}` : undefined
-
   return (
     <>
-      {seo && (
-        <>
-          <SEO
-            title={seo.title}
-            description={seo.description}
-            canonical={`/insights/${seo.slug}`}
-            ogType="article"
-            ogImage={ogImage}
-            article={{
-              publishedTime: seo.publishedDate,
-              author: 'Fernanda Welzel',
-              section: seo.category,
-            }}
-          />
-          <ArticleJsonLd
-            title={seo.title}
-            description={seo.description}
-            slug={seo.slug}
-            publishedDate={seo.publishedDate}
-            image={ogImage ?? `${SITE_URL}/og-image.svg`}
-            category={seo.category}
-          />
-          <BreadcrumbJsonLd crumbs={[
-            { name: 'Home', href: '/' },
-            { name: 'Insights', href: '/insights' },
-            { name: meta?.title ?? seo.title, href: `/insights/${seo.slug}` },
-          ]} />
-        </>
-      )}
-      <Navbar />
       <main>
 
         {/* ── BACK LINK ─────────────────────────────────────────── */}
         <div className="ap-back-wrap">
-          <Link to="/insights" className="ap-back-link">
+          <Link href="/insights" className="ap-back-link">
             <span className="ap-back-arrow">←</span> Back to Insights
           </Link>
         </div>
@@ -125,7 +47,7 @@ export default function ArticlePage() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, ease }}
         >
-          <img src={meta.img} alt={meta.title} className="ap-hero-img" />
+          <Image src={meta.img} alt={meta.title} className="ap-hero-img" sizes="(max-width: 1280px) 100vw, 1280px" preload />
         </motion.div>
 
         {/* ── ARTICLE HEADER ────────────────────────────────────── */}
@@ -177,7 +99,7 @@ export default function ArticlePage() {
         {/* ── ARTICLE BODY ──────────────────────────────────────── */}
         <article className="ap-body-wrap">
           <div className="ap-body">
-            {content.sections.map((section, i) => (
+            {sections.map((section, i) => (
               <Section key={i} section={section} openFaq={openFaq} setOpenFaq={setOpenFaq} />
             ))}
           </div>
@@ -268,7 +190,6 @@ export default function ArticlePage() {
         </section>
 
       </main>
-      <Footer />
     </>
   )
 }

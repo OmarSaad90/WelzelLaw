@@ -1,10 +1,10 @@
+'use client'
+
+import Image, { type StaticImageData } from 'next/image'
+import Link from 'next/link'
+import MotionLink from '../components/MotionLink'
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
-import Navbar from '../components/Navbar'
-import SEO from '../components/SEO'
-import { PAGE_SEO } from '../data/seo'
-import { ServiceJsonLd, BreadcrumbJsonLd } from '../components/JsonLd'
-import Footer from '../components/Footer'
 import InnerPageHero from '../components/InnerPageHero'
 
 import heroImg       from '../assets/images/fgc/hero.jpg'
@@ -40,7 +40,7 @@ interface ServiceItem {
   title: string
   body: string
   bullets: string[]
-  img: string
+  img: StaticImageData
   alt: string
 }
 
@@ -208,10 +208,6 @@ export default function FractionalGeneralCounsel() {
 
   return (
     <>
-      <SEO {...PAGE_SEO.fgc} />
-      <ServiceJsonLd name="Fractional General Counsel" description="Executive-level legal oversight for growing Ontario businesses at a fixed monthly fee. Strategic legal support without the cost of a full-time General Counsel." url="/fractional-general-counsel" />
-      <BreadcrumbJsonLd crumbs={[{ name: 'Home', href: '/' }, { name: 'Fractional General Counsel', href: '/fractional-general-counsel' }]} />
-      <Navbar />
       <main className="fgc-page-main">
 
         {/* ── HERO ──────────────────────────────────────────── */}
@@ -332,7 +328,7 @@ export default function FractionalGeneralCounsel() {
 
             <div className="about-articles">
               {ARTICLES.map((article, i) => (
-                <motion.a
+                <MotionLink
                   key={i}
                   href={`/insights/${article.slug}`}
                   className="about-article"
@@ -342,7 +338,7 @@ export default function FractionalGeneralCounsel() {
                   transition={{ duration: 0.55, delay: i * 0.12, ease }}
                 >
                   <div className="about-article-img-wrap">
-                    <img src={article.img} alt={article.title} className="about-article-img" />
+                    <Image src={article.img} alt={article.title} className="about-article-img" sizes="(max-width: 768px) 100vw, 33vw" />
                   </div>
                   <motion.div
                     className="about-article-body"
@@ -356,7 +352,7 @@ export default function FractionalGeneralCounsel() {
                     <p className="about-article-excerpt">{article.excerpt}</p>
                     <span className="about-article-link">Read More</span>
                   </motion.div>
-                </motion.a>
+                </MotionLink>
               ))}
             </div>
 
@@ -367,7 +363,7 @@ export default function FractionalGeneralCounsel() {
               viewport={{ once: true }}
               transition={{ duration: 0.55, ease }}
             >
-              <a href="/insights" className="about-collection-link">View Full Collection</a>
+              <Link href="/insights" className="about-collection-link">View Full Collection</Link>
             </motion.div>
 
           </div>
@@ -401,7 +397,7 @@ export default function FractionalGeneralCounsel() {
                 transition={{ duration: 0.65, delay: 0.1, ease }}
               >
                 {submitted ? (
-                  <p className="about-subscribe-success">You're on the list. We'll be in touch.</p>
+                  <p className="about-subscribe-success">You&apos;re on the list. We&apos;ll be in touch.</p>
                 ) : (
                   <>
                     <input type="text" name="name" placeholder="Full Name" value={form.name} onChange={handleChange} required className="about-subscribe-input" />
@@ -417,7 +413,6 @@ export default function FractionalGeneralCounsel() {
         </section>
 
       </main>
-      <Footer />
     </>
   )
 }
@@ -425,7 +420,7 @@ export default function FractionalGeneralCounsel() {
 /* ── Overview block (image left, text right) ─────────────────── */
 
 function FgcOverviewBlock({ title, body, img, alt, cta, imageRight, imgPosition = 'center' }: {
-  title: string; body: string; img: string; alt: string; cta?: boolean; imageRight?: boolean; imgPosition?: string
+  title: string; body: string; img: StaticImageData; alt: string; cta?: boolean; imageRight?: boolean; imgPosition?: string
 }) {
   return (
     <div className={`fgc-overview-block${imageRight ? ' fgc-overview-block-reverse' : ''}`}>
@@ -436,7 +431,7 @@ function FgcOverviewBlock({ title, body, img, alt, cta, imageRight, imgPosition 
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.9, ease }}
       >
-        <img src={img} alt={alt} className="fgc-overview-img" style={{ objectPosition: imgPosition }} />
+        <Image src={img} alt={alt} className="fgc-overview-img" style={{ objectPosition: imgPosition }} sizes="(max-width: 960px) 100vw, 50vw" />
       </motion.div>
 
       <motion.div
@@ -476,7 +471,7 @@ function FgcFullRow({ svc, fromLeft }: { svc: ServiceItem; fromLeft: boolean }) 
         viewport={{ once: true, amount: 0.2 }}
         variants={imgVariant}
       >
-        <img src={svc.img} alt={svc.alt} className="fgc-svc-full-img" />
+        <Image src={svc.img} alt={svc.alt} className="fgc-svc-full-img" sizes="(max-width: 960px) 100vw, 50vw" />
       </motion.div>
 
       <motion.div
@@ -520,7 +515,7 @@ function FgcPairRow({ items }: { items: [ServiceItem, ServiceItem] }) {
           transition={{ duration: 0.7, delay: i * 0.12, ease }}
         >
           <div className="fgc-svc-pair-img-wrap">
-            <img src={svc.img} alt={svc.alt} className="fgc-svc-pair-img" />
+            <Image src={svc.img} alt={svc.alt} className="fgc-svc-pair-img" sizes="(max-width: 960px) 100vw, 50vw" />
           </div>
           <div className="fgc-svc-pair-text">
             <div>

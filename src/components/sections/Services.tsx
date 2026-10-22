@@ -1,4 +1,11 @@
+'use client'
+
+import Image, { type StaticImageData } from 'next/image'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
+import businessLawIcon from '../../assets/images/icons/business-law.png'
+import fgcIcon from '../../assets/images/icons/fgc.png'
+import realEstateIcon from '../../assets/images/icons/real-estate.png'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -16,21 +23,21 @@ const fadeUp = {
 
 const SERVICES = [
   {
-    iconSrc: '/images/icons/business-law.png',
+    iconSrc: businessLawIcon,
     title: 'Business Law',
     body: 'Strong businesses don\'t just happen, they\'re built on solid legal ground. We help Ontario founders and entrepreneurs establish that foundation, stay ahead of problems, and move forward with confidence at every stage.',
     href: '/business-law',
     featured: false,
   },
   {
-    iconSrc: '/images/icons/fgc.png',
+    iconSrc: fgcIcon,
     title: 'Fractional General Counsel',
     body: 'As your Fractional General Counsel, we become a true executive partner embedded in your company: attending meetings, negotiating contracts, managing risk, and keeping your business protected at every turn. You get counsel invested in your success, without the $200K to $350K yearly salary. A monthly fixed fee, no billing anxiety. Just peace of mind.',
     href: '/fractional-general-counsel',
     featured: true,
   },
   {
-    iconSrc: '/images/icons/real-estate.png',
+    iconSrc: realEstateIcon,
     title: 'Real Estate Law',
     body: 'Buying or selling a home? Real estate transactions are high-stakes. The legal details, title search, insurance, offer conditions, matter enormously. As trusted real estate lawyers, we protect Ontario buyers and sellers from offer to closing, so you can move forward with confidence and no surprises.',
     href: '/real-estate-law',
@@ -137,7 +144,7 @@ export default function Services() {
 function ServiceCard({
   iconSrc, title, body, href, featured, cardStyle,
 }: {
-  iconSrc: string
+  iconSrc: StaticImageData
   title: string
   body: string
   href: string
@@ -167,8 +174,9 @@ function ServiceCard({
     >
       {/* Top group: icon + title + body */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
-        <img
+        <Image
           src={iconSrc}
+          sizes="60px"
           alt=""
           aria-hidden="true"
           style={{
@@ -203,7 +211,7 @@ function ServiceCard({
       </div>
 
       {/* CTA link — always pinned to bottom */}
-      <a
+      <Link
         href={href}
         style={{
           display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)',
@@ -217,7 +225,7 @@ function ServiceCard({
       >
         Learn More
         <span className="learn-more-arrow" style={{ fontSize: '1.1em' }}>→</span>
-      </a>
+      </Link>
     </motion.article>
   )
 }

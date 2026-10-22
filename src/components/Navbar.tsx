@@ -1,5 +1,8 @@
+'use client'
+
 import { useState, useEffect, useRef } from 'react'
-import { useLocation } from 'react-router-dom'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import MagneticButton from './MagneticButton'
@@ -14,10 +17,9 @@ const PRACTICE_AREAS = [
 ]
 
 export default function Navbar() {
-  const { pathname } = useLocation()
+  const pathname = usePathname()
   const isHome = pathname === '/'
   const [scrolled, setScrolled] = useState(false)
-  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 960)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [practiceOpen, setPracticeOpen] = useState(false)
   const [mobilePracticeOpen, setMobilePracticeOpen] = useState(false)
@@ -39,9 +41,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const onResize = () => {
-      const mobile = window.innerWidth <= 960
-      setIsMobile(mobile)
-      if (!mobile) setMobileOpen(false)
+      if (window.innerWidth > 960) setMobileOpen(false)
     }
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
@@ -77,9 +77,16 @@ export default function Navbar() {
       }}>
 
         {/* Logo */}
-        <a href="/" style={{ flexShrink: 0, display: 'flex', alignItems: 'center', lineHeight: 1 }}>
-          <WelzelLogo variant={!scrolled && isHome && !isMobile ? 'dark' : 'light'} height={34} />
-        </a>
+        {/* Mobile always gets the light (teal) wordmark; the desktop/mobile swap is
+            CSS-driven (index.css @960px) so server HTML never flashes the wrong logo. */}
+        <Link href="/" style={{ flexShrink: 0, display: 'flex', alignItems: 'center', lineHeight: 1 }}>
+          <span className="nav-logo-desktop">
+            <WelzelLogo variant={!scrolled && isHome ? 'dark' : 'light'} height={34} />
+          </span>
+          <span className="nav-logo-mobile">
+            <WelzelLogo variant="light" height={34} />
+          </span>
+        </Link>
 
         {/* Desktop nav */}
         <div className="desktop-nav" style={{
@@ -87,11 +94,11 @@ export default function Navbar() {
           alignItems: 'center',
           gap: 'var(--space-6)',
         }}>
-          <a href="/about"
+          <Link href="/about"
             className="nav-link"
             style={{ ...navLinkStyle() }}>
             About
-          </a>
+          </Link>
 
           {/* Practice Areas dropdown */}
           <div
@@ -135,7 +142,8 @@ export default function Navbar() {
                   }}
                 >
                   {PRACTICE_AREAS.map((item) => (
-                    <a key={item.href} href={item.href}
+                    <Link key={item.href} href={item.href}
+                      onClick={() => setPracticeOpen(false)}
                       className="dropdown-item"
                       style={{
                         display: 'block',
@@ -148,16 +156,16 @@ export default function Navbar() {
                         transition: 'background 0.15s, color 0.15s',
                       }}>
                       {item.label}
-                    </a>
+                    </Link>
                   ))}
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
 
-          <a href="/insights" className="nav-link" style={navLinkStyle()}>Insights</a>
-          <a href="/insights#subscribe" className="nav-link" style={navLinkStyle()}>Subscribe</a>
-          <a href="/contact" className="nav-link" style={navLinkStyle()}>Contact</a>
+          <Link href="/insights" className="nav-link" style={navLinkStyle()}>Insights</Link>
+          <Link href="/insights#subscribe" className="nav-link" style={navLinkStyle()}>Subscribe</Link>
+          <Link href="/contact" className="nav-link" style={navLinkStyle()}>Contact</Link>
 
           <MagneticButton>
             <motion.a
@@ -227,10 +235,10 @@ export default function Navbar() {
               display: 'flex', flexDirection: 'column', gap: 0,
               borderTop: '1px solid var(--color-border)',
             }}>
-              <a href="/about" onClick={() => setMobileOpen(false)}
+              <Link href="/about" onClick={() => setMobileOpen(false)}
                 style={{ ...mobileLinkStyle, borderBottom: '1px solid var(--color-border)' }}>
                 About
-              </a>
+              </Link>
 
               {/* Mobile Practice Areas — 2nd after About */}
               <div style={{ borderBottom: '1px solid var(--color-border)' }}>
@@ -260,7 +268,7 @@ export default function Navbar() {
                       style={{ overflow: 'hidden' }}
                     >
                       {PRACTICE_AREAS.map((item) => (
-                        <a key={item.href} href={item.href}
+                        <Link key={item.href} href={item.href}
                           onClick={() => setMobileOpen(false)}
                           style={{
                             display: 'block',
@@ -270,7 +278,7 @@ export default function Navbar() {
                             padding: 'var(--space-3) var(--space-6)',
                           }}>
                           {item.label}
-                        </a>
+                        </Link>
                       ))}
                     </motion.div>
                   )}
@@ -278,12 +286,12 @@ export default function Navbar() {
               </div>
 
               {['Insights', 'Subscribe', 'Contact'].map((label) => (
-                <a key={label}
+                <Link key={label}
                   href={label === 'Subscribe' ? '/insights#subscribe' : `/${label.toLowerCase()}`}
                   onClick={() => setMobileOpen(false)}
                   style={{ ...mobileLinkStyle, borderBottom: '1px solid var(--color-border)' }}>
                   {label}
-                </a>
+                </Link>
               ))}
 
               <a href="tel:+16479075459" style={{

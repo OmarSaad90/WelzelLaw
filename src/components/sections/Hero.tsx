@@ -1,6 +1,8 @@
+'use client'
+
 import { motion } from 'framer-motion'
 import MagneticButton from '../MagneticButton'
-import heroVideo from '../../assets/videos/home/test2.mp4'
+import MotionImage from '../MotionImage'
 import heroPlants from '../../assets/images/hero/plants.jpg'
 
 const ease = [0.16, 1, 0.3, 1] as const
@@ -55,7 +57,7 @@ export default function Hero() {
             zIndex: 0,
           }}
         >
-          <source src={heroVideo} type="video/mp4" />
+          <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
 
@@ -206,10 +208,11 @@ export default function Hero() {
 
         {/* Left: image column — overflow:hidden clips the inner scale animation */}
         <div className="plants-split-image">
-          <motion.img
+          <MotionImage
             src={heroPlants}
             alt=""
             aria-hidden="true"
+            sizes="(max-width: 768px) 100vw, 50vw"
             initial={{ opacity: 0, scale: 1.04 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-80px' }}

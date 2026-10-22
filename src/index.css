@@ -40,6 +40,8 @@ body {
 
 a { text-decoration: none; color: inherit; }
 img, video { max-width: 100%; display: block; }
+/* next/image emits width/height attributes; keep intrinsic aspect ratio unless a rule sets height */
+img { height: auto; }
 button { cursor: pointer; font-family: inherit; }
 ul, ol { list-style: none; }
 
@@ -73,9 +75,15 @@ ul, ol { list-style: none; }
   color: var(--color-primary) !important;
 }
 
+/* Navbar logo: desktop variant follows scroll/home state, mobile is always light */
+.nav-logo-desktop, .nav-logo-mobile { display: flex; align-items: center; }
+.nav-logo-mobile { display: none; }
+
 @media (max-width: 960px) {
   .desktop-nav { display: none !important; }
   .hamburger { display: flex !important; align-items: center; }
+  .nav-logo-desktop { display: none; }
+  .nav-logo-mobile { display: flex; }
 }
 @media (min-width: 961px) {
   .hamburger { display: none !important; }

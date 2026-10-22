@@ -1,4 +1,8 @@
+'use client'
+
+import Image from 'next/image'
 import { motion } from 'framer-motion'
+import skyscrapersImg from '../../assets/images/home/skyscrapers.webp'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -38,9 +42,10 @@ export default function WhyWelzel() {
           boxShadow: 'var(--shadow-md)',
         }}
       >
-        <img
-          src="/images/home/skyscrapers.webp"
+        <Image
+          src={skyscrapersImg}
           alt="Glass skyscrapers"
+          sizes="78vw"
           style={{
             width: '100%',
             height: '100%',

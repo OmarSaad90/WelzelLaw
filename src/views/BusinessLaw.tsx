@@ -1,10 +1,10 @@
+'use client'
+
+import Image, { type StaticImageData } from 'next/image'
+import Link from 'next/link'
+import MotionLink from '../components/MotionLink'
 import React, { useState, type ChangeEvent, type FormEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import Navbar from '../components/Navbar'
-import SEO from '../components/SEO'
-import { PAGE_SEO } from '../data/seo'
-import { ServiceJsonLd, BreadcrumbJsonLd } from '../components/JsonLd'
-import Footer from '../components/Footer'
 import InnerPageHero from '../components/InnerPageHero'
 
 import heroImg       from '../assets/images/business-law/hero.jpg'
@@ -37,7 +37,7 @@ interface ServiceItem {
   title: string
   body: string
   bullets: string[]
-  img: string
+  img: StaticImageData
   alt: string
   fromLeft: boolean
 }
@@ -178,10 +178,6 @@ export default function BusinessLaw() {
 
   return (
     <>
-      <SEO {...PAGE_SEO.businessLaw} />
-      <ServiceJsonLd name="Business Law" description="Shareholder agreements, commercial contracts, incorporations, employment agreements, and commercial leases for Ontario entrepreneurs." url="/business-law" />
-      <BreadcrumbJsonLd crumbs={[{ name: 'Home', href: '/' }, { name: 'Business Law', href: '/business-law' }]} />
-      <Navbar />
       <main className="bl-page-main">
 
         {/* ── HERO ────────────────────────────────────────────── */}
@@ -347,7 +343,7 @@ export default function BusinessLaw() {
 
             <div className="about-articles">
               {ARTICLES.map((article, i) => (
-                <motion.a
+                <MotionLink
                   key={i}
                   href={`/insights/${article.slug}`}
                   className="about-article"
@@ -357,7 +353,7 @@ export default function BusinessLaw() {
                   transition={{ duration: 0.55, delay: i * 0.12, ease }}
                 >
                   <div className="about-article-img-wrap">
-                    <img src={article.img} alt={article.title} className="about-article-img" />
+                    <Image src={article.img} alt={article.title} className="about-article-img" sizes="(max-width: 768px) 100vw, 33vw" />
                   </div>
                   <motion.div
                     className="about-article-body"
@@ -371,7 +367,7 @@ export default function BusinessLaw() {
                     <p className="about-article-excerpt">{article.excerpt}</p>
                     <span className="about-article-link">Read More</span>
                   </motion.div>
-                </motion.a>
+                </MotionLink>
               ))}
             </div>
 
@@ -382,7 +378,7 @@ export default function BusinessLaw() {
               viewport={{ once: true }}
               transition={{ duration: 0.55, ease }}
             >
-              <a href="/insights" className="about-collection-link">View Full Collection</a>
+              <Link href="/insights" className="about-collection-link">View Full Collection</Link>
             </motion.div>
 
           </div>
@@ -416,7 +412,7 @@ export default function BusinessLaw() {
                 transition={{ duration: 0.65, delay: 0.1, ease }}
               >
                 {submitted ? (
-                  <p className="about-subscribe-success">You're on the list. We'll be in touch.</p>
+                  <p className="about-subscribe-success">You&apos;re on the list. We&apos;ll be in touch.</p>
                 ) : (
                   <>
                     <input
@@ -444,7 +440,6 @@ export default function BusinessLaw() {
         </section>
 
       </main>
-      <Footer />
     </>
   )
 }
@@ -464,7 +459,7 @@ function BlServiceRow({ svc }: { svc: ServiceItem }) {
         viewport={{ once: true, amount: 0.25 }}
         variants={imgVariant}
       >
-        <img src={svc.img} alt={svc.alt} className="about-svc-img" />
+        <Image src={svc.img} alt={svc.alt} className="about-svc-img" sizes="(max-width: 960px) 100vw, 50vw" />
       </motion.div>
 
       <motion.div

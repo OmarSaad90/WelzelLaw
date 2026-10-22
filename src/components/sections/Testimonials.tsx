@@ -1,3 +1,5 @@
+'use client'
+
 import { motion } from 'framer-motion'
 
 const ease = [0.16, 1, 0.3, 1] as const
@@ -124,7 +126,7 @@ export default function Testimonials() {
                   userSelect: 'none',
                   display: 'block',
                 }}>
-                  "
+                  &quot;
                 </motion.span>
 
                 {/* Quote */}

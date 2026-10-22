@@ -1,5 +1,9 @@
+'use client'
+
 import { useState } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
+import teamHandsImg from '../../assets/images/home/team-hands.png'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -81,16 +85,14 @@ export default function FourPillars() {
           }}
         >
           {/* Placeholder: replace with team-hands image */}
-          <img
-            src="/images/home/team-hands.png"
+          <Image
+            src={teamHandsImg}
+            sizes="(max-width: 640px) 100vw, 50vw"
             alt="Team collaboration"
             style={{
               width: '100%', height: '100%',
               objectFit: 'cover',
               objectPosition: 'center',
-            }}
-            onError={(e) => {
-              ;(e.currentTarget as HTMLImageElement).style.display = 'none'
             }}
           />
 

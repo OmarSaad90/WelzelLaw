@@ -43,7 +43,7 @@ export default function WelzelLogo({
       <text
         x="56"
         y="22"
-        fontFamily="'Manrope', system-ui, sans-serif"
+        style={{ fontFamily: 'var(--font-body)' }}
         fontSize="18"
         fontWeight="600"
         letterSpacing="1.1"
@@ -56,7 +56,7 @@ export default function WelzelLogo({
       <text
         x="57"
         y="35"
-        fontFamily="'Manrope', system-ui, sans-serif"
+        style={{ fontFamily: 'var(--font-body)' }}
         fontSize="11"
         fontWeight="400"
         letterSpacing="1.8"

@@ -1,4 +1,10 @@
+'use client'
+
 import { motion } from 'framer-motion'
+import MotionImage from '../MotionImage'
+import folaLogo from '../../assets/images/logos/fola.png'
+import lsoLogo from '../../assets/images/logos/lso.png'
+import obaLogo from '../../assets/images/logos/oba.png'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -13,9 +19,9 @@ const stagger = {
 }
 
 const AFFILIATIONS = [
-  { name: 'Federation of Ontario Law Associations', src: '/images/logos/fola.png' },
-  { name: 'Law Society of Ontario', src: '/images/logos/lso.png' },
-  { name: 'Ontario Bar Association', src: '/images/logos/oba.png' },
+  { name: 'Federation of Ontario Law Associations', src: folaLogo },
+  { name: 'Law Society of Ontario', src: lsoLogo },
+  { name: 'Ontario Bar Association', src: obaLogo },
 ]
 
 export default function Affiliations() {
@@ -74,8 +80,9 @@ export default function Affiliations() {
             flexWrap: 'nowrap',
           }}>
             {AFFILIATIONS.map((aff) => (
-              <motion.img
+              <MotionImage
                 key={aff.name}
+                sizes="200px"
                 variants={fadeUp}
                 src={aff.src}
                 alt={aff.name}

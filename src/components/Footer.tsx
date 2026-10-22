@@ -1,8 +1,13 @@
+'use client'
+
 import { useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import MagneticButton from './MagneticButton'
 import { MapPin, Clock, Mail, Phone, Linkedin, Instagram } from 'lucide-react'
 import WelzelLogo from './WelzelLogo'
+import skylineImg from '../assets/images/home/toronto-skyline.png'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -44,18 +49,15 @@ export default function Footer() {
         }}
       >
         {/* Toronto skyline background image */}
-        <img
-          src="/images/home/toronto-skyline.png"
+        <Image
+          src={skylineImg}
           alt=""
           aria-hidden="true"
+          fill
+          sizes="100vw"
           style={{
-            position: 'absolute', inset: 0,
-            width: '100%', height: '100%',
             objectFit: 'cover', objectPosition: 'center 40%',
             zIndex: 0,
-          }}
-          onError={(e) => {
-            ;(e.currentTarget as HTMLImageElement).style.display = 'none'
           }}
         />
 
@@ -334,7 +336,7 @@ export default function Footer() {
     { label: 'Privacy Policy', href: '/privacy-policy' },
     { label: 'Terms', href: '/terms-of-service' },
   ].map(({ label, href }) => (
-    <a
+    <Link
       key={href}
       href={href}
       style={{
@@ -348,7 +350,7 @@ export default function Footer() {
       className="footer-legal-link"
     >
       {label}
-    </a>
+    </Link>
   ))}
 </div>
       </div>

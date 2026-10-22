@@ -1,9 +1,8 @@
+'use client'
+
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
-import Navbar from '../components/Navbar'
-import SEO from '../components/SEO'
-import { PAGE_SEO } from '../data/seo'
-import Footer from '../components/Footer'
 import InnerPageHero from '../components/InnerPageHero'
 import termsHero from '../assets/images/legal/terms-hero.jpg'
 
@@ -41,8 +40,8 @@ const SECTIONS: TermsSection[] = [
     title: 'Privacy',
     body: (
       <>
-        Any personal information you submit through this Website will be handled in accordance with the Firm's{' '}
-        <a
+        Any personal information you submit through this Website will be handled in accordance with the Firm&apos;s{' '}
+        <Link
           href="/privacy-policy"
           style={{
             color: 'var(--color-primary)',
@@ -52,8 +51,8 @@ const SECTIONS: TermsSection[] = [
           }}
         >
           Privacy Policy
-        </a>
-        , which outlines how your information is collected, used, and disclosed. The Privacy Policy may be updated periodically, and you are encouraged to review it regularly. By submitting personal information, you consent to its use as described in the Privacy Policy. Note that the Privacy Policy applies only while you are using this Website; once you navigate to another site, that site's own privacy policy will govern.
+        </Link>
+        , which outlines how your information is collected, used, and disclosed. The Privacy Policy may be updated periodically, and you are encouraged to review it regularly. By submitting personal information, you consent to its use as described in the Privacy Policy. Note that the Privacy Policy applies only while you are using this Website; once you navigate to another site, that site&apos;s own privacy policy will govern.
       </>
     ),
   },
@@ -88,7 +87,7 @@ const SECTIONS: TermsSection[] = [
     body: (
       <>
         <p style={{ margin: '0 0 var(--space-4)', lineHeight: 1.78 }}>
-          The Website and its Materials are provided on an "as is" and "as available" basis, with no warranties of any kind, express or implied. The Firm expressly disclaims all warranties, including those relating to accuracy, security, reliability, fitness for a particular purpose, and non-infringement, to the fullest extent permitted by law. The Firm makes no guarantee that the Website is free from viruses or other harmful elements. YOUR USE OF THIS WEBSITE AND ITS MATERIALS IS ENTIRELY AT YOUR OWN RISK.
+          The Website and its Materials are provided on an &quot;as is&quot; and &quot;as available&quot; basis, with no warranties of any kind, express or implied. The Firm expressly disclaims all warranties, including those relating to accuracy, security, reliability, fitness for a particular purpose, and non-infringement, to the fullest extent permitted by law. The Firm makes no guarantee that the Website is free from viruses or other harmful elements. YOUR USE OF THIS WEBSITE AND ITS MATERIALS IS ENTIRELY AT YOUR OWN RISK.
         </p>
         <p style={{ margin: 0, lineHeight: 1.78 }}>
           To the extent permitted by law, the Firm and its partners, employees, agents, consultants, and licensors shall not be liable for any damages of any kind (including direct, indirect, incidental, punitive, or consequential damages) arising from your use of, inability to use, or reliance on this Website or its Materials, regardless of the legal basis for such a claim. This applies even if the Firm was aware of the possibility of such damages.
@@ -138,8 +137,6 @@ const SECTIONS: TermsSection[] = [
 export default function TermsOfService() {
   return (
     <>
-      <SEO {...PAGE_SEO.terms} />
-      <Navbar />
 
       <main style={{ backgroundColor: 'var(--color-bg)' }}>
 
@@ -204,8 +201,6 @@ export default function TermsOfService() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </>
   )
 }
