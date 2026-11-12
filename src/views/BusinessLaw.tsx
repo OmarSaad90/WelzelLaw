@@ -3,7 +3,8 @@
 import Image, { type StaticImageData } from 'next/image'
 import Link from 'next/link'
 import MotionLink from '../components/MotionLink'
-import React, { useState, type ChangeEvent, type FormEvent } from 'react'
+import React, { useState } from 'react'
+import SubscribeForm from '../components/SubscribeForm'
 import { motion, AnimatePresence } from 'framer-motion'
 import InnerPageHero from '../components/InnerPageHero'
 
@@ -159,18 +160,7 @@ const ARTICLES = [
 ]
 
 export default function BusinessLaw() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '' })
-  const [submitted, setSubmitted] = useState(false)
   const [openIndex, setOpenIndex] = useState<number | null>(null)
-
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
-  }
-
-  function handleSubmit(e: FormEvent) {
-    e.preventDefault()
-    setSubmitted(true)
-  }
 
   function toggleItem(i: number) {
     setOpenIndex(prev => (prev === i ? null : i))
@@ -403,37 +393,7 @@ export default function BusinessLaw() {
                 </p>
               </motion.div>
 
-              <motion.form
-                className="about-subscribe-form"
-                onSubmit={handleSubmit}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.65, delay: 0.1, ease }}
-              >
-                {submitted ? (
-                  <p className="about-subscribe-success">You&apos;re on the list. We&apos;ll be in touch.</p>
-                ) : (
-                  <>
-                    <input
-                      type="text" name="name" placeholder="Full Name"
-                      value={form.name} onChange={handleChange} required
-                      className="about-subscribe-input"
-                    />
-                    <input
-                      type="email" name="email" placeholder="Email Address"
-                      value={form.email} onChange={handleChange} required
-                      className="about-subscribe-input"
-                    />
-                    <input
-                      type="tel" name="phone" placeholder="Phone Number (optional)"
-                      value={form.phone} onChange={handleChange}
-                      className="about-subscribe-input"
-                    />
-                    <button type="submit" className="about-subscribe-btn">Subscribe</button>
-                  </>
-                )}
-              </motion.form>
+              <SubscribeForm />
 
             </div>
           </div>

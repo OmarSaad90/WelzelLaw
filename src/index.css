@@ -2211,6 +2211,18 @@ ul, ol { list-style: none; }
   cursor: progress;
 }
 
+.about-subscribe-error {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-error);
+  text-align: center;
+}
+.about-subscribe-error a {
+  color: inherit;
+  text-decoration: underline;
+}
+
 .contact-form-error {
   font-family: var(--font-body);
   font-size: var(--font-size-sm);
