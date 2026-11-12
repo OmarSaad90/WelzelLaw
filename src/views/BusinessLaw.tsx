@@ -213,7 +213,7 @@ export default function BusinessLaw() {
                   Good legal counsel is not just about avoiding risk. It is about giving you the confidence to act decisively: to negotiate from strength, structure deals that hold up, and build a business protected for the long term.
                 </p>
                 <p className="bl-intro-body">
-                  In business, clarity is not a luxury. It is your competitive advantage.
+                  For business owners in Kitchener-Waterloo and across Ontario, clarity is not a luxury. It is your competitive advantage.
                 </p>
                 <a href={FIRM.calendlyUrl} target="_blank" rel="noopener noreferrer" className="about-svc-cta bl-intro-cta">
                   Request a Consult

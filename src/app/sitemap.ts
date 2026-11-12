@@ -17,8 +17,7 @@ const PAGES: { path: string; changeFrequency: ChangeFrequency; priority: number 
   { path: '/real-estate-law',            changeFrequency: 'monthly', priority: 0.9 },
   { path: '/insights',                   changeFrequency: 'weekly',  priority: 0.8 },
   { path: '/contact',                    changeFrequency: 'monthly', priority: 0.8 },
-  { path: '/privacy-policy',             changeFrequency: 'yearly',  priority: 0.2 },
-  { path: '/terms-of-service',           changeFrequency: 'yearly',  priority: 0.2 },
+  // Privacy/Terms are noindex, so they stay out of the sitemap.
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

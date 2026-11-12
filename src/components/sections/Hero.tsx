@@ -102,8 +102,8 @@ export default function Hero() {
             Ontario Corporate &amp; Real Estate Law
           </motion.p>
 
-          {/* Firm name */}
-          <motion.p
+          {/* Firm name — the page's only h1 */}
+          <motion.h1
             variants={heroItem}
             style={{
               fontFamily: 'var(--font-display)',
@@ -116,7 +116,7 @@ export default function Hero() {
             }}
           >
             {FIRM.name}
-          </motion.p>
+          </motion.h1>
 
           {/* Gold rule — scaleX reveal left to right */}
           <motion.div

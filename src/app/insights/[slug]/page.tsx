@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { ArticleJsonLd, BreadcrumbJsonLd } from '@/components/JsonLd'
 import { ARTICLES_CONTENT } from '@/data/articles'
 import { ARTICLES_META } from '@/data/articleMeta'
-import { ARTICLE_SEO, SITE_URL } from '@/data/seo'
+import { ARTICLE_SEO, SITE_URL, articleTitleTag } from '@/data/seo'
 import { buildMetadata } from '@/lib/metadata'
 import ArticlePage from '@/views/ArticlePage'
 
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { seo, meta } = article
 
   return buildMetadata({
-    title: seo.title,
+    title: articleTitleTag(seo.title),
     description: seo.description,
     canonical: `/insights/${seo.slug}`,
     ogType: 'article',

@@ -7,10 +7,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
+      // Privacy/Terms are NOT disallowed here: they carry a noindex meta tag,
+      // and a robots.txt block would stop Google from ever reading it.
       disallow: [
-        // Keep legal boilerplate out of the crawl budget
-        '/privacy-policy',
-        '/terms-of-service',
         // Netlify Forms registry, never a page for visitors
         '/__forms.html',
       ],

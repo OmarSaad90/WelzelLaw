@@ -4,7 +4,10 @@ import { FIRM } from './firm'
 // Staging on Netlify until keysteplegal.ca is connected; then change this one line.
 // Canonical URLs, Open Graph, JSON-LD, sitemap and robots all derive from it.
 export const SITE_URL = 'https://keysteplegal.netlify.app'
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.svg`
+// Raster on purpose: LinkedIn, Facebook and WhatsApp previews (and Google's
+// logo guidelines) don't support SVG.
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png` // 1200×630 share card
+export const LOGO_URL = `${SITE_URL}/logo.png`            // 512×512 square mark, for JSON-LD
 export const FIRM_NAME = FIRM.name
 
 // ─── Page metadata ───────────────────────────────────────────────────────────
@@ -18,7 +21,7 @@ export interface PageSEO {
 
 export const PAGE_SEO: Record<string, PageSEO> = {
   home: {
-    title: 'Key Step Legal | Corporate & Real Estate Lawyer Kitchener Ontario',
+    title: 'Key Step Legal | Corporate & Real Estate Lawyer, Kitchener',
     description:
       'Boutique law firm in Kitchener, Ontario. Expert corporate law, real estate closings, business contracts, and fractional general counsel for Ontario entrepreneurs and investors. Book a free discovery call.',
     canonical: '/',
@@ -30,31 +33,31 @@ export const PAGE_SEO: Record<string, PageSEO> = {
     canonical: '/about',
   },
   businessLaw: {
-    title: 'Business Law Kitchener Ontario | Contracts, Incorporations & Commercial Law | Key Step Legal',
+    title: 'Business Lawyer Kitchener-Waterloo | Key Step Legal',
     description:
       'Comprehensive business legal services in Kitchener, Ontario. Shareholder agreements, commercial contracts, incorporations, employment agreements, and commercial leases for Ontario entrepreneurs.',
     canonical: '/business-law',
   },
   fgc: {
-    title: 'Fractional General Counsel Ontario | Part-Time Legal Executive | Key Step Legal',
+    title: 'Fractional General Counsel Ontario | Key Step Legal',
     description:
       'Fractional General Counsel for growing Ontario businesses. Executive-level legal oversight at a fixed monthly fee — without the cost of a full-time hire. Key Step Legal serves startups and SMBs across Ontario.',
     canonical: '/fractional-general-counsel',
   },
   realEstate: {
-    title: 'Real Estate Lawyer Kitchener Ontario | Residential & Commercial | Key Step Legal',
+    title: 'Real Estate Lawyer Kitchener-Waterloo | Key Step Legal',
     description:
       'Real estate closing lawyer in Kitchener, Ontario. Residential purchases and sales, title insurance, land transfer tax, and commercial leasing. Serving Ontario buyers, sellers, and investors.',
     canonical: '/real-estate-law',
   },
   insights: {
-    title: 'Legal Insights | Ontario Business & Real Estate Law Articles | Key Step Legal',
+    title: 'Ontario Business & Real Estate Law Insights | Key Step Legal',
     description:
       'Expert legal articles on Ontario corporate law, real estate transactions, small business strategy, and fractional general counsel. Practical guidance for Ontario entrepreneurs.',
     canonical: '/insights',
   },
   contact: {
-    title: 'Contact Key Step Legal | Free Legal Consultation Kitchener Ontario',
+    title: 'Contact Key Step Legal | Free Consultation, Kitchener',
     description:
       `Book a free 15-minute discovery call with Key Step Legal. Corporate and real estate legal services in Kitchener, Ontario. Call ${FIRM.phoneDisplay} or send a message today.`,
     canonical: '/contact',
@@ -74,8 +77,22 @@ export const PAGE_SEO: Record<string, PageSEO> = {
 }
 
 // ─── Article metadata ─────────────────────────────────────────────────────────
+// Google shows roughly the first 60 characters of a <title>.
+const TITLE_DISPLAY_LIMIT = 60
+
+/**
+ * <title> for an article: the plain headline, plus "| Key Step Legal" only
+ * when the result still fits in what Google displays. A truncated brand
+ * ("| Key Ste…") reads worse than no brand, so long headlines go without it.
+ */
+export function articleTitleTag(headline: string): string {
+  const branded = `${headline} | ${FIRM_NAME}`
+  return branded.length <= TITLE_DISPLAY_LIMIT ? branded : headline
+}
+
 export interface ArticleSEO {
   slug: string
+  /** Plain headline, no brand suffix (also used as the Article JSON-LD headline). */
   title: string
   description: string
   category: string
@@ -85,7 +102,7 @@ export interface ArticleSEO {
 export const ARTICLE_SEO: ArticleSEO[] = [
   {
     slug: 'what-is-a-fractional-general-counsel',
-    title: 'What Is a Fractional General Counsel? | Key Step Legal Ontario',
+    title: 'What Is a Fractional General Counsel?',
     description:
       'Learn what a Fractional General Counsel does and whether your Ontario business needs one. Expert guide from Key Step Legal — boutique corporate law firm in Kitchener.',
     category: 'Fractional GC',
@@ -93,7 +110,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'do-i-need-a-general-counsel',
-    title: 'Do I Need a General Counsel? 7 Signs Your Business Has Outgrown Ad-Hoc Legal | Key Step Legal',
+    title: 'Do I Need a General Counsel? 7 Signs It\'s Time',
     description:
       'Not sure if your Ontario business needs a General Counsel? Seven clear signs your company is ready for in-house legal leadership — without the full-time hire.',
     category: 'Fractional GC',
@@ -101,7 +118,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'contracts-every-canadian-smb-should-have',
-    title: 'Contracts Every Canadian Small Business Should Have | Key Step Legal Kitchener',
+    title: 'Contracts Every Canadian Small Business Should Have',
     description:
       'Essential contracts for Canadian small businesses: NDAs, employment agreements, service contracts, and shareholder agreements. Protect your Ontario business with the right legal foundation.',
     category: 'Business Law',
@@ -109,7 +126,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'corporate-governance-basics-canadian-businesses',
-    title: 'Corporate Governance for Canadian Businesses: A Practical Guide | Key Step Legal',
+    title: 'Corporate Governance for Canadian Businesses: A Guide',
     description:
       'Corporate governance basics for Ontario companies. Shareholder agreements, director duties, minute books, and compliance essentials every Canadian business owner should know.',
     category: 'Business Law',
@@ -117,7 +134,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'incorporate-or-sole-proprietorship-ontario',
-    title: 'Incorporate vs. Sole Proprietorship in Ontario: Which Is Right for You? | Key Step Legal',
+    title: 'Incorporate vs. Sole Proprietorship in Ontario',
     description:
       'Incorporate or stay a sole proprietor? Compare tax implications, liability protection, and when to make the switch for your Ontario business. Key Step Legal explains.',
     category: 'Incorporation',
@@ -125,7 +142,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'federal-vs-provincial-incorporation-ontario',
-    title: 'Federal vs. Provincial Incorporation in Ontario: Key Differences | Key Step Legal',
+    title: 'Federal vs. Provincial Incorporation in Ontario',
     description:
       'Should you incorporate federally (CBCA) or provincially (OBCA) in Ontario? Compare costs, name protection, flexibility, and the right choice for your business.',
     category: 'Incorporation',
@@ -133,7 +150,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'convert-sole-proprietorship-to-corporation-ontario',
-    title: 'How to Convert a Sole Proprietorship to a Corporation in Ontario | Key Step Legal',
+    title: 'Convert a Sole Proprietorship to a Corporation in Ontario',
     description:
       'Step-by-step guide to converting your Ontario sole proprietorship to a corporation. Timing, process, legal requirements, and tax considerations explained.',
     category: 'Incorporation',
@@ -141,7 +158,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'when-to-register-for-hst-ontario',
-    title: 'When to Register for HST in Ontario: A Business Owner\'s Guide | Key Step Legal',
+    title: 'When to Register for HST in Ontario',
     description:
       'When must your Ontario business register for HST? Learn the $30,000 threshold, voluntary registration benefits, and the consequences of registering late.',
     category: 'Incorporation',
@@ -149,7 +166,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'how-incorporation-protects-personal-assets',
-    title: 'How Incorporation Protects Your Personal Assets in Ontario | Key Step Legal',
+    title: 'How Incorporation Protects Your Personal Assets in Ontario',
     description:
       'Understand how incorporating your business in Ontario creates a legal shield for personal assets. Key protections, real limitations, and what directors need to know.',
     category: 'Incorporation',
@@ -157,7 +174,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'obligations-hiring-first-employee-ontario',
-    title: 'Legal Obligations When Hiring Your First Employee in Ontario | Key Step Legal',
+    title: 'Legal Obligations When Hiring Your First Employee in Ontario',
     description:
       'Everything Ontario employers need before hiring: employment contracts, source deductions, WSIB registration, ESA compliance, and common first-hire legal mistakes.',
     category: 'Business Law',
@@ -165,7 +182,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'entering-canadian-medical-device-market',
-    title: 'Entering the Canadian Medical Device Market: Structure & Licensing | Key Step Legal',
+    title: 'Entering the Canadian Medical Device Market',
     description:
       'Subsidiary, distributor, or sales agent? How foreign medical device manufacturers should structure Canadian market entry, MDEL and importer roles, and liability allocation.',
     category: 'Healthcare',
@@ -173,7 +190,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'how-medical-devices-are-sold-in-canada',
-    title: 'How Medical Devices and Supplies Are Sold in Canada | Key Step Legal',
+    title: 'How Medical Devices and Supplies Are Sold in Canada',
     description:
       'How Canadian hospitals buy medical devices: provincial tenders, group purchasing organizations, and which provinces to prioritize when entering the market.',
     category: 'Healthcare',
@@ -181,7 +198,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'personal-health-information-privacy-law-canada',
-    title: 'Personal Health Information and Privacy Law in Canada | Key Step Legal',
+    title: 'Personal Health Information and Privacy Law in Canada',
     description:
       'PIPEDA, PHIPA, and provincial data residency rules: which Canadian privacy laws apply to medical device and healthcare companies handling patient data.',
     category: 'Healthcare',
@@ -189,7 +206,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'closing-costs-ontario',
-    title: 'Closing Costs in Ontario: What Home Buyers Really Pay | Key Step Legal',
+    title: 'Closing Costs in Ontario: What Home Buyers Really Pay',
     description:
       'Complete breakdown of Ontario closing costs: land transfer tax, legal fees, title insurance, adjustments, and more. Know exactly what to budget before closing day.',
     category: 'Real Estate',
@@ -197,7 +214,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'land-transfer-tax-ontario',
-    title: 'Land Transfer Tax in Ontario: Rates, Rebates & How to Calculate It | Key Step Legal',
+    title: 'Land Transfer Tax in Ontario: Rates, Rebates & Calculation',
     description:
       'Ontario land transfer tax rates, Toronto municipal tax, first-time buyer rebates, and a complete calculation guide for every price range. Key Step Legal real estate.',
     category: 'Real Estate',
@@ -205,7 +222,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'title-insurance-ontario',
-    title: 'Title Insurance in Ontario: What It Covers and Why You Need It | Key Step Legal',
+    title: 'Title Insurance in Ontario: What It Covers',
     description:
       'What does title insurance cover in Ontario? Owner vs. lender policies, covered risks, cost, and why every Ontario home buyer should have it. Key Step Legal explains.',
     category: 'Real Estate',
@@ -213,7 +230,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'non-canadians-buying-property-ontario',
-    title: 'Non-Canadians Buying Property in Ontario: Complete Legal Guide | Key Step Legal',
+    title: 'Non-Canadians Buying Property in Ontario: Legal Guide',
     description:
       'Can non-Canadians buy property in Ontario? Navigate the Prohibition on the Purchase of Residential Property Act, foreign buyer rules, and your legal options in 2025.',
     category: 'Real Estate',
@@ -221,7 +238,7 @@ export const ARTICLE_SEO: ArticleSEO[] = [
   },
   {
     slug: 'deposit-deal-falls-through-ontario',
-    title: 'What Happens to Your Deposit If a Real Estate Deal Falls Through in Ontario | Key Step Legal',
+    title: 'Deposit Rules When an Ontario Real Estate Deal Falls Through',
     description:
       'If your Ontario real estate deal collapses, what happens to your deposit? Learn the rules around deposit return, conditional offers, and buyer protection in Ontario.',
     category: 'Real Estate',

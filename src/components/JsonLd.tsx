@@ -1,4 +1,4 @@
-import { SITE_URL, DEFAULT_OG_IMAGE } from '../data/seo'
+import { SITE_URL, DEFAULT_OG_IMAGE, LOGO_URL } from '../data/seo'
 import { FIRM } from '../data/firm'
 
 // Escape `<` so a stray "</script>" inside any string value can't close the tag early.
@@ -18,13 +18,12 @@ export function SitewideJsonLd() {
         name: FIRM.name,
         legalName: FIRM.legalName,
         url: SITE_URL,
-        logo: DEFAULT_OG_IMAGE,
+        logo: LOGO_URL,
         image: DEFAULT_OG_IMAGE,
         telephone: FIRM.phoneE164,
         email: FIRM.email,
         priceRange: '$$',
         currenciesAccepted: 'CAD',
-        paymentAccepted: 'Cash, Credit Card, E-Transfer',
         address: {
           '@type': 'PostalAddress',
           streetAddress: FIRM.address.street,
@@ -90,11 +89,6 @@ export function SitewideJsonLd() {
         url: SITE_URL,
         name: FIRM.name,
         publisher: { '@id': `${SITE_URL}/#organization` },
-        potentialAction: {
-          '@type': 'SearchAction',
-          target: `${SITE_URL}/insights?q={search_term_string}`,
-          'query-input': 'required name=search_term_string',
-        },
       },
     ],
   }
@@ -175,7 +169,7 @@ export function ArticleJsonLd({
     publisher: {
       '@id': `${SITE_URL}/#organization`,
       name: FIRM.name,
-      logo: { '@type': 'ImageObject', url: DEFAULT_OG_IMAGE },
+      logo: { '@type': 'ImageObject', url: LOGO_URL },
     },
     articleSection: category,
     inLanguage: 'en-CA',

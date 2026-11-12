@@ -137,7 +137,7 @@ export default function RealEstateLaw() {
                   We have experienced first-hand how easily a deal can unravel when proper due diligence is overlooked, whether it is a title defect, an undisclosed issue, or a clause buried in an agreement that creates problems long after closing. That experience fuels our commitment to every buyer and seller we represent.
                 </p>
                 <p className="rl-intro-body">
-                  We review every detail, ask every question, and make sure nothing stands between you and a transaction you can feel confident about.
+                  Whether you are buying or selling in Kitchener, Waterloo, Cambridge or Guelph, we review every detail, ask every question, and make sure nothing stands between you and a transaction you can feel confident about.
                 </p>
                 <a href={FIRM.calendlyUrl} target="_blank" rel="noopener noreferrer" className="about-svc-cta rl-intro-cta">
                   Request a Consult
