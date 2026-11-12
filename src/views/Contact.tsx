@@ -3,6 +3,8 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import { MapPin, Mail, Phone } from 'lucide-react'
+import { FIRM, FIRM_ADDRESS_ONE_LINE, FIRM_MAPS_QUERY } from '../data/firm'
+import { submitNetlifyForm, HONEYPOT_FIELD, type FormStatus } from '../lib/netlifyForms'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -18,15 +20,27 @@ export default function Contact() {
   const [form, setForm] = useState({
     fullName: '', email: '', phone: '', practice: '', message: '',
   })
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<FormStatus>('idle')
 
   function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setSubmitted(true)
+    const honeypot = e.currentTarget.elements.namedItem(HONEYPOT_FIELD) as HTMLInputElement
+    setStatus('sending')
+    try {
+      await submitNetlifyForm('contact', {
+        ...form,
+        [HONEYPOT_FIELD]: honeypot.value,
+        subject: `New website enquiry from ${form.fullName} (Contact page, ${form.practice})`,
+      })
+      setStatus('sent')
+    } catch (err) {
+      console.error(err)
+      setStatus('error')
+    }
   }
 
   return (
@@ -73,7 +87,7 @@ export default function Contact() {
                 variants={{ visible: { transition: { staggerChildren: 0.1, delayChildren: 0.5 } } }}
               >
                 <motion.a
-                  href="https://www.google.com/maps/search/5063+North+Service+Rd+Suite+100+Burlington+ON"
+                  href={`https://www.google.com/maps/search/?api=1&query=${FIRM_MAPS_QUERY}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="contact-detail-row contact-detail-row-link"
@@ -81,27 +95,27 @@ export default function Contact() {
                   custom={0}
                 >
                   <MapPin size={15} className="contact-detail-icon" aria-hidden="true" />
-                  <p className="contact-detail-text">5063 North Service Rd., Suite 100, Burlington, ON L7L 5H6</p>
+                  <p className="contact-detail-text">{FIRM_ADDRESS_ONE_LINE}</p>
                 </motion.a>
 
                 <motion.a
-                  href="mailto:info@welzellaw.ca"
+                  href={`mailto:${FIRM.email}`}
                   className="contact-detail-row contact-detail-row-link"
                   variants={fadeUp}
                   custom={0}
                 >
                   <Mail size={15} className="contact-detail-icon" aria-hidden="true" />
-                  <span className="contact-detail-link">info@welzellaw.ca</span>
+                  <span className="contact-detail-link">{FIRM.email}</span>
                 </motion.a>
 
                 <motion.a
-                  href="tel:+16479075459"
+                  href={`tel:${FIRM.phoneE164}`}
                   className="contact-detail-row contact-detail-row-link"
                   variants={fadeUp}
                   custom={0}
                 >
                   <Phone size={15} className="contact-detail-icon" aria-hidden="true" />
-                  <span className="contact-detail-link">(647) 907-5459</span>
+                  <span className="contact-detail-link">{FIRM.phoneDisplay}</span>
                 </motion.a>
               </motion.div>
 
@@ -112,8 +126,8 @@ export default function Contact() {
                 transition={{ duration: 0.7, delay: 1.1, ease }}
               >
                 <iframe
-                  title="Welzel Law office location"
-                  src="https://maps.google.com/maps?q=5063+North+Service+Rd+Burlington+ON+Canada&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  title={`${FIRM.name} office location`}
+                  src={`https://maps.google.com/maps?q=${FIRM_MAPS_QUERY}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -131,7 +145,7 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.18, ease }}
             >
-              {submitted ? (
+              {status === 'sent' ? (
                 <motion.div
                   className="contact-success"
                   initial={{ opacity: 0, y: 16 }}
@@ -146,7 +160,11 @@ export default function Contact() {
                 </motion.div>
               ) : (
                 <>
-                  <form className="contact-form" onSubmit={handleSubmit} noValidate>
+                  <form className="contact-form" onSubmit={handleSubmit}>
+                    <label className="form-honeypot" aria-hidden="true">
+                      Leave this field empty
+                      <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" />
+                    </label>
 
                     <div className="contact-form-row">
                       <div className="contact-field">
@@ -166,10 +184,10 @@ export default function Contact() {
                             className="contact-select"
                           >
                             <option value="" disabled>Select a practice area</option>
-                            <option value="business-law">Business Law</option>
-                            <option value="real-estate-law">Real Estate Law</option>
-                            <option value="fractional-gc">Fractional General Counsel</option>
-                            <option value="other">Other</option>
+                            <option value="Business Law">Business Law</option>
+                            <option value="Real Estate Law">Real Estate Law</option>
+                            <option value="Fractional General Counsel">Fractional General Counsel</option>
+                            <option value="Other">Other</option>
                           </select>
                           <span className="contact-select-chevron" aria-hidden="true">↓</span>
                         </div>
@@ -211,12 +229,20 @@ export default function Contact() {
                     <motion.button
                       type="submit"
                       className="contact-submit"
+                      disabled={status === 'sending'}
                       whileHover={{ boxShadow: 'var(--shadow-gold)', y: -1 }}
                       whileTap={{ scale: 0.98 }}
                       transition={{ duration: 0.15, ease }}
                     >
-                      SEND YOUR MESSAGE
+                      {status === 'sending' ? 'SENDING…' : 'SEND YOUR MESSAGE'}
                     </motion.button>
+
+                    {status === 'error' && (
+                      <p className="contact-form-error" role="alert">
+                        Your message could not be sent. Please email us at{' '}
+                        <a href={`mailto:${FIRM.email}`}>{FIRM.email}</a> or call {FIRM.phoneDisplay}.
+                      </p>
+                    )}
 
                     <p className="contact-disclaimer">
                       Sending this message does not create a lawyer-client relationship. Please do not include sensitive or confidential information.

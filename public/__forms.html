@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Form registry</title>
+</head>
+<body>
+  <!--
+    Netlify Forms registry. Never shown to visitors.
+    Netlify parses this file at deploy time to register each form. The React
+    forms submit to this path (see src/lib/netlifyForms.ts). Form names and
+    field names MUST match the React components exactly, or Netlify drops the
+    unknown fields.
+  -->
+
+  <!-- Footer "Get in Touch" box (src/components/Footer.tsx) -->
+  <form name="get-in-touch" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="get-in-touch">
+    <input type="hidden" name="subject">
+    <input name="bot-field">
+    <input name="firstName">
+    <input name="lastName">
+    <input name="phone">
+    <input name="email">
+    <textarea name="message"></textarea>
+  </form>
+
+  <!-- Contact page form (src/views/Contact.tsx) -->
+  <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="contact">
+    <input type="hidden" name="subject">
+    <input name="bot-field">
+    <input name="fullName">
+    <input name="practice">
+    <input name="email">
+    <input name="phone">
+    <textarea name="message"></textarea>
+  </form>
+</body>
+</html>

@@ -6,7 +6,8 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import MagneticButton from './MagneticButton'
-import WelzelLogo from './WelzelLogo'
+import Logo from './Logo'
+import { FIRM } from '../data/firm'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -81,10 +82,10 @@ export default function Navbar() {
             CSS-driven (index.css @960px) so server HTML never flashes the wrong logo. */}
         <Link href="/" style={{ flexShrink: 0, display: 'flex', alignItems: 'center', lineHeight: 1 }}>
           <span className="nav-logo-desktop">
-            <WelzelLogo variant={!scrolled && isHome ? 'dark' : 'light'} height={34} />
+            <Logo variant={!scrolled && isHome ? 'dark' : 'light'} height={34} />
           </span>
           <span className="nav-logo-mobile">
-            <WelzelLogo variant="light" height={34} />
+            <Logo variant="light" height={34} />
           </span>
         </Link>
 
@@ -169,7 +170,7 @@ export default function Navbar() {
 
           <MagneticButton>
             <motion.a
-              href="https://calendly.com/fernanda-welzel"
+              href={FIRM.calendlyUrl}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ boxShadow: 'var(--shadow-gold)' }}
@@ -294,16 +295,16 @@ export default function Navbar() {
                 </Link>
               ))}
 
-              <a href="tel:+16479075459" style={{
+              <a href={`tel:${FIRM.phoneE164}`} style={{
                 ...mobileLinkStyle,
                 color: 'var(--color-primary-text)',
                 fontWeight: 500,
               }}>
-                (647) 907-5459
+                {FIRM.phoneDisplay}
               </a>
 
               <motion.a
-                href="https://calendly.com/fernanda-welzel"
+                href={FIRM.calendlyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}

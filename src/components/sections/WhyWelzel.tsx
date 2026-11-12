@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import skyscrapersImg from '../../assets/images/home/skyscrapers.webp'
+import { FIRM } from '../../data/firm'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -95,7 +96,7 @@ export default function WhyWelzel() {
             height: '1px',
             backgroundColor: 'var(--color-accent)',
           }} />
-          Why Welzel Law
+          Why {FIRM.name}
         </motion.p>
 
         {/* Heading */}
@@ -119,10 +120,10 @@ export default function WhyWelzel() {
           color: 'var(--color-text-muted)',
           margin: 0,
         }}>
-          Welzel Law delivers partner-level, business-minded counsel with an
+          {FIRM.name} delivers partner-level, business-minded counsel with an
           in-house perspective, providing everything from day-to-day operational
           support to complex transactions and compliance, at a fraction of the
-          cost of a traditional law firm or a full-time hire.
+          cost of a full-time hire.
         </motion.p>
 
         <motion.p variants={fadeUp} style={{
@@ -140,7 +141,7 @@ export default function WhyWelzel() {
         {/* Gold link */}
         <motion.a
           variants={fadeUp}
-          href="https://calendly.com/fernanda-welzel"
+          href={FIRM.calendlyUrl}
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ x: 4 }}

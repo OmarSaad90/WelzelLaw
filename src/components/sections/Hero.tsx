@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import MagneticButton from '../MagneticButton'
 import MotionImage from '../MotionImage'
 import heroPlants from '../../assets/images/hero/plants.jpg'
+import { FIRM } from '../../data/firm'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -114,7 +115,7 @@ export default function Hero() {
               margin: 0,
             }}
           >
-            Welzel Law
+            {FIRM.name}
           </motion.p>
 
           {/* Gold rule — scaleX reveal left to right */}
@@ -304,7 +305,7 @@ export default function Hero() {
           <motion.div variants={plantsItem} className="plants-cta-wrap">
             <MagneticButton>
               <motion.a
-                href="https://calendly.com/fernanda-welzel"
+                href={FIRM.calendlyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ boxShadow: 'var(--shadow-gold)' }}

@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import teamHandsImg from '../../assets/images/home/team-hands.png'
+import { FIRM } from '../../data/firm'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -24,7 +25,7 @@ const PILLARS: Pillar[] = [
   {
     number: '1',
     title: 'High-Quality Legal Advice That Fits All Budgets',
-    body: 'Top-tier legal counsel should not be reserved for large corporations with deep pockets. At Welzel Law, we believe that every business owner and homeowner deserve access to experienced, sophisticated legal advice, regardless of the size of their budget. We deliver the same caliber of counsel that Fortune-level companies rely on, tailored to what you actually need and what you can afford.',
+    body: `Top-tier legal counsel should not be reserved for large corporations with deep pockets. At ${FIRM.name}, we believe that every business owner and homeowner deserve access to experienced, sophisticated legal advice, regardless of the size of their budget. We deliver the same caliber of counsel that Fortune-level companies rely on, tailored to what you actually need and what you can afford.`,
     link: null,
   },
   {
@@ -42,7 +43,7 @@ const PILLARS: Pillar[] = [
   {
     number: '4',
     title: 'A Personal Touch from a Boutique Firm',
-    body: 'When you work with Welzel Law, you work directly with the lawyer who knows your business. You get the personal attention, responsiveness, and care that only a boutique firm can offer, backed by the depth of experience that most boutique firms simply cannot match. Every client matters here, and it shows in everything we do.',
+    body: `When you work with ${FIRM.name}, you work directly with the lawyer who knows your business. You get the personal attention, responsiveness, and care that only a boutique firm can offer, backed by the depth of experience that most boutique firms simply cannot match. Every client matters here, and it shows in everything we do.`,
     link: null,
   },
 ]
@@ -152,7 +153,7 @@ export default function FourPillars() {
             color: 'var(--color-primary)',
             marginBottom: 'var(--space-10)',
           }}>
-            Four Pillars of Welzel Law
+            Four Pillars of {FIRM.name}
           </h2>
 
           {/* Accordion items */}

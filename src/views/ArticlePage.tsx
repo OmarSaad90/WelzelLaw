@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { ArticleSection } from '../data/articles'
 import type { ArticleMeta } from '../data/articleMeta'
+import { FIRM } from '../data/firm'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -118,7 +119,7 @@ export default function ArticlePage({ meta, sections }: ArticlePageProps) {
             {/* CTA */}
             <p className="ap-cta-inline">
               Have questions about your specific situation?{' '}
-              <a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="ap-cta-link">
+              <a href={FIRM.calendlyUrl} target="_blank" rel="noopener noreferrer" className="ap-cta-link">
                 Book a free 15-minute call with us
               </a>
             </p>

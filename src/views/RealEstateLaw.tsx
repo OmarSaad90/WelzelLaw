@@ -7,13 +7,14 @@ import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import InnerPageHero from '../components/InnerPageHero'
 
-import heroImg        from '../assets/images/real-estate/home.jpg'
+import heroImg        from '../assets/images/real-estate/hero.jpg'
 import residentialImg from '../assets/images/real-estate/residential.jpg'
 import commercialImg  from '../assets/images/real-estate/commercial.jpg'
 
 import insClosing from '../assets/images/insights/WhatAreClosingCosts.png'
 import insDeposit from '../assets/images/insights/WhatHappens.jpg'
 import insNonCan  from '../assets/images/insights/CanNonCanadians.png'
+import { FIRM } from '../data/firm'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -109,7 +110,7 @@ export default function RealEstateLaw() {
         <InnerPageHero
           image={heroImg}
           imageAlt="Real Estate Law"
-          eyebrow="Welzel Law"
+          eyebrow={FIRM.name}
           title="Real Estate Law"
           subtitle="Every transaction is personal. Every detail is our responsibility."
           variant="overlay"
@@ -150,7 +151,7 @@ export default function RealEstateLaw() {
                 <p className="rl-intro-body">
                   We review every detail, ask every question, and make sure nothing stands between you and a transaction you can feel confident about.
                 </p>
-                <a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta rl-intro-cta">
+                <a href={FIRM.calendlyUrl} target="_blank" rel="noopener noreferrer" className="about-svc-cta rl-intro-cta">
                   Request a Consult
                 </a>
               </motion.div>
@@ -337,7 +338,7 @@ function RlServiceRow({ svc }: { svc: ServiceItem }) {
             </li>
           ))}
         </motion.ul>
-        <motion.a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta" variants={svcItem}>Request a Consult</motion.a>
+        <motion.a href={FIRM.calendlyUrl} target="_blank" rel="noopener noreferrer" className="about-svc-cta" variants={svcItem}>Request a Consult</motion.a>
       </motion.div>
     </div>
   )

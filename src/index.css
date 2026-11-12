@@ -159,6 +159,29 @@ ul, ol { list-style: none; }
   box-shadow: 0 0 0 3px oklch(0.72 0.145 65 / 0.18);
 }
 
+/* Netlify Forms honeypot: off-screen for people, still present for bots.
+   Not display:none, which some bots skip. */
+.form-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Footer form send failure: sits on the dark teal skyline, so gold not red. */
+.footer-form-error {
+  font-family: var(--font-body);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-accent);
+  text-align: center;
+}
+.footer-form-error a {
+  color: inherit;
+  text-decoration: underline;
+}
+
 /* ============================================================
    Hero — mobile video
    ============================================================ */
@@ -280,9 +303,6 @@ ul, ol { list-style: none; }
   .affiliations-logos {
     flex-wrap: wrap !important;
     gap: var(--space-6) !important;
-  }
-  .affiliations-divider {
-    display: none !important;
   }
 }
 
@@ -2162,6 +2182,23 @@ ul, ol { list-style: none; }
 
 .contact-submit:hover {
   background-color: var(--color-primary-hover);
+}
+
+.contact-submit:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.contact-form-error {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-error);
+  text-align: center;
+}
+.contact-form-error a {
+  color: inherit;
+  text-decoration: underline;
 }
 
 .contact-disclaimer {

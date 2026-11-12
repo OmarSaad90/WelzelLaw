@@ -1,4 +1,5 @@
 import { SITE_URL, DEFAULT_OG_IMAGE } from '../data/seo'
+import { FIRM } from '../data/firm'
 
 // Escape `<` so a stray "</script>" inside any string value can't close the tag early.
 // Server-rendered, so these scripts now ship in the static HTML crawlers read.
@@ -14,35 +15,29 @@ export function SitewideJsonLd() {
       {
         '@type': ['LegalService', 'LocalBusiness'],
         '@id': `${SITE_URL}/#organization`,
-        name: 'Welzel Law',
+        name: FIRM.name,
+        legalName: FIRM.legalName,
         url: SITE_URL,
         logo: DEFAULT_OG_IMAGE,
         image: DEFAULT_OG_IMAGE,
-        telephone: '+16479075459',
-        email: 'info@welzellaw.ca',
+        telephone: FIRM.phoneE164,
+        email: FIRM.email,
         priceRange: '$$',
         currenciesAccepted: 'CAD',
         paymentAccepted: 'Cash, Credit Card, E-Transfer',
         address: {
           '@type': 'PostalAddress',
-          streetAddress: '5063 North Service Rd., Suite 100',
-          addressLocality: 'Burlington',
-          addressRegion: 'ON',
-          postalCode: 'L7L 5H6',
-          addressCountry: 'CA',
-        },
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: 43.3697,
-          longitude: -79.8021,
+          streetAddress: FIRM.address.street,
+          addressLocality: FIRM.address.city,
+          addressRegion: FIRM.address.region,
+          postalCode: FIRM.address.postalCode,
+          addressCountry: FIRM.address.country,
         },
         areaServed: [
-          { '@type': 'City', name: 'Burlington' },
-          { '@type': 'City', name: 'Hamilton' },
-          { '@type': 'City', name: 'Oakville' },
-          { '@type': 'City', name: 'Mississauga' },
-          { '@type': 'City', name: 'Toronto' },
-          { '@type': 'AdministrativeArea', name: 'Greater Toronto Area' },
+          { '@type': 'City', name: 'Kitchener' },
+          { '@type': 'City', name: 'Waterloo' },
+          { '@type': 'City', name: 'Cambridge' },
+          { '@type': 'City', name: 'Guelph' },
           { '@type': 'AdministrativeArea', name: 'Ontario' },
         ],
         serviceType: [
@@ -77,8 +72,8 @@ export function SitewideJsonLd() {
           },
         },
         sameAs: [
-          'https://www.linkedin.com/company/welzel-law',
-          'https://www.instagram.com/welzellaw',
+          FIRM.social.linkedin,
+          FIRM.social.instagram,
         ],
         openingHoursSpecification: [
           {
@@ -93,7 +88,7 @@ export function SitewideJsonLd() {
         '@type': 'WebSite',
         '@id': `${SITE_URL}/#website`,
         url: SITE_URL,
-        name: 'Welzel Law',
+        name: FIRM.name,
         publisher: { '@id': `${SITE_URL}/#organization` },
         potentialAction: {
           '@type': 'SearchAction',
@@ -132,7 +127,7 @@ export function ServiceJsonLd({ name, description, url }: ServiceJsonLdProps) {
     availableChannel: {
       '@type': 'ServiceChannel',
       serviceUrl: `${SITE_URL}/contact`,
-      servicePhone: '+16479075459',
+      servicePhone: FIRM.phoneE164,
     },
   }
 
@@ -179,14 +174,14 @@ export function ArticleJsonLd({
     },
     publisher: {
       '@id': `${SITE_URL}/#organization`,
-      name: 'Welzel Law',
+      name: FIRM.name,
       logo: { '@type': 'ImageObject', url: DEFAULT_OG_IMAGE },
     },
     articleSection: category,
     inLanguage: 'en-CA',
     about: {
       '@type': 'LegalService',
-      name: 'Welzel Law',
+      name: FIRM.name,
     },
   }
 

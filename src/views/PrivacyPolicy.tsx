@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import InnerPageHero from '../components/InnerPageHero'
 import privacyHero from '../assets/images/legal/privacy-hero.png'
+import { FIRM } from '../data/firm'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -18,12 +19,12 @@ const SECTIONS: PolicySection[] = [
   {
     num: '01',
     title: 'Commitment to Privacy',
-    body: 'At Welzel Law Professional Corporation ("Welzel Law", "we", "us", "our", or "the Firm"), we prioritize the protection, confidentiality, and accuracy of your personal data. Our role as legal professionals requires us to treat all details received during the lawyer-client relationship as strictly confidential. This Privacy Policy describes our approach to handling your personal information, ensuring compliance with the Personal Information Protection and Electronic Documents Act (PIPEDA) and the other privacy laws.',
+    body: `At ${FIRM.legalName} ("${FIRM.name}", "we", "us", "our", or "the Firm"), we prioritize the protection, confidentiality, and accuracy of your personal data. Our role as legal professionals requires us to treat all details received during the lawyer-client relationship as strictly confidential. This Privacy Policy describes our approach to handling your personal information, ensuring compliance with the Personal Information Protection and Electronic Documents Act (PIPEDA) and the other privacy laws.`,
   },
   {
     num: '02',
     title: 'Your Privacy Rights',
-    body: 'PIPEDA requires all Canadian organizations conducting business activities, including law firms like Welzel Law, to adhere to its standards. It grants you the right to be informed about the collection, usage, and sharing of your personal data. We are dedicated to upholding these obligations.',
+    body: `PIPEDA requires all Canadian organizations conducting business activities, including law firms like ${FIRM.name}, to adhere to its standards. It grants you the right to be informed about the collection, usage, and sharing of your personal data. We are dedicated to upholding these obligations.`,
   },
   {
     num: '03',
@@ -128,7 +129,7 @@ const SECTIONS: PolicySection[] = [
   {
     num: '15',
     title: 'Employment Inquiries',
-    body: 'If you apply for a position at Welzel Law, we may retain your personal information during and after the application process unless you request otherwise. If hired, this information will be managed under our employee privacy procedures.',
+    body: `If you apply for a position at ${FIRM.name}, we may retain your personal information during and after the application process unless you request otherwise. If hired, this information will be managed under our employee privacy procedures.`,
   },
   {
     num: '16',
@@ -145,7 +146,7 @@ export default function PrivacyPolicy() {
 
         <InnerPageHero
           image={privacyHero}
-          eyebrow="Welzel Law"
+          eyebrow={FIRM.name}
           title="Privacy Policy"
           subtitle="Your privacy is our commitment."
           variant="overlay"
@@ -375,13 +376,13 @@ function ContactBlock() {
           color: 'var(--color-neutral-700)',
           margin: '0 0 var(--space-4)',
         }}>
-          Welzel Law Professional Corporation<br />
-          5063 North Service Rd., Suite 100<br />
-          Burlington, ON L7L 5H6
+          {FIRM.legalName}<br />
+          {FIRM.address.street}<br />
+          {FIRM.address.city}, {FIRM.address.region} {FIRM.address.postalCode}
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
-          <ContactLink href="mailto:info@welzellaw.ca" label="info@welzellaw.ca" />
-          <ContactLink href="tel:+16479075459" label="(647) 907-5459" />
+          <ContactLink href={`mailto:${FIRM.email}`} label={FIRM.email} />
+          <ContactLink href={`tel:${FIRM.phoneE164}`} label={FIRM.phoneDisplay} />
         </div>
       </div>
 

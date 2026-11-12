@@ -14,16 +14,23 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease } },
 }
 
+// Real testimonials supplied by the client (go-live doc). Each quote is a list
+// of paragraphs so longer endorsements keep their original paragraph breaks.
 const TESTIMONIALS = [
   {
-    quote: 'Working with Welzel Law was one of the best decisions I made for my business. They handled our incorporation and shareholder agreement with precision, and explained every step clearly. I felt like I had a true partner invested in my outcome, not just a service provider.',
-    name: 'Sarah M.',
-    role: 'Founder, Toronto Tech Startup',
+    quote: [
+      "Fernanda has a no nonsense approachable style, always focused on business objectives and how she can help to accelerate the business. Fernanda's ability to distill complex legal and regulatory issues into clear, actionable business risks and solutions has made her an invaluable advisor to the leadership team.",
+    ],
+    name: 'Walt Stothers',
+    role: 'Retired CFO',
   },
   {
-    quote: 'The real estate closing process can be stressful, but Welzel Law made it completely seamless. They caught issues in the title search that could have cost us thousands. Professional, responsive, and genuinely invested in protecting us from offer to closing.',
-    name: 'David K.',
-    role: 'Real Estate Investor, Greater Toronto Area',
+    quote: [
+      'I had the pleasure of working closely with Fernanda Welzel at CHS Ltd., where I served as Chief Commercial Officer. Fernanda was exceptional at reviewing and negotiating commercial contracts, whether with national and international corporations or with Group Purchasing Organizations serving the Canadian and US governments. She was a trusted business partner who understood the commercial objectives behind every deal and helped us reach agreements that enhanced the business.',
+      'Fernanda also successfully completed many M&A transactions, with seamless integration after closing. Beyond dealmaking, she provided great support on corporate governance, legal strategy, and risk management, and became a valued advisor to the leadership team. I would highly recommend Fernanda to any organization looking for a strategic and commercially minded legal partner.',
+    ],
+    name: 'Mat Dinneen',
+    role: 'General Manager, ICU Medical',
   },
 ]
 
@@ -81,28 +88,26 @@ export default function Testimonials() {
           </motion.h2>
         </motion.div>
 
-        {/* Two-column editorial layout with vertical gold divider */}
-        <div style={{ position: 'relative' }}>
-
-          {/* Vertical gold divider — 60% height, centered vertically */}
-          <div className="testimonials-divider" style={{
-            position: 'absolute',
-            left: '50%',
-            top: '20%',
-            height: '60%',
-            width: '2px',
-            backgroundColor: 'var(--color-accent)',
-            transform: 'translateX(-50%)',
-            pointerEvents: 'none',
-          }} />
-
+        {/* Two-column editorial layout with vertical gold divider.
+            Columns are 1:2 because the second quote is ~3x longer; equal columns
+            made it twice as tall as the first. The divider is a grid item so it
+            always sits on the column boundary. */}
+        <div>
           <div className="testimonials-grid" style={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
+            gridTemplateColumns: '1fr auto 2fr',
             gap: 'clamp(3rem, 6vw, 6rem)',
-            alignItems: 'start',
+            alignItems: 'center',
           }}>
-            {TESTIMONIALS.map((t) => (
+            {TESTIMONIALS.map((t, i) => [
+              i > 0 && (
+                <div key={`divider-${t.name}`} className="testimonials-divider" style={{
+                  alignSelf: 'stretch',
+                  margin: '15% 0',
+                  width: '2px',
+                  backgroundColor: 'var(--color-accent)',
+                }} />
+              ),
               <motion.div
                 key={t.name}
                 initial="hidden"
@@ -130,17 +135,25 @@ export default function Testimonials() {
                 </motion.span>
 
                 {/* Quote */}
-                <motion.p variants={fadeUp} style={{
-                  fontFamily: 'var(--font-display)',
-                  fontStyle: 'italic',
-                  fontWeight: 400,
-                  fontSize: 'var(--font-size-md)',
-                  lineHeight: 'var(--line-height-normal)',
-                  color: 'var(--color-neutral-800)',
-                  margin: 0,
+                <motion.div variants={fadeUp} style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 'var(--space-4)',
                 }}>
-                  {t.quote}
-                </motion.p>
+                  {t.quote.map((paragraph) => (
+                    <p key={paragraph.slice(0, 32)} style={{
+                      fontFamily: 'var(--font-display)',
+                      fontStyle: 'italic',
+                      fontWeight: 400,
+                      fontSize: 'var(--font-size-md)',
+                      lineHeight: 'var(--line-height-normal)',
+                      color: 'var(--color-neutral-800)',
+                      margin: 0,
+                    }}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </motion.div>
 
                 {/* Name */}
                 <motion.p variants={fadeUp} style={{
@@ -163,8 +176,8 @@ export default function Testimonials() {
                 }}>
                   {t.role}
                 </motion.p>
-              </motion.div>
-            ))}
+              </motion.div>,
+            ])}
           </div>
         </div>
 

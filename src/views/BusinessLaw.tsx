@@ -17,6 +17,7 @@ import { Building2, Store, Handshake, Scale, Users2, Network } from 'lucide-reac
 import insContracts from '../assets/images/insights/WhatContracts.png'
 import insHST       from '../assets/images/insights/WhenDoINeed.png'
 import insIncorProt from '../assets/images/insights/HowDoesIncor.jpg'
+import { FIRM } from '../data/firm'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -88,7 +89,6 @@ const SERVICES: ServiceItem[] = [
     body: 'Your people are your most valuable asset and your greatest area of legal exposure. We help you build the right policies, agreements, and processes to protect both your employees and your business.',
     bullets: [
       'Employment contracts',
-      'Termination and severance',
       'Workplace policies and handbooks',
       'Independent contractor agreements',
     ],
@@ -184,7 +184,7 @@ export default function BusinessLaw() {
         <InnerPageHero
           image={heroImg}
           imageAlt="Business Law"
-          eyebrow="Welzel Law"
+          eyebrow={FIRM.name}
           title="Business Law"
           subtitle="Counsel that moves as fast as your business does."
           variant="overlay"
@@ -225,7 +225,7 @@ export default function BusinessLaw() {
                 <p className="bl-intro-body">
                   In business, clarity is not a luxury. It is your competitive advantage.
                 </p>
-                <a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta bl-intro-cta">
+                <a href={FIRM.calendlyUrl} target="_blank" rel="noopener noreferrer" className="about-svc-cta bl-intro-cta">
                   Request a Consult
                 </a>
               </motion.div>
@@ -482,7 +482,7 @@ function BlServiceRow({ svc }: { svc: ServiceItem }) {
             </li>
           ))}
         </motion.ul>
-        <motion.a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta" variants={svcItem}>Request a Consult</motion.a>
+        <motion.a href={FIRM.calendlyUrl} target="_blank" rel="noopener noreferrer" className="about-svc-cta" variants={svcItem}>Request a Consult</motion.a>
       </motion.div>
     </div>
   )

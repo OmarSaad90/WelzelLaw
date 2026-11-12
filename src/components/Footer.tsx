@@ -6,8 +6,10 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import MagneticButton from './MagneticButton'
 import { MapPin, Clock, Mail, Phone, Linkedin, Instagram } from 'lucide-react'
-import WelzelLogo from './WelzelLogo'
-import skylineImg from '../assets/images/home/toronto-skyline.png'
+import Logo from './Logo'
+import skylineImg from '../assets/images/home/get-in-touch.jpg'
+import { FIRM } from '../data/firm'
+import { submitNetlifyForm, HONEYPOT_FIELD, type FormStatus } from '../lib/netlifyForms'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -25,15 +27,27 @@ export default function Footer() {
   const [formData, setFormData] = useState({
     firstName: '', lastName: '', phone: '', email: '', message: '',
   })
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<FormStatus>('idle')
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setSubmitted(true)
+    const honeypot = e.currentTarget.elements.namedItem(HONEYPOT_FIELD) as HTMLInputElement
+    setStatus('sending')
+    try {
+      await submitNetlifyForm('get-in-touch', {
+        ...formData,
+        [HONEYPOT_FIELD]: honeypot.value,
+        subject: `New website enquiry from ${formData.firstName} ${formData.lastName} (Get in Touch)`,
+      })
+      setStatus('sent')
+    } catch (err) {
+      console.error(err)
+      setStatus('error')
+    }
   }
 
   return (
@@ -56,7 +70,7 @@ export default function Footer() {
           fill
           sizes="100vw"
           style={{
-            objectFit: 'cover', objectPosition: 'center 40%',
+            objectFit: 'cover', objectPosition: '80% top',
             zIndex: 0,
           }}
         />
@@ -125,7 +139,7 @@ export default function Footer() {
           >
             {/* Logo */}
             <motion.div variants={fadeUp} style={{ marginBottom: 'var(--space-4)' }}>
-              <WelzelLogo variant="dark" height={36} />
+              <Logo variant="dark" height={36} />
             </motion.div>
 
             {/* Contact details */}
@@ -133,8 +147,8 @@ export default function Footer() {
               <motion.div variants={fadeUp} style={contactRowStyle}>
                 <MapPin size={16} style={{ color: 'var(--color-accent)', flexShrink: 0 }} />
                 <div>
-                  <p style={contactTextStyle}>5063 North Service Rd., Suite 100</p>
-                  <p style={contactTextStyle}>Burlington, ON Canada L7L 5H6</p>
+                  <p style={contactTextStyle}>{FIRM.address.street}</p>
+                  <p style={contactTextStyle}>{FIRM.address.city}, {FIRM.address.region} Canada {FIRM.address.postalCode}</p>
                 </div>
               </motion.div>
 
@@ -145,15 +159,15 @@ export default function Footer() {
 
               <motion.div variants={fadeUp} style={contactRowStyle}>
                 <Mail size={16} style={{ color: 'var(--color-accent)', flexShrink: 0 }} />
-                <a href="mailto:info@welzellaw.ca" style={{ ...contactTextStyle, borderBottom: '1px solid oklch(1 0 0 / 0.25)' }}>
-                  info@welzellaw.ca
+                <a href={`mailto:${FIRM.email}`} style={{ ...contactTextStyle, borderBottom: '1px solid oklch(1 0 0 / 0.25)' }}>
+                  {FIRM.email}
                 </a>
               </motion.div>
 
               <motion.div variants={fadeUp} style={contactRowStyle}>
                 <Phone size={16} style={{ color: 'var(--color-accent)', flexShrink: 0 }} />
-                <a href="tel:+16479075459" style={{ ...contactTextStyle, borderBottom: '1px solid oklch(1 0 0 / 0.25)' }}>
-                  (647) 907-5459
+                <a href={`tel:${FIRM.phoneE164}`} style={{ ...contactTextStyle, borderBottom: '1px solid oklch(1 0 0 / 0.25)' }}>
+                  {FIRM.phoneDisplay}
                 </a>
               </motion.div>
             </motion.div>
@@ -167,8 +181,8 @@ export default function Footer() {
               }}
             >
               {[
-                { href: 'https://linkedin.com', icon: <Linkedin size={18} />, label: 'LinkedIn' },
-                { href: 'https://instagram.com', icon: <Instagram size={18} />, label: 'Instagram' },
+                { href: FIRM.social.linkedin, icon: <Linkedin size={18} />, label: 'LinkedIn' },
+                { href: FIRM.social.instagram, icon: <Instagram size={18} />, label: 'Instagram' },
               ].map(({ href, icon, label }) => (
                 <motion.a
                   key={label}
@@ -211,7 +225,7 @@ export default function Footer() {
               Get in Touch
             </h3>
 
-            {submitted ? (
+            {status === 'sent' ? (
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -238,8 +252,12 @@ export default function Footer() {
                 </p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} noValidate>
+              <form onSubmit={handleSubmit}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+                  <label className="form-honeypot" aria-hidden="true">
+                    Leave this field empty
+                    <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" />
+                  </label>
                   <div className="footer-form-name-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-2)' }}>
                     <input
                       type="text" name="firstName" value={formData.firstName}
@@ -272,6 +290,7 @@ export default function Footer() {
                   <MagneticButton strength={0.22}>
                     <motion.button
                       type="submit"
+                      disabled={status === 'sending'}
                       whileHover={{ boxShadow: 'var(--shadow-gold)' }}
                       whileTap={{ scale: 0.97 }}
                       transition={{ duration: 0.15, ease }}
@@ -290,9 +309,16 @@ export default function Footer() {
                         marginTop: 0,
                       }}
                     >
-                      SEND YOUR MESSAGE
+                      {status === 'sending' ? 'SENDING…' : 'SEND YOUR MESSAGE'}
                     </motion.button>
                   </MagneticButton>
+
+                  {status === 'error' && (
+                    <p className="footer-form-error" role="alert">
+                      Your message could not be sent. Please email us at{' '}
+                      <a href={`mailto:${FIRM.email}`}>{FIRM.email}</a> or call {FIRM.phoneDisplay}.
+                    </p>
+                  )}
 
                   <p style={{
                     fontFamily: 'var(--font-body)',
@@ -328,7 +354,7 @@ export default function Footer() {
           fontSize: 'var(--font-size-xs)',
           color: 'oklch(1 0 0 / 0.60)',
         }}>
-          2026 © Welzel Law Firm. All rights reserved.
+          2026© All rights reserved {FIRM.legalName}
         </p>
 
         <div style={{ display: 'flex', gap: 'var(--space-6)', alignItems: 'center' }}>

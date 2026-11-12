@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: PAGE_SEO.home.title,
   description: PAGE_SEO.home.description,
-  authors: [{ name: 'Fernanda Welzel, Welzel Law' }],
+  authors: [{ name: `Fernanda Welzel, ${FIRM_NAME}` }],
   robots: { index: true, follow: true },
   icons: { icon: '/favicon.svg' },
   openGraph: {
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image', images: [DEFAULT_OG_IMAGE] },
   other: {
     'geo.region': 'CA-ON',
-    'geo.placename': 'Burlington, Ontario',
+    'geo.placename': 'Kitchener, Ontario',
   },
 }
 

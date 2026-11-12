@@ -7,16 +7,17 @@ import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import InnerPageHero from '../components/InnerPageHero'
 
-import missionImg    from '../assets/images/about/hero-mission.png'
-import founderImg    from '../assets/images/about/founder.png'
+import heroImg       from '../assets/images/about/hero.jpg'
+import founderImg    from '../assets/images/about/founder.jpg'
 import service1Img   from '../assets/images/about/service-business.webp'
 import service2Img   from '../assets/images/about/service-contracts.png'
 import service3Img   from '../assets/images/about/service-counsel.png'
 import service4Img   from '../assets/images/about/service-realestate.png'
 import insightsImg   from '../assets/images/about/insights-intro.png'
 import article1Img   from '../assets/images/insights/WhatIs.png'
-import article2Img   from '../assets/images/insights/ShouldI.png'
+import article2Img   from '../assets/images/insights/SoleProprietor.jpg'
 import article3Img   from '../assets/images/insights/HowMuchisLand.png'
+import { FIRM } from '../data/firm'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -152,9 +153,10 @@ export default function About() {
 
         {/* Hero — mission image, no founder photo duplication */}
         <InnerPageHero
-          image={missionImg}
-          eyebrow="Welzel Law"
-          title="About Welzel Law"
+          image={heroImg}
+          eyebrow={FIRM.name}
+          // Non-breaking space keeps "Key Step" together inside the hero's 12ch title width.
+          title={`About ${FIRM.name.replace('Key Step', 'Key Step')}`}
           subtitle={"Boutique counsel.\nExecutive experience.\nReal results."}
           variant="overlay"
           warmFade
@@ -248,14 +250,14 @@ export default function About() {
                   viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.7, delay: 0.2, ease }}
                 >
-                  <p>Fernanda Welzel is the founder of Welzel Law. She holds an MBA and a Master of Law (LLM) from the University of Toronto, and a Juris Doctor (J.D.) from Brazil, where she began her career in civil litigation, criminal, and family law.</p>
-                  <p>With over 25 years of experience working alongside large corporations, Fernanda has sat at the table where business decisions are made. As General Counsel of a major Canadian corporation with operations across North America and sales to over 50 countries, her career spans operations, commercial execution, business development, regulatory compliance, and sales.</p>
+                  <p>Fernanda Welzel is the founder of {FIRM.name}. She holds an MBA and a Master of Law (LLM) from the University of Toronto, and a Juris Doctor (J.D.) from Brazil, where she began her career in civil litigation, criminal, and family law.</p>
+                  <p>With over 25 years of experience working alongside large corporations, Fernanda has sat at the table where business decisions are made. As General Counsel of a major Canadian corporation with operations across North America and international sales, her career spans operations, commercial execution, business development, regulatory compliance, and sales.</p>
                   <p>She has experienced first-hand the real pressures, risks, and challenges that business owners face every day. She did not just study business from a legal textbook. She lived it. That experience is what she brings to every client. Whether you are incorporating, navigating a complex contract, or need a trusted legal partner, she understands your world and knows how to protect it.</p>
                   <p>Outside of work, she is a proud mother of two, a lifelong athlete, and an avid traveller with a genuine curiosity for people and cultures: qualities that make her not just a sharp legal mind, but a counsel who truly listens.</p>
                 </motion.div>
 
                 <motion.a
-                  href="https://calendly.com/fernanda-welzel"
+                  href={FIRM.calendlyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="about-founder-cta"
@@ -466,7 +468,7 @@ function ServiceRow({ svc }: { svc: Service }) {
             </li>
           ))}
         </motion.ul>
-        <motion.a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta" variants={svcItem}>Request a Consultation</motion.a>
+        <motion.a href={FIRM.calendlyUrl} target="_blank" rel="noopener noreferrer" className="about-svc-cta" variants={svcItem}>Request a Consultation</motion.a>
       </motion.div>
     </div>
   )

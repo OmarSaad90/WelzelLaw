@@ -22,6 +22,7 @@ import externalImg   from '../assets/images/fgc/External.jpg'
 import insWhatIs  from '../assets/images/insights/WhatIs.png'
 import insDoINeed from '../assets/images/insights/DoINeed.png'
 import insCorpGov from '../assets/images/insights/CorporateGovernance.jpg'
+import { FIRM } from '../data/firm'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -97,7 +98,6 @@ const EMPLOYMENT: ServiceItem = {
   body: 'Your people are your greatest asset and your largest area of legal exposure. We help you build a workforce protected by the right policies and agreements.',
   bullets: [
     'Drafting employment contracts and offer letters',
-    'Advising on terminations and severance',
     'Creating workplace policies and employee handbooks',
     'Navigating human rights and accommodation issues',
     'Independent contractor vs. employee classification',
@@ -214,7 +214,7 @@ export default function FractionalGeneralCounsel() {
         <InnerPageHero
           image={heroImg}
           imageAlt="Fractional General Counsel"
-          eyebrow="Welzel Law"
+          eyebrow={FIRM.name}
           title="Fractional General Counsel"
           subtitle="The legal partner at your executive table, without the full-time salary."
           variant="overlay"
@@ -249,12 +249,12 @@ export default function FractionalGeneralCounsel() {
                   Most growing businesses in Canada reach a point where legal issues are too frequent to ignore, but not quite frequent enough to justify a full-time General Counsel. The result? Legal decisions get delayed, contracts go unreviewed, and risk quietly accumulates.
                 </p>
                 <p className="fgc-intro-body">
-                  A Fractional General Counsel changes that. You get a senior executive-level legal partner embedded in your business, without the $200K to $350K yearly salary, benefits, or overhead of a full-time hire.
+                  A Fractional General Counsel changes that. You get a senior executive-level legal partner embedded in your business, without the yearly salary, benefits, or overhead of a full-time hire.
                 </p>
                 <p className="fgc-intro-body">
                   We offer a monthly fixed fee service as a better alternative.
                 </p>
-                <a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta fgc-intro-cta">
+                <a href={FIRM.calendlyUrl} target="_blank" rel="noopener noreferrer" className="about-svc-cta fgc-intro-cta">
                   Request a Consult
                 </a>
               </motion.div>
@@ -447,7 +447,7 @@ function FgcOverviewBlock({ title, body, img, alt, cta, imageRight, imgPosition 
         </motion.div>
         <motion.p className="fgc-overview-body" variants={svcItem}>{body}</motion.p>
         {cta && (
-          <motion.a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta" variants={svcItem}>Request a Consult</motion.a>
+          <motion.a href={FIRM.calendlyUrl} target="_blank" rel="noopener noreferrer" className="about-svc-cta" variants={svcItem}>Request a Consult</motion.a>
         )}
       </motion.div>
     </div>
@@ -494,7 +494,7 @@ function FgcFullRow({ svc, fromLeft }: { svc: ServiceItem; fromLeft: boolean }) 
             </li>
           ))}
         </motion.ul>
-        <motion.a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta" variants={svcItem}>Request a Consult</motion.a>
+        <motion.a href={FIRM.calendlyUrl} target="_blank" rel="noopener noreferrer" className="about-svc-cta" variants={svcItem}>Request a Consult</motion.a>
       </motion.div>
     </div>
   )
@@ -531,7 +531,7 @@ function FgcPairRow({ items }: { items: [ServiceItem, ServiceItem] }) {
                 </li>
               ))}
             </ul>
-            <a href="https://calendly.com/fernanda-welzel" target="_blank" rel="noopener noreferrer" className="about-svc-cta">Request a Consult</a>
+            <a href={FIRM.calendlyUrl} target="_blank" rel="noopener noreferrer" className="about-svc-cta">Request a Consult</a>
           </div>
         </motion.div>
       ))}

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
 import InnerPageHero from '../components/InnerPageHero'
 import termsHero from '../assets/images/legal/terms-hero.jpg'
+import { FIRM } from '../data/firm'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -18,7 +19,7 @@ const SECTIONS: TermsSection[] = [
   {
     num: '01',
     title: 'Agreement to Terms',
-    body: 'This website, located at Welzellaw.com (the "Website"), is owned and operated by Welzel Law Professional Corporation ("the Firm"). The Website offers various resources to the public, including articles, publications, data, and other materials (collectively, "Materials"). Accessing this Website constitutes your acceptance of these terms of use ("Terms"). If you disagree with these Terms, you must refrain from using the Website. The Firm reserves the right to update these Terms at any time without prior notice; continued use of the Website following any updates indicates your acceptance of the modified Terms.',
+    body: `This website, located at ${FIRM.domain} (the "Website"), is owned and operated by ${FIRM.legalName} ("the Firm"). The Website offers various resources to the public, including articles, publications, data, and other materials (collectively, "Materials"). Accessing this Website constitutes your acceptance of these terms of use ("Terms"). If you disagree with these Terms, you must refrain from using the Website. The Firm reserves the right to update these Terms at any time without prior notice; continued use of the Website following any updates indicates your acceptance of the modified Terms.`,
   },
   {
     num: '02',
@@ -105,11 +106,11 @@ const SECTIONS: TermsSection[] = [
     title: 'Copyright and Trademark',
     body: (
       <>
-        Welzel Law Professional Corporation. All rights reserved. No part of this Website or its Materials may be reproduced, distributed, sold, or transmitted in any form without prior written permission from the Firm, except as permitted under these Terms. All reproduced Materials must include this copyright notice.
+        {FIRM.legalName}. All rights reserved. No part of this Website or its Materials may be reproduced, distributed, sold, or transmitted in any form without prior written permission from the Firm, except as permitted under these Terms. All reproduced Materials must include this copyright notice.
         <br /><br />
         To request permission to reproduce any part of this Website, please contact{' '}
         <a
-          href="mailto:info@welzellaw.com"
+          href={`mailto:${FIRM.email}`}
           style={{
             color: 'var(--color-primary)',
             textDecoration: 'underline',
@@ -117,7 +118,7 @@ const SECTIONS: TermsSection[] = [
             textUnderlineOffset: '3px',
           }}
         >
-          info@welzellaw.com
+          {FIRM.email}
         </a>
       </>
     ),
@@ -142,7 +143,7 @@ export default function TermsOfService() {
 
         <InnerPageHero
           image={termsHero}
-          eyebrow="Welzel Law"
+          eyebrow={FIRM.name}
           title="Terms of Use"
           subtitle="Legal terms governing your use of this website."
           variant="overlay"

@@ -9,7 +9,7 @@ export const metadata: Metadata = buildMetadata(PAGE_SEO.realEstate)
 export default function Page() {
   return (
     <>
-      <ServiceJsonLd name="Real Estate Law" description="Real estate closing lawyer in Burlington, Ontario. Residential purchases and sales, title insurance, land transfer tax, and commercial leasing for GTA buyers and investors." url="/real-estate-law" />
+      <ServiceJsonLd name="Real Estate Law" description="Real estate closing lawyer in Kitchener, Ontario. Residential purchases and sales, title insurance, land transfer tax, and commercial leasing for Ontario buyers and investors." url="/real-estate-law" />
       <BreadcrumbJsonLd crumbs={[{ name: 'Home', href: '/' }, { name: 'Real Estate Law', href: '/real-estate-law' }]} />
       <RealEstateLaw />
     </>

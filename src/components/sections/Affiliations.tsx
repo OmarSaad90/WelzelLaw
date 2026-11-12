@@ -2,9 +2,9 @@
 
 import { motion } from 'framer-motion'
 import MotionImage from '../MotionImage'
-import folaLogo from '../../assets/images/logos/fola.png'
 import lsoLogo from '../../assets/images/logos/lso.png'
-import obaLogo from '../../assets/images/logos/oba.png'
+import chamberLogo from '../../assets/images/logos/chamber-kw.png'
+import cbaLogo from '../../assets/images/logos/cba.png'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -19,9 +19,9 @@ const stagger = {
 }
 
 const AFFILIATIONS = [
-  { name: 'Federation of Ontario Law Associations', src: folaLogo },
   { name: 'Law Society of Ontario', src: lsoLogo },
-  { name: 'Ontario Bar Association', src: obaLogo },
+  { name: 'Greater Kitchener Waterloo Chamber of Commerce', src: chamberLogo },
+  { name: 'Canadian Bar Association', src: cbaLogo },
 ]
 
 export default function Affiliations() {
@@ -44,6 +44,7 @@ export default function Affiliations() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          gap: 'var(--space-12)',
         }}
       >
         {/* Left: heading anchored to container edge */}
@@ -59,20 +60,8 @@ export default function Affiliations() {
           Our Affiliations
         </motion.h2>
 
-        {/* Right: divider + logos as a single group */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'var(--space-10)',
-        }}>
-          <div className="affiliations-divider" style={{
-            width: '1px',
-            height: '48px',
-            backgroundColor: 'var(--color-accent)',
-            flexShrink: 0,
-            opacity: 0.5,
-          }} />
-
+        {/* Right: logos */}
+        <div>
           <div className="affiliations-logos" style={{
             display: 'flex',
             alignItems: 'center',
@@ -89,7 +78,7 @@ export default function Affiliations() {
                 title={aff.name}
                 className="affil-logo"
                 style={{
-                  height: '80px',
+                  height: '64px',
                   width: 'auto',
                   display: 'block',
                   opacity: 0.8,

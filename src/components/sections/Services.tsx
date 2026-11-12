@@ -32,7 +32,7 @@ const SERVICES = [
   {
     iconSrc: fgcIcon,
     title: 'Fractional General Counsel',
-    body: 'As your Fractional General Counsel, we become a true executive partner embedded in your company: attending meetings, negotiating contracts, managing risk, and keeping your business protected at every turn. You get counsel invested in your success, without the $200K to $350K yearly salary. A monthly fixed fee, no billing anxiety. Just peace of mind.',
+    body: 'As your Fractional General Counsel, we become a true executive partner embedded in your company: attending meetings, negotiating contracts, managing risk, and keeping your business protected at every turn. You get counsel invested in your success without the cost of a full-time hire. A monthly fixed fee, no billing anxiety. Just peace of mind.',
     href: '/fractional-general-counsel',
     featured: true,
   },
