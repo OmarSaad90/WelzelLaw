@@ -1,0 +1,4 @@
+# Preview site only: keep it out of search results so it never competes
+# with the live Key Step Legal site. Visitors are unaffected.
+/*
+  X-Robots-Tag: noindex, nofollow
