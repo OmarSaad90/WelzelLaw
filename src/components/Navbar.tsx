@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import MagneticButton from './MagneticButton'
@@ -18,8 +17,6 @@ const PRACTICE_AREAS = [
 ]
 
 export default function Navbar() {
-  const pathname = usePathname()
-  const isHome = pathname === '/'
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [practiceOpen, setPracticeOpen] = useState(false)
@@ -77,16 +74,9 @@ export default function Navbar() {
         gap: 'var(--space-8)',
       }}>
 
-        {/* Logo */}
-        {/* Mobile always gets the light (teal) wordmark; the desktop/mobile swap is
-            CSS-driven (index.css @960px) so server HTML never flashes the wrong logo. */}
+        {/* Logo — client's all-gold lockup, deep tone so it reads on the white bar */}
         <Link href="/" style={{ flexShrink: 0, display: 'flex', alignItems: 'center', lineHeight: 1 }}>
-          <span className="nav-logo-desktop">
-            <Logo variant={!scrolled && isHome ? 'dark' : 'light'} height={34} />
-          </span>
-          <span className="nav-logo-mobile">
-            <Logo variant="light" height={34} />
-          </span>
+          <Logo variant="gold-deep" height={34} />
         </Link>
 
         {/* Desktop nav */}

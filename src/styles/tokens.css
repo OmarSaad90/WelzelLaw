@@ -92,8 +92,11 @@
   --color-accent-text:   var(--color-gold-700);
 
   /* Brand mark — exact gold from the Key Step Legal logo artwork (#E6C65C).
-     Yellower than --color-accent; used only for the logo icon. */
+     Yellower than --color-accent; used for the logo on dark backgrounds. */
   --color-logo-gold:     oklch(0.834 0.130 92.6);
+  /* Deeper tone of the same gold (#B08418, 3.4:1 on white) for the logo on
+     light backgrounds, where the artwork gold washes out (1.7:1). */
+  --color-logo-gold-deep: oklch(0.64 0.125 84);
 
   /* Feedback — form send failures. Muted brick red, AA on white. */
   --color-error:         oklch(0.50 0.160 27);

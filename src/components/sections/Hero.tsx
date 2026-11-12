@@ -202,6 +202,9 @@ export default function Hero() {
           zIndex: 1,
           pointerEvents: 'none',
         }} />
+
+        {/* Nav scrim — calms the bright ceiling lights so the teal nav + logo stay legible */}
+        <div className="hero-nav-scrim" aria-hidden="true" />
       </section>
 
       {/* ── 2: Plants — editorial split (image left, text right) ── */}

@@ -75,15 +75,9 @@ ul, ol { list-style: none; }
   color: var(--color-primary) !important;
 }
 
-/* Navbar logo: desktop variant follows scroll/home state, mobile is always light */
-.nav-logo-desktop, .nav-logo-mobile { display: flex; align-items: center; }
-.nav-logo-mobile { display: none; }
-
 @media (max-width: 960px) {
   .desktop-nav { display: none !important; }
   .hamburger { display: flex !important; align-items: center; }
-  .nav-logo-desktop { display: none; }
-  .nav-logo-mobile { display: flex; }
 }
 @media (min-width: 961px) {
   .hamburger { display: none !important; }
@@ -180,6 +174,34 @@ ul, ol { list-style: none; }
 .footer-form-error a {
   color: inherit;
   text-decoration: underline;
+}
+
+/* ============================================================
+   Hero — nav scrim
+   The video's top band has hard ceiling lights and window glare; teal nav
+   links need a calm, light backing. White fade + softening blur, both
+   dissolving before the hero text (which starts ~40% down).
+   ============================================================ */
+
+.hero-nav-scrim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 22%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklch, var(--color-bg) 82%, transparent) 0%,
+    color-mix(in oklch, var(--color-bg) 62%, transparent) 40%,
+    color-mix(in oklch, var(--color-bg) 22%, transparent) 72%,
+    transparent 100%
+  );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
 }
 
 /* ============================================================

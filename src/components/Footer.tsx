@@ -139,7 +139,7 @@ export default function Footer() {
           >
             {/* Logo */}
             <motion.div variants={fadeUp} style={{ marginBottom: 'var(--space-4)' }}>
-              <Logo variant="dark" height={36} />
+              <Logo variant="gold" height={36} />
             </motion.div>
 
             {/* Contact details */}

@@ -1,8 +1,13 @@
 import { FIRM } from '../data/firm'
 
 interface LogoProps {
-  /** 'light' = teal wordmark for white backgrounds; 'dark' = white wordmark over video/imagery. */
-  variant?: 'light' | 'dark'
+  /**
+   * 'gold'      = all-gold lockup in the client's exact artwork gold, for dark backgrounds.
+   * 'gold-deep' = same lockup in a deeper gold that stays legible on light backgrounds.
+   * 'light' = teal wordmark for white backgrounds; 'dark' = white wordmark over dark imagery.
+   * 'light' and 'dark' keep the artwork's bright gold on the stairs mark.
+   */
+  variant?: 'gold' | 'gold-deep' | 'light' | 'dark'
   /** Rendered height in px. Icon and wordmark scale together from this. */
   height?: number
   style?: React.CSSProperties
@@ -19,11 +24,11 @@ const STAIRS_RECTS: ReadonlyArray<readonly [number, number, number, number]> = [
   [100, 564, 40, 72], [0, 464, 40, 212], [100, 636, 928, 40],
 ]
 
-function StairsMark({ height }: { height: number }) {
+function StairsMark({ height, fill }: { height: number; fill: string }) {
   return (
     <svg viewBox="0 0 1028 676" height={height} aria-hidden="true" style={{ display: 'block', flexShrink: 0 }}>
       {STAIRS_RECTS.map(([x, y, w, h]) => (
-        <rect key={`${x}-${y}`} x={x} y={y} width={w} height={h} style={{ fill: 'var(--color-logo-gold)' }} />
+        <rect key={`${x}-${y}`} x={x} y={y} width={w} height={h} style={{ fill }} />
       ))}
     </svg>
   )
@@ -35,7 +40,13 @@ function StairsMark({ height }: { height: number }) {
  * client's request, rather than the Bitter/Raleway in the supplied artwork.
  */
 export default function Logo({ variant = 'light', height = 38, style, className }: LogoProps) {
-  const wordmarkColor = variant === 'dark' ? 'var(--color-neutral-25)' : 'var(--color-primary)'
+  const COLORS = {
+    gold:        { mark: 'var(--color-logo-gold)',      wordmark: 'var(--color-logo-gold)' },
+    'gold-deep': { mark: 'var(--color-logo-gold-deep)', wordmark: 'var(--color-logo-gold-deep)' },
+    light: { mark: 'var(--color-logo-gold)',      wordmark: 'var(--color-primary)' },
+    dark:  { mark: 'var(--color-logo-gold)',      wordmark: 'var(--color-neutral-25)' },
+  } as const
+  const { mark: markColor, wordmark: wordmarkColor } = COLORS[variant]
 
   return (
     <span
@@ -44,7 +55,7 @@ export default function Logo({ variant = 'light', height = 38, style, className 
       className={className}
       style={{ display: 'inline-flex', alignItems: 'center', gap: height * 0.32, height, ...style }}
     >
-      <StairsMark height={height * 0.86} />
+      <StairsMark height={height * 0.86} fill={markColor} />
       <span
         aria-hidden="true"
         style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: wordmarkColor }}
@@ -62,12 +73,12 @@ export default function Logo({ variant = 'light', height = 38, style, className 
         <span style={{
           fontFamily: 'var(--font-body)',
           fontWeight: 400,
-          fontSize: height * 0.22,
+          fontSize: height * 0.27,
           lineHeight: 1,
-          letterSpacing: '0.5em',
+          letterSpacing: '0.42em',
           marginTop: height * 0.08,
           // letter-spacing trails the last glyph; pull it back so LEGAL centres under Key Step
-          marginRight: '-0.5em',
+          marginRight: '-0.42em',
         }}>
           LEGAL
         </span>
